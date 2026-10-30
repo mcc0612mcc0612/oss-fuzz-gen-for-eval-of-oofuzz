@@ -1,0 +1,235 @@
+# cppcheck at the commit HarnessGenerator pins. 25 targets: 25 from HarnessGenerator
+# YAMLs (cppcheck.yaml, cppcheck_all.yaml), the rest from the fuzzer binary, all strong
+# symbols of oss-fuzz-client declared in a project header, largest first, at most 6 per class.
+# Selected by script; symbol names are the libc++ ones OSS-Fuzz builds.
+functions:
+- name: _ZN9Tokenizer15simplifyVarDeclEP5TokenPKS0_b
+  params:
+  - name: ''
+    type: Token*
+  - name: ''
+    type: Token const*
+  - name: ''
+    type: bool
+  return_type: void
+  signature: void Tokenizer::simplifyVarDecl(Token*, Token const*, bool)
+- name: _ZN7Library4loadERKN8tinyxml211XMLDocumentE
+  params:
+  - name: ''
+    type: tinyxml2::XMLDocument const&
+  return_type: Error
+  signature: Error Library::load(tinyxml2::XMLDocument const&)
+- name: _ZN14SymbolDatabase23setValueTypeInTokenListEbP5Token
+  params:
+  - name: ''
+    type: bool
+  - name: ''
+    type: Token*
+  return_type: void
+  signature: void SymbolDatabase::setValueTypeInTokenList(bool, Token*)
+- name: _ZN9ValueFlow13setTokenValueEP5TokenNS_5ValueERK8Settings14SourceLocation
+  params:
+  - name: ''
+    type: Token*
+  - name: ''
+    type: ValueFlow::Value
+  - name: ''
+    type: Settings const&
+  - name: ''
+    type: SourceLocation
+  return_type: void
+  signature: void ValueFlow::setTokenValue(Token*, ValueFlow::Value, Settings const&, SourceLocation)
+- name: _ZN9simplecpp10preprocessERNS_9TokenListERKS0_RNSt3__16vectorINS4_12basic_stringIcNS4_11char_traitsIcEENS4_9allocatorIcEEEENS9_ISB_EEEERNS_13FileDataCacheERKNS_3DUIEPNS4_4listINS_6OutputENS9_ISL_EEEEPNSK_INS_10MacroUsageENS9_ISP_EEEEPNSK_INS_6IfCondENS9_IST_EEEE
+  params:
+  - name: ''
+    type: simplecpp::TokenList&
+  - name: ''
+    type: simplecpp::TokenList const&
+  - name: ''
+    type: std::vector<std::string>&
+  - name: ''
+    type: simplecpp::FileDataCache&
+  - name: ''
+    type: simplecpp::DUI const&
+  - name: ''
+    type: std::list<simplecpp::Output>*
+  - name: ''
+    type: std::list<simplecpp::MacroUsage>*
+  - name: ''
+    type: std::list<simplecpp::IfCond>*
+  return_type: void
+  signature: void simplecpp::preprocess(simplecpp::TokenList&, simplecpp::TokenList const&, std::vector<std::string>&, simplecpp::FileDataCache&, simplecpp::DUI const&, std::list<simplecpp::Output>*, std::list<simplecpp::MacroUsage>*,
+    std::list<simplecpp::IfCond>*)
+- name: _ZN18TemplateSimplifier17simplifyTemplatesEl
+  params:
+  - name: ''
+    type: long
+  return_type: void
+  signature: void TemplateSimplifier::simplifyTemplates(long)
+- name: _ZNK14SymbolDatabase8printOutEPKc
+  params:
+  - name: ''
+    type: char const*
+  return_type: void
+  signature: void SymbolDatabase::printOut(char const*) const
+- name: _ZN14SymbolDatabase12setValueTypeEP5TokenRK9ValueTypeRK14SourceLocation
+  params:
+  - name: ''
+    type: Token*
+  - name: ''
+    type: ValueType const&
+  - name: ''
+    type: SourceLocation const&
+  return_type: void
+  signature: void SymbolDatabase::setValueType(Token*, ValueType const&, SourceLocation const&)
+- name: _ZNK8Function9argsMatchEPK5ScopePK5TokenS5_RKNSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEi
+  params:
+  - name: ''
+    type: Scope const*
+  - name: ''
+    type: Token const*
+  - name: ''
+    type: Token const*
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: int
+  return_type: bool
+  signature: bool Function::argsMatch(Scope const*, Token const*, Token const*, std::string const&, int) const
+- name: _ZN9simplecpp9TokenList8readfileERNS0_6StreamERKNSt3__112basic_stringIcNS3_11char_traitsIcEENS3_9allocatorIcEEEEPNS3_4listINS_6OutputENS7_ISD_EEEE
+  params:
+  - name: ''
+    type: simplecpp::TokenList::Stream&
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: std::list<simplecpp::Output>*
+  return_type: void
+  signature: void simplecpp::TokenList::readfile(simplecpp::TokenList::Stream&, std::string const&, std::list<simplecpp::Output>*)
+- name: _ZN9ValueFlow25valueFlowSetConstantValueEP5TokenRK8Settings
+  params:
+  - name: ''
+    type: Token*
+  - name: ''
+    type: Settings const&
+  return_type: Token *
+  signature: Token * ValueFlow::valueFlowSetConstantValue(Token*, Settings const&)
+- name: _ZNK9Tokenizer4dumpERNSt3__113basic_ostreamIcNS0_11char_traitsIcEEEE
+  params:
+  - name: ''
+    type: std::ostream&
+  return_type: void
+  signature: void Tokenizer::dump(std::ostream&) const
+- name: _ZN8Function12addArgumentsEPK5Scope
+  params:
+  - name: ''
+    type: Scope const*
+  return_type: void
+  signature: void Function::addArguments(Scope const*)
+- name: _ZN8FunctionC1EPK5TokenPK5ScopeS2_S2_
+  params:
+  - name: ''
+    type: Token const*
+  - name: ''
+    type: Scope const*
+  - name: ''
+    type: Token const*
+  - name: ''
+    type: Token const*
+  return_type: ''
+  signature: Function::Function(Token const*, Scope const*, Token const*, Token const*)
+- name: _ZNK14SymbolDatabase8printXmlERNSt3__113basic_ostreamIcNS0_11char_traitsIcEEEE
+  params:
+  - name: ''
+    type: std::ostream&
+  return_type: void
+  signature: void SymbolDatabase::printXml(std::ostream&) const
+- name: _ZNK5Scope12findFunctionEPK5Tokenb9Reference
+  params:
+  - name: ''
+    type: Token const*
+  - name: ''
+    type: bool
+  - name: ''
+    type: Reference
+  return_type: const Function *
+  signature: const Function * Scope::findFunction(Token const*, bool, Reference) const
+- name: _ZN8Variable8evaluateERK8Settings
+  params:
+  - name: ''
+    type: Settings const&
+  return_type: ''
+  signature: Variable::evaluate(Settings const&)
+- name: _ZN20CheckUnusedFunctions11parseTokensERK9TokenizerRK8Settings
+  params:
+  - name: ''
+    type: Tokenizer const&
+  - name: ''
+    type: Settings const&
+  return_type: void
+  signature: void CheckUnusedFunctions::parseTokens(Tokenizer const&, Settings const&)
+- name: _ZN18TemplateSimplifier12TokenAndNameC1EP5TokenNSt3__112basic_stringIcNS3_11char_traitsIcEENS3_9allocatorIcEEEEPKS1_SB_
+  params:
+  - name: ''
+    type: Token*
+  - name: ''
+    type: std::string
+  - name: ''
+    type: Token const*
+  - name: ''
+    type: Token const*
+  return_type: ''
+  signature: TemplateSimplifier::TokenAndName::TokenAndName(Token*, std::string, Token const*, Token const*)
+- name: _ZN9TokenList14isFunctionHeadEPK5TokenRKNSt3__112basic_stringIcNS3_11char_traitsIcEENS3_9allocatorIcEEEE
+  params:
+  - name: ''
+    type: Token const*
+  - name: ''
+    type: std::string const&
+  return_type: const Token *
+  signature: const Token * TokenList::isFunctionHead(Token const*, std::string const&)
+- name: _ZN18TemplateSimplifier18templateParametersEPK5Token
+  params:
+  - name: ''
+    type: Token const*
+  return_type: unsigned int
+  signature: unsigned int TemplateSimplifier::templateParameters(Token const*)
+- name: _ZN5Scope15getVariableListEPK5TokenS2_
+  params:
+  - name: ''
+    type: Token const*
+  - name: ''
+    type: Token const*
+  return_type: void
+  signature: void Scope::getVariableList(Token const*, Token const*)
+- name: _ZN5Token11insertTokenERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEb
+  params:
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: bool
+  return_type: Token*
+  signature: Token* Token::insertToken(std::string const&, bool)
+- name: _ZN18TemplateSimplifier27simplifyNumericCalculationsEP5Tokenb
+  params:
+  - name: ''
+    type: Token*
+  - name: ''
+    type: bool
+  return_type: bool
+  signature: bool TemplateSimplifier::simplifyNumericCalculations(Token*, bool)
+- name: _ZNK9Tokenizer16duplicateTypedefERP5TokenPKS0_S4_
+  params:
+  - name: ''
+    type: Token*&
+  - name: ''
+    type: Token const*
+  - name: ''
+    type: Token const*
+  return_type: bool
+  signature: bool Tokenizer::duplicateTypedef(Token*&, Token const*, Token const*) const
+language: c++
+project: cppcheck
+use_project_examples: false
+target_name: oss-fuzz-client
+target_path: /src/cppcheck/oss-fuzz/main.cpp

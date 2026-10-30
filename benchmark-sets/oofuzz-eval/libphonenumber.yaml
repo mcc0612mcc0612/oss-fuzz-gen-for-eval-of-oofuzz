@@ -1,0 +1,221 @@
+# libphonenumber at the commit HarnessGenerator pins. 25 targets: 25 from HarnessGenerator
+# YAMLs (libphonenumber.yaml), the rest from the fuzzer binary, all strong
+# symbols of fuzz_phone declared in a project header, largest first, at most 6 per class.
+# Selected by script; symbol names are the libc++ ones OSS-Fuzz builds.
+functions:
+- name: _ZNK4i18n12phonenumbers15PhoneNumberUtil35FormatOutOfCountryKeepingAlphaCharsERKNS0_11PhoneNumberERKNSt3__112basic_stringIcNS5_11char_traitsIcEENS5_9allocatorIcEEEEPSB_
+  params:
+  - name: ''
+    type: i18n::phonenumbers::PhoneNumber const&
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: std::string*
+  return_type: void
+  signature: void i18n::phonenumbers::PhoneNumberUtil::FormatOutOfCountryKeepingAlphaChars(i18n::phonenumbers::PhoneNumber const&, std::string const&, std::string*) const
+- name: _ZNK4i18n12phonenumbers15PhoneNumberUtil28FormatNumberForMobileDialingERKNS0_11PhoneNumberERKNSt3__112basic_stringIcNS5_11char_traitsIcEENS5_9allocatorIcEEEEbPSB_
+  params:
+  - name: ''
+    type: i18n::phonenumbers::PhoneNumber const&
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: bool
+  - name: ''
+    type: std::string*
+  return_type: void
+  signature: void i18n::phonenumbers::PhoneNumberUtil::FormatNumberForMobileDialing(i18n::phonenumbers::PhoneNumber const&, std::string const&, bool, std::string*) const
+- name: _ZNK4i18n12phonenumbers15PhoneNumberUtil31FormatOutOfCountryCallingNumberERKNS0_11PhoneNumberERKNSt3__112basic_stringIcNS5_11char_traitsIcEENS5_9allocatorIcEEEEPSB_
+  params:
+  - name: ''
+    type: i18n::phonenumbers::PhoneNumber const&
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: std::string*
+  return_type: void
+  signature: void i18n::phonenumbers::PhoneNumberUtil::FormatOutOfCountryCallingNumber(i18n::phonenumbers::PhoneNumber const&, std::string const&, std::string*) const
+- name: _ZNK4i18n12phonenumbers15PhoneNumberUtil22FormatInOriginalFormatERKNS0_11PhoneNumberERKNSt3__112basic_stringIcNS5_11char_traitsIcEENS5_9allocatorIcEEEEPSB_
+  params:
+  - name: ''
+    type: i18n::phonenumbers::PhoneNumber const&
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: std::string*
+  return_type: void
+  signature: void i18n::phonenumbers::PhoneNumberUtil::FormatInOriginalFormat(i18n::phonenumbers::PhoneNumber const&, std::string const&, std::string*) const
+- name: _ZNK4i18n12phonenumbers15PhoneNumberUtil31GetExampleNumberForNonGeoEntityEiPNS0_11PhoneNumberE
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: i18n::phonenumbers::PhoneNumber*
+  return_type: bool
+  signature: bool i18n::phonenumbers::PhoneNumberUtil::GetExampleNumberForNonGeoEntity(int, i18n::phonenumbers::PhoneNumber*) const
+- name: _ZNK4i18n12phonenumbers15PhoneNumberUtil23GetExampleNumberForTypeENS1_15PhoneNumberTypeEPNS0_11PhoneNumberE
+  params:
+  - name: ''
+    type: i18n::phonenumbers::PhoneNumberUtil::PhoneNumberType
+  - name: ''
+    type: i18n::phonenumbers::PhoneNumber*
+  return_type: bool
+  signature: bool i18n::phonenumbers::PhoneNumberUtil::GetExampleNumberForType(i18n::phonenumbers::PhoneNumberUtil::PhoneNumberType, i18n::phonenumbers::PhoneNumber*) const
+- name: _ZNK4i18n12phonenumbers15ShortNumberInfo24GetExpectedCostForRegionERKNS0_11PhoneNumberERKNSt3__112basic_stringIcNS5_11char_traitsIcEENS5_9allocatorIcEEEE
+  params:
+  - name: ''
+    type: i18n::phonenumbers::PhoneNumber const&
+  - name: ''
+    type: std::string const&
+  return_type: ShortNumberCost
+  signature: ShortNumberCost i18n::phonenumbers::ShortNumberInfo::GetExpectedCostForRegion(i18n::phonenumbers::PhoneNumber const&, std::string const&) const
+- name: _ZN4i18n12phonenumbers16SplitStringUsingERKNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEEcPNS1_6vectorIS7_NS5_IS7_EEEE
+  params:
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: char
+  - name: ''
+    type: std::vector<std::string>*
+  return_type: void
+  signature: void i18n::phonenumbers::SplitStringUsing(std::string const&, char, std::vector<std::string>*)
+- name: _ZN4i18n12phonenumbers13ExactlySameAsERKNS0_15PhoneNumberDescES3_
+  params:
+  - name: ''
+    type: i18n::phonenumbers::PhoneNumberDesc const&
+  - name: ''
+    type: i18n::phonenumbers::PhoneNumberDesc const&
+  return_type: bool
+  signature: bool i18n::phonenumbers::ExactlySameAs(i18n::phonenumbers::PhoneNumberDesc const&, i18n::phonenumbers::PhoneNumberDesc const&)
+- name: _ZNK4i18n12phonenumbers15ShortNumberInfo17IsCarrierSpecificERKNS0_11PhoneNumberE
+  params:
+  - name: ''
+    type: i18n::phonenumbers::PhoneNumber const&
+  return_type: bool
+  signature: bool i18n::phonenumbers::ShortNumberInfo::IsCarrierSpecific(i18n::phonenumbers::PhoneNumber const&) const
+- name: _ZN4i18n12phonenumbers18AsYouTypeFormatterC1ERKNSt3__112basic_stringIcNS2_11char_traitsIcEENS2_9allocatorIcEEEE
+  params:
+  - name: ''
+    type: std::string const&
+  return_type: ''
+  signature: i18n::phonenumbers::AsYouTypeFormatter::AsYouTypeFormatter(std::string const&)
+- name: _ZN4i18n12phonenumbers18PhoneNumberMatcherC1ERKNS0_15PhoneNumberUtilERKNSt3__112basic_stringIcNS5_11char_traitsIcEENS5_9allocatorIcEEEESD_NS1_8LeniencyEi
+  params:
+  - name: ''
+    type: i18n::phonenumbers::PhoneNumberUtil const&
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: i18n::phonenumbers::PhoneNumberMatcher::Leniency
+  - name: ''
+    type: int
+  return_type: ''
+  signature: i18n::phonenumbers::PhoneNumberMatcher::PhoneNumberMatcher(i18n::phonenumbers::PhoneNumberUtil const&, std::string const&, std::string const&, i18n::phonenumbers::PhoneNumberMatcher::Leniency,
+    int)
+- name: _ZNK4i18n12phonenumbers15ShortNumberInfo27IsValidShortNumberForRegionERKNS0_11PhoneNumberERKNSt3__112basic_stringIcNS5_11char_traitsIcEENS5_9allocatorIcEEEE
+  params:
+  - name: ''
+    type: i18n::phonenumbers::PhoneNumber const&
+  - name: ''
+    type: std::string const&
+  return_type: bool
+  signature: bool i18n::phonenumbers::ShortNumberInfo::IsValidShortNumberForRegion(i18n::phonenumbers::PhoneNumber const&, std::string const&) const
+- name: _ZN4i18n12phonenumbers18PhoneNumberMatcherC1ERKNSt3__112basic_stringIcNS2_11char_traitsIcEENS2_9allocatorIcEEEESA_
+  params:
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: std::string const&
+  return_type: ''
+  signature: i18n::phonenumbers::PhoneNumberMatcher::PhoneNumberMatcher(std::string const&, std::string const&)
+- name: _ZN4i18n12phonenumbers11UnicodeText19TakeOwnershipOfUTF8EPcii
+  params:
+  - name: ''
+    type: char*
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: UnicodeText&
+  signature: UnicodeText& i18n::phonenumbers::UnicodeText::TakeOwnershipOfUTF8(char*, int, int)
+- name: _ZN4i18n12phonenumbers11UnicodeText11PointToUTF8EPKci
+  params:
+  - name: ''
+    type: char const*
+  - name: ''
+    type: int
+  return_type: UnicodeText&
+  signature: UnicodeText& i18n::phonenumbers::UnicodeText::PointToUTF8(char const*, int)
+- name: _ZNK4i18n12phonenumbers15ShortNumberInfo18IsValidShortNumberERKNS0_11PhoneNumberE
+  params:
+  - name: ''
+    type: i18n::phonenumbers::PhoneNumber const&
+  return_type: bool
+  signature: bool i18n::phonenumbers::ShortNumberInfo::IsValidShortNumber(i18n::phonenumbers::PhoneNumber const&) const
+- name: _ZNK4i18n12phonenumbers15ShortNumberInfo15GetExpectedCostERKNS0_11PhoneNumberE
+  params:
+  - name: ''
+    type: i18n::phonenumbers::PhoneNumber const&
+  return_type: ShortNumberCost
+  signature: ShortNumberCost i18n::phonenumbers::ShortNumberInfo::GetExpectedCost(i18n::phonenumbers::PhoneNumber const&) const
+- name: _ZNK4i18n12phonenumbers15ShortNumberInfo21IsSmsServiceForRegionERKNS0_11PhoneNumberERKNSt3__112basic_stringIcNS5_11char_traitsIcEENS5_9allocatorIcEEEE
+  params:
+  - name: ''
+    type: i18n::phonenumbers::PhoneNumber const&
+  - name: ''
+    type: std::string const&
+  return_type: bool
+  signature: bool i18n::phonenumbers::ShortNumberInfo::IsSmsServiceForRegion(i18n::phonenumbers::PhoneNumber const&, std::string const&) const
+- name: _ZN4i18n12phonenumbers13UnicodeString7replaceEiiRKS1_
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: i18n::phonenumbers::UnicodeString const&
+  return_type: void
+  signature: void i18n::phonenumbers::UnicodeString::replace(int, int, i18n::phonenumbers::UnicodeString const&)
+- name: _ZN4i18n12phonenumbers11UnicodeText4Repr6resizeEi
+  params:
+  - name: ''
+    type: int
+  return_type: void
+  signature: void i18n::phonenumbers::UnicodeText::Repr::resize(int)
+- name: _ZNK4i18n12phonenumbers13UnicodeString13tempSubStringEii
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: UnicodeString
+  signature: UnicodeString i18n::phonenumbers::UnicodeString::tempSubString(int, int) const
+- name: _ZN4i18n12phonenumbers11UnicodeTextC1ERKNS1_14const_iteratorES4_
+  params:
+  - name: ''
+    type: i18n::phonenumbers::UnicodeText::const_iterator const&
+  - name: ''
+    type: i18n::phonenumbers::UnicodeText::const_iterator const&
+  return_type: ''
+  signature: i18n::phonenumbers::UnicodeText::UnicodeText(i18n::phonenumbers::UnicodeText::const_iterator const&, i18n::phonenumbers::UnicodeText::const_iterator const&)
+- name: _ZNK4i18n12phonenumbers16PhoneNumberMatch6EqualsERKS1_
+  params:
+  - name: ''
+    type: i18n::phonenumbers::PhoneNumberMatch const&
+  return_type: bool
+  signature: bool i18n::phonenumbers::PhoneNumberMatch::Equals(i18n::phonenumbers::PhoneNumberMatch const&) const
+- name: _ZN4i18n12phonenumbers13UnicodeString9setCharAtEii
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: void i18n::phonenumbers::UnicodeString::setCharAt(int, int)
+language: c++
+project: libphonenumber
+use_project_examples: false
+target_name: fuzz_phone
+target_path: /src/libphonenumber/cpp/test/phonenumbers/fuzz_phone.cc

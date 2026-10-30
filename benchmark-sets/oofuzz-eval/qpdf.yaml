@@ -1,0 +1,248 @@
+# qpdf at the commit HarnessGenerator pins. 25 targets: 25 from HarnessGenerator
+# YAMLs (qpdf.yaml, qpdf_all.yaml), the rest from the fuzzer binary, all strong
+# symbols of qpdf_fuzzer declared in a project header, largest first, at most 6 per class.
+# Selected by script; symbol names are the libc++ ones OSS-Fuzz builds.
+functions:
+- name: _ZN26QPDFAcroFormDocumentHelper20transformAnnotationsE16QPDFObjectHandleRNSt3__16vectorIS0_NS1_9allocatorIS0_EEEES6_RNS1_3setI10QPDFObjGenNS1_4lessIS8_EENS3_IS8_EEEERK10QPDFMatrixP4QPDFPS_
+  params:
+  - name: ''
+    type: QPDFObjectHandle
+  - name: ''
+    type: std::vector<QPDFObjectHandle>&
+  - name: ''
+    type: std::vector<QPDFObjectHandle>&
+  - name: ''
+    type: std::set<QPDFObjGen, std::less<QPDFObjGen>>&
+  - name: ''
+    type: QPDFMatrix const&
+  - name: ''
+    type: QPDF*
+  - name: ''
+    type: QPDFAcroFormDocumentHelper*
+  return_type: void
+  signature: void QPDFAcroFormDocumentHelper::transformAnnotations(QPDFObjectHandle, std::vector<QPDFObjectHandle>&, std::vector<QPDFObjectHandle>&, std::set<QPDFObjGen, std::less<QPDFObjGen>>&, QPDFMatrix
+    const&, QPDF*, QPDFAcroFormDocumentHelper*)
+- name: _ZN16QPDFObjectHandle14mergeResourcesES_PNSt3__13mapINS0_12basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEENS1_IS7_S7_NS0_4lessIS7_EENS5_INS0_4pairIKS7_S7_EEEEEES9_NS5_INSA_ISB_SE_EEEEEE
+  params:
+  - name: ''
+    type: QPDFObjectHandle
+  - name: ''
+    type: std::map<std::string, std::map<std::string, std::string, std::less<std::string>>, std::less<std::string>, std::allocator<std::pair<std::string const, std::map<std::string, std::string, std::less<std::string>>>>>*
+  return_type: void
+  signature: void QPDFObjectHandle::mergeResources(QPDFObjectHandle, std::map<std::string, std::map<std::string, std::string, std::less<std::string>>, std::less<std::string>, std::allocator<std::pair<std::string
+    const, std::map<std::string, std::string, std::less<std::string>>>>>*)
+- name: _ZN27QPDFPageLabelDocumentHelper21getLabelsForPageRangeExxxRNSt3__16vectorI16QPDFObjectHandleNS0_9allocatorIS2_EEEE
+  params:
+  - name: ''
+    type: long long
+  - name: ''
+    type: long long
+  - name: ''
+    type: long long
+  - name: ''
+    type: std::vector<QPDFObjectHandle>&
+  return_type: void
+  signature: void QPDFPageLabelDocumentHelper::getLabelsForPageRange(long long, long long, long long, std::vector<QPDFObjectHandle>&)
+- name: _ZN20QPDFPageObjectHelper15flattenRotationEP26QPDFAcroFormDocumentHelper
+  params:
+  - name: ''
+    type: QPDFAcroFormDocumentHelper*
+  return_type: void
+  signature: void QPDFPageObjectHelper::flattenRotation(QPDFAcroFormDocumentHelper*)
+- name: _ZN26QPDFAcroFormDocumentHelper22addAndRenameFormFieldsENSt3__16vectorI16QPDFObjectHandleNS0_9allocatorIS2_EEEE
+  params:
+  - name: ''
+    type: std::vector<QPDFObjectHandle>
+  return_type: void
+  signature: void QPDFAcroFormDocumentHelper::addAndRenameFormFields(std::vector<QPDFObjectHandle>)
+- name: _ZN10QPDFWriter24copyEncryptionParametersER4QPDF
+  params:
+  - name: ''
+    type: QPDF&
+  return_type: void
+  signature: void QPDFWriter::copyEncryptionParameters(QPDF&)
+- name: _ZN20QPDFPageObjectHelper21getFormXObjectForPageEb
+  params:
+  - name: ''
+    type: bool
+  return_type: QPDFObjectHandle
+  signature: QPDFObjectHandle QPDFPageObjectHelper::getFormXObjectForPage(bool)
+- name: _ZN5QUtil21pdf_time_to_qpdf_timeERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEPNS_8QPDFTimeE
+  params:
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: QUtil::QPDFTime*
+  return_type: bool
+  signature: bool QUtil::pdf_time_to_qpdf_time(std::string const&, QUtil::QPDFTime*)
+- name: _ZN7QPDFJob6Config13setPageLabelsERKNSt3__16vectorINS1_12basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEENS6_IS8_EEEE
+  params:
+  - name: ''
+    type: std::vector<std::string> const&
+  return_type: Config*
+  signature: Config* QPDFJob::Config::setPageLabels(std::vector<std::string> const&)
+- name: _ZN5QUtil14parse_numrangeEPKci
+  params:
+  - name: ''
+    type: char const*
+  - name: ''
+    type: int
+  return_type: std::vector<int>
+  signature: std::vector<int> QUtil::parse_numrange(char const*, int)
+- name: _ZN4QPDF32compute_encryption_parameters_V5EPKcS1_iiiibRKNSt3__112basic_stringIcNS2_11char_traitsIcEENS2_9allocatorIcEEEERS8_SB_SB_SB_SB_SB_
+  params:
+  - name: ''
+    type: char const*
+  - name: ''
+    type: char const*
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: bool
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: std::string&
+  - name: ''
+    type: std::string&
+  - name: ''
+    type: std::string&
+  - name: ''
+    type: std::string&
+  - name: ''
+    type: std::string&
+  - name: ''
+    type: std::string&
+  return_type: void
+  signature: void QPDF::compute_encryption_parameters_V5(char const*, char const*, int, int, int, int, bool, std::string const&, std::string&, std::string&, std::string&, std::string&, std::string&, std::string&)
+- name: _ZN4QPDF17copyForeignObjectE16QPDFObjectHandle
+  params:
+  - name: ''
+    type: QPDFObjectHandle
+  return_type: QPDFObjectHandle
+  signature: QPDFObjectHandle QPDF::copyForeignObject(QPDFObjectHandle)
+- name: _ZN16QPDFObjectHandle21makeResourcesIndirectER4QPDF
+  params:
+  - name: ''
+    type: QPDF&
+  return_type: void
+  signature: void QPDFObjectHandle::makeResourcesIndirect(QPDF&)
+- name: _ZN26QPDFAcroFormDocumentHelper16removeFormFieldsERKNSt3__13setI10QPDFObjGenNS0_4lessIS2_EENS0_9allocatorIS2_EEEE
+  params:
+  - name: ''
+    type: std::set<QPDFObjGen, std::less<QPDFObjGen>> const&
+  return_type: void
+  signature: void QPDFAcroFormDocumentHelper::removeFormFields(std::set<QPDFObjGen, std::less<QPDFObjGen>> const&)
+- name: _ZN23QPDFOutlineObjectHelper7getDestEv
+  params: []
+  return_type: QPDFObjectHandle
+  signature: QPDFObjectHandle QPDFOutlineObjectHelper::getDest()
+- name: _ZN4QPDF9writeJSONEiP8PipelinebRb26qpdf_stream_decode_level_e23qpdf_json_stream_data_eRKNSt3__112basic_stringIcNS5_11char_traitsIcEENS5_9allocatorIcEEEENS5_3setISB_NS5_4lessISB_EENS9_ISB_EEEE
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: Pipeline*
+  - name: ''
+    type: bool
+  - name: ''
+    type: bool&
+  - name: ''
+    type: qpdf_stream_decode_level_e
+  - name: ''
+    type: qpdf_json_stream_data_e
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: std::set<std::string, std::less<std::string>>
+  return_type: void
+  signature: void QPDF::writeJSON(int, Pipeline*, bool, bool&, qpdf_stream_decode_level_e, qpdf_json_stream_data_e, std::string const&, std::set<std::string, std::less<std::string>>)
+- name: _ZN26QPDFAnnotationObjectHelper27getPageContentForAppearanceERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEiii
+  params:
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: std::string
+  signature: std::string QPDFAnnotationObjectHelper::getPageContentForAppearance(std::string const&, int, int, int)
+- name: _ZN16QPDFObjectHandle10makeDirectERN10QPDFObjGen3setEb
+  params:
+  - name: ''
+    type: QPDFObjGen::set&
+  - name: ''
+    type: bool
+  return_type: void
+  signature: void QPDFObjectHandle::makeDirect(QPDFObjGen::set&, bool)
+- name: _ZN17SF_FlateLzwDecode14setDecodeParmsE16QPDFObjectHandle
+  params:
+  - name: ''
+    type: QPDFObjectHandle
+  return_type: bool
+  signature: bool SF_FlateLzwDecode::setDecodeParms(QPDFObjectHandle)
+- name: _ZN11JSONHandler6handleERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEE4JSON
+  params:
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: JSON
+  return_type: void
+  signature: void JSONHandler::handle(std::string const&, JSON)
+- name: _ZN20QPDFPageObjectHelper15copyAnnotationsES_RK10QPDFMatrixP26QPDFAcroFormDocumentHelperS4_
+  params:
+  - name: ''
+    type: QPDFPageObjectHelper
+  - name: ''
+    type: QPDFMatrix const&
+  - name: ''
+    type: QPDFAcroFormDocumentHelper*
+  - name: ''
+    type: QPDFAcroFormDocumentHelper*
+  return_type: void
+  signature: void QPDFPageObjectHelper::copyAnnotations(QPDFPageObjectHelper, QPDFMatrix const&, QPDFAcroFormDocumentHelper*, QPDFAcroFormDocumentHelper*)
+- name: _ZN5QUtil20qpdf_time_to_iso8601ERKNS_8QPDFTimeE
+  params:
+  - name: ''
+    type: QUtil::QPDFTime const&
+  return_type: std::string
+  signature: std::string QUtil::qpdf_time_to_iso8601(QUtil::QPDFTime const&)
+- name: _ZN5QUtil21read_file_into_stringEP8_IO_FILENSt3__117basic_string_viewIcNS2_11char_traitsIcEEEE
+  params:
+  - name: ''
+    type: _IO_FILE*
+  - name: ''
+    type: std::string_view
+  return_type: std::string
+  signature: std::string QUtil::read_file_into_string(_IO_FILE*, std::string_view)
+- name: _ZN23QPDFOutlineObjectHelperC1E16QPDFObjectHandleR25QPDFOutlineDocumentHelperi
+  params:
+  - name: ''
+    type: QPDFObjectHandle
+  - name: ''
+    type: QPDFOutlineDocumentHelper&
+  - name: ''
+    type: int
+  return_type: ''
+  signature: QPDFOutlineObjectHelper::QPDFOutlineObjectHelper(QPDFObjectHandle, QPDFOutlineDocumentHelper&, int)
+- name: _ZN20QPDFPageObjectHelper23externalizeInlineImagesEmb
+  params:
+  - name: ''
+    type: uint64_t
+  - name: ''
+    type: bool
+  return_type: void
+  signature: void QPDFPageObjectHelper::externalizeInlineImages(uint64_t, bool)
+language: c++
+project: qpdf
+use_project_examples: false
+target_name: qpdf_fuzzer
+target_path: /src/qpdf/fuzz/qpdf_fuzzer.cc

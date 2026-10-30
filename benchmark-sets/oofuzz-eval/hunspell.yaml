@@ -1,0 +1,234 @@
+# hunspell at the commit HarnessGenerator pins. 25 targets: 25 from HarnessGenerator
+# YAMLs (hunspell.yaml, hunspell_all.yaml), the rest from the fuzzer binary, all strong
+# symbols of fuzzer declared in a project header, largest first, at most 6 per class.
+# Selected by script; symbol names are the libc++ ones OSS-Fuzz builds.
+functions:
+- name: _ZN10SuggestMgr9ngsuggestERNSt3__16vectorINS0_12basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEENS5_IS7_EEEEPKcRKNS1_INS0_10unique_ptrI7HashMgrNS0_14default_deleteISE_EEEENS5_ISH_EEEEi
+  params:
+  - name: ''
+    type: std::vector<std::string>&
+  - name: ''
+    type: char const*
+  - name: ''
+    type: std::vector<std::unique_ptr<HashMgr>> const&
+  - name: ''
+    type: int
+  return_type: void
+  signature: void SuggestMgr::ngsuggest(std::vector<std::string>&, char const*, std::vector<std::unique_ptr<HashMgr>> const&, int)
+- name: _ZN8AffixMgr15expand_rootwordEP9guesswordiPKciPKttS3_iS3_
+  params:
+  - name: ''
+    type: guessword*
+  - name: ''
+    type: int
+  - name: ''
+    type: char const*
+  - name: ''
+    type: int
+  - name: ''
+    type: unsigned short const*
+  - name: ''
+    type: unsigned short
+  - name: ''
+    type: char const*
+  - name: ''
+    type: int
+  - name: ''
+    type: char const*
+  return_type: int
+  signature: int AffixMgr::expand_rootword(guessword*, int, char const*, int, unsigned short const*, unsigned short, char const*, int, char const*)
+- name: _ZN10SuggestMgr7suggestERNSt3__16vectorINS0_12basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEENS5_IS7_EEEERKS7_Pib
+  params:
+  - name: ''
+    type: std::vector<std::string>&
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: int*
+  - name: ''
+    type: bool
+  return_type: bool
+  signature: bool SuggestMgr::suggest(std::vector<std::string>&, std::string const&, int*, bool)
+- name: _ZN7RepList3addERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEES8_
+  params:
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: std::string const&
+  return_type: int
+  signature: int RepList::add(std::string const&, std::string const&)
+- name: _ZN8PfxEntry14test_conditionERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEE
+  params:
+  - name: ''
+    type: std::string const&
+  return_type: int
+  signature: int PfxEntry::test_condition(std::string const&)
+- name: _ZN8AffixMgrC1EPKcRKNSt3__16vectorINS2_10unique_ptrI7HashMgrNS2_14default_deleteIS5_EEEENS2_9allocatorIS8_EEEES1_
+  params:
+  - name: ''
+    type: char const*
+  - name: ''
+    type: std::vector<std::unique_ptr<HashMgr>> const&
+  - name: ''
+    type: char const*
+  return_type: ''
+  signature: AffixMgr::AffixMgr(char const*, std::vector<std::unique_ptr<HashMgr>> const&, char const*)
+- name: _ZN10SuggestMgr13suggest_morphERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEE
+  params:
+  - name: ''
+    type: std::string const&
+  return_type: std::string
+  signature: std::string SuggestMgr::suggest_morph(std::string const&)
+- name: _ZN8SfxEntry14test_conditionEPKcS1_
+  params:
+  - name: ''
+    type: char const*
+  - name: ''
+    type: char const*
+  return_type: int
+  signature: int SfxEntry::test_condition(char const*, char const*)
+- name: _ZNK7HashMgr12decode_flagsERNSt3__16vectorItNS0_9allocatorItEEEERKNS0_12basic_stringIcNS0_11char_traitsIcEENS2_IcEEEEP7FileMgr
+  params:
+  - name: ''
+    type: std::vector<unsigned short>&
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: FileMgr*
+  return_type: int
+  signature: int HashMgr::decode_flags(std::vector<unsigned short>&, std::string const&, FileMgr*) const
+- name: _ZN7RepList4convERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERS6_
+  params:
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: std::string&
+  return_type: bool
+  signature: bool RepList::conv(std::string const&, std::string&)
+- name: _ZN8SfxEntry16get_next_homonymEP6hentryiP8PfxEntrytt
+  params:
+  - name: ''
+    type: hentry*
+  - name: ''
+    type: int
+  - name: ''
+    type: PfxEntry*
+  - name: ''
+    type: unsigned short
+  - name: ''
+    type: unsigned short
+  return_type: struct hentry*
+  signature: struct hentry* SfxEntry::get_next_homonym(hentry*, int, PfxEntry*, unsigned short, unsigned short)
+- name: _ZN10SuggestMgrC1ERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEjP8AffixMgr
+  params:
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: unsigned int
+  - name: ''
+    type: AffixMgr*
+  return_type: ''
+  signature: SuggestMgr::SuggestMgr(std::string const&, unsigned int, AffixMgr*)
+- name: _ZN8AffixMgr13cpdcase_checkERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEi
+  params:
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: int
+  return_type: int
+  signature: int AffixMgr::cpdcase_check(std::string const&, int)
+- name: _ZN8AffixMgr12get_syllableERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEE
+  params:
+  - name: ''
+    type: std::string const&
+  return_type: short
+  signature: short AffixMgr::get_syllable(std::string const&)
+- name: _ZN8AffixMgr16get_suffix_wordsEPtiRKNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEE
+  params:
+  - name: ''
+    type: unsigned short*
+  - name: ''
+    type: int
+  - name: ''
+    type: std::string const&
+  return_type: std::vector<std::string>
+  signature: std::vector<std::string> AffixMgr::get_suffix_words(unsigned short*, int, std::string const&)
+- name: _ZN6Hunzip7getlineERNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEE
+  params:
+  - name: ''
+    type: std::string&
+  return_type: bool
+  signature: bool Hunzip::getline(std::string&)
+- name: _ZN7HashMgr6removeERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEE
+  params:
+  - name: ''
+    type: std::string const&
+  return_type: int
+  signature: int HashMgr::remove(std::string const&)
+- name: _ZN8PfxEntry3addEPKcm
+  params:
+  - name: ''
+    type: char const*
+  - name: ''
+    type: uint64_t
+  return_type: std::string
+  signature: std::string PfxEntry::add(char const*, uint64_t)
+- name: _ZN7FileMgrC1EPKcS1_
+  params:
+  - name: ''
+    type: char const*
+  - name: ''
+    type: char const*
+  return_type: ''
+  signature: FileMgr::FileMgr(char const*, char const*)
+- name: _ZN7HashMgrC1EPKcS1_S1_
+  params:
+  - name: ''
+    type: char const*
+  - name: ''
+    type: char const*
+  - name: ''
+    type: char const*
+  return_type: ''
+  signature: HashMgr::HashMgr(char const*, char const*, char const*)
+- name: _ZNK7HashMgr11encode_flagEt
+  params:
+  - name: ''
+    type: unsigned short
+  return_type: std::string
+  signature: std::string HashMgr::encode_flag(unsigned short) const
+- name: _ZNK7HashMgr11decode_flagERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEE
+  params:
+  - name: ''
+    type: std::string const&
+  return_type: unsigned short
+  signature: unsigned short HashMgr::decode_flag(std::string const&) const
+- name: _ZN8SfxEntry3addEPKcm
+  params:
+  - name: ''
+    type: char const*
+  - name: ''
+    type: uint64_t
+  return_type: std::string
+  signature: std::string SfxEntry::add(char const*, uint64_t)
+- name: _ZN6HunzipC1EPKcS1_
+  params:
+  - name: ''
+    type: char const*
+  - name: ''
+    type: char const*
+  return_type: ''
+  signature: Hunzip::Hunzip(char const*, char const*)
+- name: _ZN7HashMgr14add_with_affixERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEES8_
+  params:
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: std::string const&
+  return_type: int
+  signature: int HashMgr::add_with_affix(std::string const&, std::string const&)
+language: c++
+project: hunspell
+use_project_examples: false
+target_name: fuzzer
+target_path: /src/hunspell/src/tools/fuzzer.cxx

@@ -1,0 +1,76 @@
+# tink-cc at the commit HarnessGenerator pins. 9 targets: 0 from HarnessGenerator
+# YAMLs (tink-cc.yaml), the rest from the fuzzer binary, all strong
+# symbols of tink_encrypt_fuzzer declared in a project header, largest first, at most 6 per class.
+# Selected by script; symbol names are the libc++ ones OSS-Fuzz builds.
+functions:
+- name: _ZNK6crypto4tink6subtle15AesSivBoringSsl24DecryptDeterministicallyENSt3__117basic_string_viewIcNS3_11char_traitsIcEEEES7_
+  params:
+  - name: ''
+    type: std::string_view
+  - name: ''
+    type: std::string_view
+  return_type: absl::StatusOr<std::string>
+  signature: absl::StatusOr<std::string> crypto::tink::subtle::AesSivBoringSsl::DecryptDeterministically(std::string_view, std::string_view) const
+- name: _ZN6crypto4tink8internal24ParseBigIntToFixedLengthENSt3__117basic_string_viewIcNS2_11char_traitsIcEEEEi
+  params:
+  - name: ''
+    type: std::string_view
+  - name: ''
+    type: int
+  return_type: absl::StatusOr<SecretData>
+  signature: absl::StatusOr<SecretData> crypto::tink::internal::ParseBigIntToFixedLength(std::string_view, int)
+- name: _ZN6crypto4tink8internal14AesCtr128CryptENSt3__117basic_string_viewIcNS2_11char_traitsIcEEEEPhPK10aes_key_stN4absl12lts_202601074SpanIcEE
+  params:
+  - name: ''
+    type: std::string_view
+  - name: ''
+    type: unsigned char*
+  - name: ''
+    type: aes_key_st const*
+  - name: ''
+    type: absl::lts_20260107::Span<char>
+  return_type: absl::Status
+  signature: absl::Status crypto::tink::internal::AesCtr128Crypt(std::string_view, unsigned char*, aes_key_st const*, absl::lts_20260107::Span<char>)
+- name: _ZNK6crypto4tink6subtle15AesSivBoringSsl24EncryptDeterministicallyENSt3__117basic_string_viewIcNS3_11char_traitsIcEEEES7_
+  params:
+  - name: ''
+    type: std::string_view
+  - name: ''
+    type: std::string_view
+  return_type: absl::StatusOr<std::string>
+  signature: absl::StatusOr<std::string> crypto::tink::subtle::AesSivBoringSsl::EncryptDeterministically(std::string_view, std::string_view) const
+- name: _ZN6crypto4tink8internal25GetAesCbcCipherForKeySizeEj
+  params:
+  - name: ''
+    type: unsigned int
+  return_type: absl::StatusOr<const *>
+  signature: absl::StatusOr<const *> crypto::tink::internal::GetAesCbcCipherForKeySize(unsigned int)
+- name: _ZN6crypto4tink8internal25GetAesCtrCipherForKeySizeEj
+  params:
+  - name: ''
+    type: unsigned int
+  return_type: absl::StatusOr<const *>
+  signature: absl::StatusOr<const *> crypto::tink::internal::GetAesCtrCipherForKeySize(unsigned int)
+- name: _ZN6crypto4tink6subtle11BigEndian32Ej
+  params:
+  - name: ''
+    type: unsigned int
+  return_type: std::string
+  signature: std::string crypto::tink::subtle::BigEndian32(unsigned int)
+- name: _ZN6crypto4tink8internal19WithoutLeadingZerosENSt3__117basic_string_viewIcNS2_11char_traitsIcEEEE
+  params:
+  - name: ''
+    type: std::string_view
+  return_type: absl::string_view
+  signature: absl::string_view crypto::tink::internal::WithoutLeadingZeros(std::string_view)
+- name: _ZN6crypto4tink8internal16IsPrintableAsciiENSt3__117basic_string_viewIcNS2_11char_traitsIcEEEE
+  params:
+  - name: ''
+    type: std::string_view
+  return_type: bool
+  signature: bool crypto::tink::internal::IsPrintableAscii(std::string_view)
+language: c++
+project: tink-cc
+use_project_examples: false
+target_name: tink_encrypt_fuzzer
+target_path: /src/tink-cc/fuzzing/tink_encrypt_decrypt_fuzzer.cc

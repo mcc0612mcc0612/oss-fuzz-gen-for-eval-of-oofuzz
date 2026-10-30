@@ -1,0 +1,281 @@
+# tesseract-ocr at the commit HarnessGenerator pins. 25 targets: 25 from HarnessGenerator
+# YAMLs (tesseract.yaml), the rest from the fuzzer binary, all strong
+# symbols of fuzzer-api declared in a project header, largest first, at most 6 per class.
+# Selected by script; symbol names are the libc++ ones OSS-Fuzz builds.
+functions:
+- name: _ZN9tesseract11TessBaseAPI10GetTSVTextEi
+  params:
+  - name: ''
+    type: int
+  return_type: char *
+  signature: char * tesseract::TessBaseAPI::GetTSVText(int)
+- name: _ZN9tesseract16DetectParagraphsEiPNSt3__16vectorINS_7RowInfoENS0_9allocatorIS2_EEEEPNS1_IPNS_4PARAENS3_IS8_EEEEPNS_9PARA_LISTEPNS1_IPNS_14ParagraphModelENS3_ISF_EEEE
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: std::vector<tesseract::RowInfo>*
+  - name: ''
+    type: std::vector<tesseract::PARA*>*
+  - name: ''
+    type: tesseract::PARA_LIST*
+  - name: ''
+    type: std::vector<tesseract::ParagraphModel*>*
+  return_type: void
+  signature: void tesseract::DetectParagraphs(int, std::vector<tesseract::RowInfo>*, std::vector<tesseract::PARA*>*, tesseract::PARA_LIST*, std::vector<tesseract::ParagraphModel*>*)
+- name: _ZN9tesseract12BlamerBundle24SetupCorrectSegmentationEPKNS_5TWERDEb
+  params:
+  - name: ''
+    type: tesseract::TWERD const*
+  - name: ''
+    type: bool
+  return_type: void
+  signature: void tesseract::BlamerBundle::SetupCorrectSegmentation(tesseract::TWERD const*, bool)
+- name: _ZN9tesseract11block_edgesENS_5ImageEPNS_5PDBLKEPNS_12C_OUTLINE_ITE
+  params:
+  - name: ''
+    type: tesseract::Image
+  - name: ''
+    type: tesseract::PDBLK*
+  - name: ''
+    type: tesseract::C_OUTLINE_IT*
+  return_type: void
+  signature: void tesseract::block_edges(tesseract::Image, tesseract::PDBLK*, tesseract::C_OUTLINE_IT*)
+- name: _ZN9tesseract9Tesseract22bigram_correction_passEPNS_8PAGE_RESE
+  params:
+  - name: ''
+    type: tesseract::PAGE_RES*
+  return_type: void
+  signature: void tesseract::Tesseract::bigram_correction_pass(tesseract::PAGE_RES*)
+- name: _ZN9tesseract9TabVector8EvaluateERKNS_6ICOORDEPNS_7TabFindE
+  params:
+  - name: ''
+    type: tesseract::ICOORD const&
+  - name: ''
+    type: tesseract::TabFind*
+  return_type: void
+  signature: void tesseract::TabVector::Evaluate(tesseract::ICOORD const&, tesseract::TabFind*)
+- name: _ZN9tesseract4LSTM7ForwardEbRKNS_9NetworkIOEPKNS_15TransposedArrayEPNS_14NetworkScratchEPS1_
+  params:
+  - name: ''
+    type: bool
+  - name: ''
+    type: tesseract::NetworkIO const&
+  - name: ''
+    type: tesseract::TransposedArray const*
+  - name: ''
+    type: tesseract::NetworkScratch*
+  - name: ''
+    type: tesseract::NetworkIO*
+  return_type: void
+  signature: void tesseract::LSTM::Forward(bool, tesseract::NetworkIO const&, tesseract::TransposedArray const*, tesseract::NetworkScratch*, tesseract::NetworkIO*)
+- name: _ZN9tesseract4LSTM8BackwardEbRKNS_9NetworkIOEPNS_14NetworkScratchEPS1_
+  params:
+  - name: ''
+    type: bool
+  - name: ''
+    type: tesseract::NetworkIO const&
+  - name: ''
+    type: tesseract::NetworkScratch*
+  - name: ''
+    type: tesseract::NetworkIO*
+  return_type: bool
+  signature: bool tesseract::LSTM::Backward(bool, tesseract::NetworkIO const&, tesseract::NetworkScratch*, tesseract::NetworkIO*)
+- name: _ZN9tesseract16DetectParagraphsEibPKNS_15MutableIteratorEPNSt3__16vectorIPNS_14ParagraphModelENS3_9allocatorIS6_EEEE
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: bool
+  - name: ''
+    type: tesseract::MutableIterator const*
+  - name: ''
+    type: std::vector<tesseract::ParagraphModel*>*
+  return_type: void
+  signature: void tesseract::DetectParagraphs(int, bool, tesseract::MutableIterator const*, std::vector<tesseract::ParagraphModel*>*)
+- name: _ZN9tesseract4Dict16NoDangerousAmbigEPNS_11WERD_CHOICEEPNSt3__16vectorINS_12DANGERR_INFOENS3_9allocatorIS5_EEEEbPNS_6MATRIXE
+  params:
+  - name: ''
+    type: tesseract::WERD_CHOICE*
+  - name: ''
+    type: std::vector<tesseract::DANGERR_INFO>*
+  - name: ''
+    type: bool
+  - name: ''
+    type: tesseract::MATRIX*
+  return_type: bool
+  signature: bool tesseract::Dict::NoDangerousAmbig(tesseract::WERD_CHOICE*, std::vector<tesseract::DANGERR_INFO>*, bool, tesseract::MATRIX*)
+- name: _ZN9tesseract20assign_blobs_to_rowsEPNS_8TO_BLOCKEPfibbb
+  params:
+  - name: ''
+    type: tesseract::TO_BLOCK*
+  - name: ''
+    type: float*
+  - name: ''
+    type: int
+  - name: ''
+    type: bool
+  - name: ''
+    type: bool
+  - name: ''
+    type: bool
+  return_type: void
+  signature: void tesseract::assign_blobs_to_rows(tesseract::TO_BLOCK*, float*, int, bool, bool, bool)
+- name: _ZN9tesseract11PAGE_RES_IT18ReplaceCurrentWordEPNS_13PointerVectorINS_8WERD_RESEEE
+  params:
+  - name: ''
+    type: tesseract::PointerVector<tesseract::WERD_RES>*
+  return_type: void
+  signature: void tesseract::PAGE_RES_IT::ReplaceCurrentWord(tesseract::PointerVector<tesseract::WERD_RES>*)
+- name: _ZN9tesseract9Tesseract7flip_0OEPNS_8WERD_RESE
+  params:
+  - name: ''
+    type: tesseract::WERD_RES*
+  return_type: void
+  signature: void tesseract::Tesseract::flip_0O(tesseract::WERD_RES*)
+- name: _ZN9tesseract9Tesseract16ResegmentWordBoxEPNS_10BLOCK_LISTERKNS_4TBOXEPS4_PKc
+  params:
+  - name: ''
+    type: tesseract::BLOCK_LIST*
+  - name: ''
+    type: tesseract::TBOX const&
+  - name: ''
+    type: tesseract::TBOX const*
+  - name: ''
+    type: char const*
+  return_type: bool
+  signature: bool tesseract::Tesseract::ResegmentWordBox(tesseract::BLOCK_LIST*, tesseract::TBOX const&, tesseract::TBOX const*, char const*)
+- name: _ZN9tesseract12ColPartition17LineSpacingBlocksERKNS_6ICOORDES3_iPNS_17ColPartition_LISTES5_PNS_10BLOCK_LISTEPNS_13TO_BLOCK_LISTE
+  params:
+  - name: ''
+    type: tesseract::ICOORD const&
+  - name: ''
+    type: tesseract::ICOORD const&
+  - name: ''
+    type: int
+  - name: ''
+    type: tesseract::ColPartition_LIST*
+  - name: ''
+    type: tesseract::ColPartition_LIST*
+  - name: ''
+    type: tesseract::BLOCK_LIST*
+  - name: ''
+    type: tesseract::TO_BLOCK_LIST*
+  return_type: void
+  signature: void tesseract::ColPartition::LineSpacingBlocks(tesseract::ICOORD const&, tesseract::ICOORD const&, int, tesseract::ColPartition_LIST*, tesseract::ColPartition_LIST*, tesseract::BLOCK_LIST*,
+    tesseract::TO_BLOCK_LIST*)
+- name: _ZN9tesseract9Tesseract16one_ell_conflictEPNS_8WERD_RESEb
+  params:
+  - name: ''
+    type: tesseract::WERD_RES*
+  - name: ''
+    type: bool
+  return_type: bool
+  signature: bool tesseract::Tesseract::one_ell_conflict(tesseract::WERD_RES*, bool)
+- name: _ZN9tesseract17check_pitch_sync3EsssssPNS_5STATSEfRsPNS_12FPSEGPT_LISTEss
+  params:
+  - name: ''
+    type: short
+  - name: ''
+    type: short
+  - name: ''
+    type: short
+  - name: ''
+    type: short
+  - name: ''
+    type: short
+  - name: ''
+    type: tesseract::STATS*
+  - name: ''
+    type: float
+  - name: ''
+    type: short&
+  - name: ''
+    type: tesseract::FPSEGPT_LIST*
+  - name: ''
+    type: short
+  - name: ''
+    type: short
+  return_type: double
+  signature: double tesseract::check_pitch_sync3(short, short, short, short, short, tesseract::STATS*, float, short&, tesseract::FPSEGPT_LIST*, short, short)
+- name: _ZNK9tesseract10UNICHARSET14save_to_stringERNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEE
+  params:
+  - name: ''
+    type: std::string&
+  return_type: ''
+  signature: tesseract::UNICHARSET::save_to_string(std::string&) const
+- name: _ZN9tesseract8Classify16ReadIntTemplatesEPNS_5TFileE
+  params:
+  - name: ''
+    type: tesseract::TFile*
+  return_type: '*'
+  signature: '* tesseract::Classify::ReadIntTemplates(tesseract::TFile*)'
+- name: _ZN9tesseract15UnicharCompress15ComputeEncodingERKNS_10UNICHARSETEiPNSt3__112basic_stringIcNS4_11char_traitsIcEENS4_9allocatorIcEEEE
+  params:
+  - name: ''
+    type: tesseract::UNICHARSET const&
+  - name: ''
+    type: int
+  - name: ''
+    type: std::string*
+  return_type: bool
+  signature: bool tesseract::UnicharCompress::ComputeEncoding(tesseract::UNICHARSET const&, int, std::string*)
+- name: _ZN9tesseract13UnicharAmbigs17LoadUnicharAmbigsERKNS_10UNICHARSETEPNS_5TFileEibPS1_
+  params:
+  - name: ''
+    type: tesseract::UNICHARSET const&
+  - name: ''
+    type: tesseract::TFile*
+  - name: ''
+    type: int
+  - name: ''
+    type: bool
+  - name: ''
+    type: tesseract::UNICHARSET*
+  return_type: void
+  signature: void tesseract::UnicharAmbigs::LoadUnicharAmbigs(tesseract::UNICHARSET const&, tesseract::TFile*, int, bool, tesseract::UNICHARSET*)
+- name: _ZN9tesseract9Tesseract17set_unlv_suspectsEPNS_8WERD_RESE
+  params:
+  - name: ''
+    type: tesseract::WERD_RES*
+  return_type: void
+  signature: void tesseract::Tesseract::set_unlv_suspects(tesseract::WERD_RES*)
+- name: _ZN9tesseract16RecodeBeamSearch20extractSymbolChoicesEPKNS_10UNICHARSETE
+  params:
+  - name: ''
+    type: tesseract::UNICHARSET const*
+  return_type: void
+  signature: void tesseract::RecodeBeamSearch::extractSymbolChoices(tesseract::UNICHARSET const*)
+- name: _ZNK9tesseract12BlamerBundle11SplitBundleEiibPS0_S1_
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: bool
+  - name: ''
+    type: tesseract::BlamerBundle*
+  - name: ''
+    type: tesseract::BlamerBundle*
+  return_type: void
+  signature: void tesseract::BlamerBundle::SplitBundle(int, int, bool, tesseract::BlamerBundle*, tesseract::BlamerBundle*) const
+- name: _ZN9tesseract9Tesseract16ResegmentCharBoxEPNS_8PAGE_RESEPKNS_4TBOXERS4_S5_PKc
+  params:
+  - name: ''
+    type: tesseract::PAGE_RES*
+  - name: ''
+    type: tesseract::TBOX const*
+  - name: ''
+    type: tesseract::TBOX const&
+  - name: ''
+    type: tesseract::TBOX const*
+  - name: ''
+    type: char const*
+  return_type: bool
+  signature: bool tesseract::Tesseract::ResegmentCharBox(tesseract::PAGE_RES*, tesseract::TBOX const*, tesseract::TBOX const&, tesseract::TBOX const*, char const*)
+language: c++
+project: tesseract-ocr
+use_project_examples: false
+target_name: fuzzer-api
+target_path: /src/tesseract/unittest/fuzzers/fuzzer-api.cpp

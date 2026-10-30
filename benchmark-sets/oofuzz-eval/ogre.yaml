@@ -1,0 +1,214 @@
+# ogre at the commit HarnessGenerator pins. 25 targets: 25 from HarnessGenerator
+# YAMLs (ogre.yaml, ogre_all.yaml), the rest from the fuzzer binary, all strong
+# symbols of image_fuzz declared in a project header, largest first, at most 6 per class.
+# Selected by script; symbol names are the libc++ ones OSS-Fuzz builds.
+functions:
+- name: _ZN4Ogre20GpuProgramParameters17_updateAutoParamsEPKNS_19AutoParamDataSourceEt
+  params:
+  - name: ''
+    type: Ogre::AutoParamDataSource const*
+  - name: ''
+    type: unsigned short
+  return_type: void
+  signature: void Ogre::GpuProgramParameters::_updateAutoParams(Ogre::AutoParamDataSource const*, unsigned short)
+- name: _ZN4Ogre14PassTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
+  params:
+  - name: ''
+    type: Ogre::ScriptCompiler*
+  - name: ''
+    type: Ogre::SharedPtr<Ogre::AbstractNode> const&
+  return_type: void
+  signature: void Ogre::PassTranslator::translate(Ogre::ScriptCompiler*, Ogre::SharedPtr<Ogre::AbstractNode> const&)
+- name: _ZN4Ogre21TextureUnitTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
+  params:
+  - name: ''
+    type: Ogre::ScriptCompiler*
+  - name: ''
+    type: Ogre::SharedPtr<Ogre::AbstractNode> const&
+  return_type: void
+  signature: void Ogre::TextureUnitTranslator::translate(Ogre::ScriptCompiler*, Ogre::SharedPtr<Ogre::AbstractNode> const&)
+- name: _ZNK4Ogre24RenderSystemCapabilities3logEPNS_3LogE
+  params:
+  - name: ''
+    type: Ogre::Log*
+  return_type: void
+  signature: void Ogre::RenderSystemCapabilities::log(Ogre::Log*) const
+- name: _ZN4Ogre12ScriptParser5parseERKNSt3__16vectorINS_11ScriptTokenENS1_9allocatorIS3_EEEERKNS1_12basic_stringIcNS1_11char_traitsIcEENS4_IcEEEE
+  params:
+  - name: ''
+    type: std::vector<Ogre::ScriptToken> const&
+  - name: ''
+    type: std::string const&
+  return_type: ConcreteNodeListPtr
+  signature: ConcreteNodeListPtr Ogre::ScriptParser::parse(std::vector<Ogre::ScriptToken> const&, std::string const&)
+- name: _ZN4Ogre15EdgeListBuilder3logEPNS_3LogE
+  params:
+  - name: ''
+    type: Ogre::Log*
+  return_type: void
+  signature: void Ogre::EdgeListBuilder::log(Ogre::Log*)
+- name: _ZN4Ogre20GpuProgramTranslator26translateProgramParametersEPNS_14ScriptCompilerERKNS_9SharedPtrINS_20GpuProgramParametersEEEPNS_18ObjectAbstractNodeE
+  params:
+  - name: ''
+    type: Ogre::ScriptCompiler*
+  - name: ''
+    type: Ogre::SharedPtr<Ogre::GpuProgramParameters> const&
+  - name: ''
+    type: Ogre::ObjectAbstractNode*
+  return_type: void
+  signature: void Ogre::GpuProgramTranslator::translateProgramParameters(Ogre::ScriptCompiler*, Ogre::SharedPtr<Ogre::GpuProgramParameters> const&, Ogre::ObjectAbstractNode*)
+- name: _ZN4Ogre14ScriptCompiler19AbstractTreeBuilder5visitEPNS_12ConcreteNodeE
+  params:
+  - name: ''
+    type: Ogre::ConcreteNode*
+  return_type: void
+  signature: void Ogre::ScriptCompiler::AbstractTreeBuilder::visit(Ogre::ConcreteNode*)
+- name: _ZN4Ogre4RootC1ERKNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEES9_S9_
+  params:
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: std::string const&
+  return_type: ''
+  signature: Ogre::Root::Root(std::string const&, std::string const&, std::string const&)
+- name: _ZN4Ogre30CompositionTechniqueTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
+  params:
+  - name: ''
+    type: Ogre::ScriptCompiler*
+  - name: ''
+    type: Ogre::SharedPtr<Ogre::AbstractNode> const&
+  return_type: void
+  signature: void Ogre::CompositionTechniqueTranslator::translate(Ogre::ScriptCompiler*, Ogre::SharedPtr<Ogre::AbstractNode> const&)
+- name: _ZN4Ogre19HighLevelGpuProgram16_resolveIncludesERKNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEEPNS_8ResourceES9_b
+  params:
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: Ogre::Resource*
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: bool
+  return_type: String
+  signature: String Ogre::HighLevelGpuProgram::_resolveIncludes(std::string const&, Ogre::Resource*, std::string const&, bool)
+- name: _ZN4Ogre8EdgeData3logEPNS_3LogE
+  params:
+  - name: ''
+    type: Ogre::Log*
+  return_type: void
+  signature: void Ogre::EdgeData::log(Ogre::Log*)
+- name: _ZN4Ogre14StaticGeometry14GeometryBucket5buildEb
+  params:
+  - name: ''
+    type: bool
+  return_type: void
+  signature: void Ogre::StaticGeometry::GeometryBucket::build(bool)
+- name: _ZN4Ogre25CompositionPassTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
+  params:
+  - name: ''
+    type: Ogre::ScriptCompiler*
+  - name: ''
+    type: Ogre::SharedPtr<Ogre::AbstractNode> const&
+  return_type: void
+  signature: void Ogre::CompositionPassTranslator::translate(Ogre::ScriptCompiler*, Ogre::SharedPtr<Ogre::AbstractNode> const&)
+- name: _ZN4Ogre8Skeleton24_mergeSkeletonAnimationsEPKS0_RKNSt3__16vectorItNS3_9allocatorItEEEERKNS4_INS3_12basic_stringIcNS3_11char_traitsIcEENS5_IcEEEENS5_ISE_EEEE
+  params:
+  - name: ''
+    type: Ogre::Skeleton const*
+  - name: ''
+    type: std::vector<unsigned short> const&
+  - name: ''
+    type: std::vector<std::string> const&
+  return_type: void
+  signature: void Ogre::Skeleton::_mergeSkeletonAnimations(Ogre::Skeleton const*, std::vector<unsigned short> const&, std::vector<std::string> const&)
+- name: _ZN4Ogre12SceneManager21StencilShadowRenderer28renderShadowVolumesToStencilEPKNS_5LightEPKNS_6CameraEb
+  params:
+  - name: ''
+    type: Ogre::Light const*
+  - name: ''
+    type: Ogre::Camera const*
+  - name: ''
+    type: bool
+  return_type: void
+  signature: void Ogre::SceneManager::StencilShadowRenderer::renderShadowVolumesToStencil(Ogre::Light const*, Ogre::Camera const*, bool)
+- name: _ZN4Ogre12SceneManager8_setPassEPKNS_4PassEb
+  params:
+  - name: ''
+    type: Ogre::Pass const*
+  - name: ''
+    type: bool
+  return_type: const Pass*
+  signature: const Pass* Ogre::SceneManager::_setPass(Ogre::Pass const*, bool)
+- name: _ZN4Ogre18MaterialTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
+  params:
+  - name: ''
+    type: Ogre::ScriptCompiler*
+  - name: ''
+    type: Ogre::SharedPtr<Ogre::AbstractNode> const&
+  return_type: void
+  signature: void Ogre::MaterialTranslator::translate(Ogre::ScriptCompiler*, Ogre::SharedPtr<Ogre::AbstractNode> const&)
+- name: _ZN4Ogre34RenderSystemCapabilitiesSerializer11parseScriptERNS_9SharedPtrINS_10DataStreamEEE
+  params:
+  - name: ''
+    type: Ogre::SharedPtr<Ogre::DataStream>&
+  return_type: void
+  signature: void Ogre::RenderSystemCapabilitiesSerializer::parseScript(Ogre::SharedPtr<Ogre::DataStream>&)
+- name: _ZN4Ogre22SharedParamsTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
+  params:
+  - name: ''
+    type: Ogre::ScriptCompiler*
+  - name: ''
+    type: Ogre::SharedPtr<Ogre::AbstractNode> const&
+  return_type: void
+  signature: void Ogre::SharedParamsTranslator::translate(Ogre::ScriptCompiler*, Ogre::SharedPtr<Ogre::AbstractNode> const&)
+- name: _ZNK4Ogre24FocusedShadowCameraSetup15getShadowCameraEPKNS_12SceneManagerEPKNS_6CameraEPKNS_8ViewportEPKNS_5LightEPS4_m
+  params:
+  - name: ''
+    type: Ogre::SceneManager const*
+  - name: ''
+    type: Ogre::Camera const*
+  - name: ''
+    type: Ogre::Viewport const*
+  - name: ''
+    type: Ogre::Light const*
+  - name: ''
+    type: Ogre::Camera*
+  - name: ''
+    type: uint64_t
+  return_type: void
+  signature: void Ogre::FocusedShadowCameraSetup::getShadowCamera(Ogre::SceneManager const*, Ogre::Camera const*, Ogre::Viewport const*, Ogre::Light const*, Ogre::Camera*, uint64_t) const
+- name: _ZN4Ogre7SubMesh16generateExtremesEm
+  params:
+  - name: ''
+    type: uint64_t
+  return_type: ''
+  signature: Ogre::SubMesh::generateExtremes(uint64_t)
+- name: _ZN4Ogre19PlatformInformation3logEPNS_3LogE
+  params:
+  - name: ''
+    type: Ogre::Log*
+  return_type: void
+  signature: void Ogre::PlatformInformation::log(Ogre::Log*)
+- name: _ZN4Ogre19TechniqueTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
+  params:
+  - name: ''
+    type: Ogre::ScriptCompiler*
+  - name: ''
+    type: Ogre::SharedPtr<Ogre::AbstractNode> const&
+  return_type: void
+  signature: void Ogre::TechniqueTranslator::translate(Ogre::ScriptCompiler*, Ogre::SharedPtr<Ogre::AbstractNode> const&)
+- name: _ZN4Ogre10ConvexBody4clipERKNS_5PlaneEb
+  params:
+  - name: ''
+    type: Ogre::Plane const&
+  - name: ''
+    type: bool
+  return_type: void
+  signature: void Ogre::ConvexBody::clip(Ogre::Plane const&, bool)
+language: c++
+project: ogre
+use_project_examples: false
+target_name: image_fuzz
+target_path: /src/ogre/Tests/fuzz/image_fuzz.cpp

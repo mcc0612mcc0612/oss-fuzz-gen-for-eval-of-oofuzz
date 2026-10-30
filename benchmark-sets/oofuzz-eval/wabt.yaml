@@ -1,0 +1,226 @@
+# wabt at the commit HarnessGenerator pins. 25 targets: 25 from HarnessGenerator
+# YAMLs (wabt.yaml), the rest from the fuzzer binary, all strong
+# symbols of wat2wasm_fuzzer declared in a project header, largest first, at most 6 per class.
+# Selected by script; symbol names are the libc++ ones OSS-Fuzz builds.
+functions:
+- name: _ZN4wabt6interp8Instance11InstantiateERNS0_5StoreENS0_3RefERKNSt3__16vectorIS4_NS5_9allocatorIS4_EEEEPNS0_6RefPtrINS0_4TrapEEE
+  params:
+  - name: ''
+    type: wabt::interp::Store&
+  - name: ''
+    type: wabt::interp::Ref
+  - name: ''
+    type: std::vector<wabt::interp::Ref> const&
+  - name: ''
+    type: wabt::interp::RefPtr<wabt::interp::Trap>*
+  return_type: Instance::Ptr
+  signature: Instance::Ptr wabt::interp::Instance::Instantiate(wabt::interp::Store&, wabt::interp::Ref, std::vector<wabt::interp::Ref> const&, wabt::interp::RefPtr<wabt::interp::Trap>*)
+- name: _ZN4wabt11ExprVisitor9VisitExprEPNS_4ExprE
+  params:
+  - name: ''
+    type: wabt::Expr*
+  return_type: Result
+  signature: Result wabt::ExprVisitor::VisitExpr(wabt::Expr*)
+- name: _ZN4wabt12OptionParser5ParseEiPPc
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: char**
+  return_type: void
+  signature: void wabt::OptionParser::Parse(int, char**)
+- name: _ZN4wabt8Features10AddOptionsEPNS_12OptionParserE
+  params:
+  - name: ''
+    type: wabt::OptionParser*
+  return_type: void
+  signature: void wabt::Features::AddOptions(wabt::OptionParser*)
+- name: _ZN4wabt10WastParser11ParseScriptEPNSt3__110unique_ptrINS_6ScriptENS1_14default_deleteIS3_EEEE
+  params:
+  - name: ''
+    type: std::unique_ptr<wabt::Script>*
+  return_type: Result
+  signature: Result wabt::WastParser::ParseScript(std::unique_ptr<wabt::Script>*)
+- name: _ZN4wabt20FormatErrorsToStringERKNSt3__16vectorINS_5ErrorENS0_9allocatorIS2_EEEENS_8Location4TypeEPNS_21LexerSourceLineFinderERKNS_5ColorERKNS0_12basic_stringIcNS0_11char_traitsIcEENS3_IcEEEENS_11PrintHeaderEi
+  params:
+  - name: ''
+    type: std::vector<wabt::Error> const&
+  - name: ''
+    type: wabt::Location::Type
+  - name: ''
+    type: wabt::LexerSourceLineFinder*
+  - name: ''
+    type: wabt::Color const&
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: wabt::PrintHeader
+  - name: ''
+    type: int
+  return_type: std::string
+  signature: std::string wabt::FormatErrorsToString(std::vector<wabt::Error> const&, wabt::Location::Type, wabt::LexerSourceLineFinder*, wabt::Color const&, std::string const&, wabt::PrintHeader, int)
+- name: _ZNK4wabt13ModuleContext12GetExprArityERKNS_4ExprE
+  params:
+  - name: ''
+    type: wabt::Expr const&
+  return_type: Arities
+  signature: Arities wabt::ModuleContext::GetExprArity(wabt::Expr const&) const
+- name: _ZN4wabt10WastParser11ParseModuleEPNSt3__110unique_ptrINS_6ModuleENS1_14default_deleteIS3_EEEE
+  params:
+  - name: ''
+    type: std::unique_ptr<wabt::Module>*
+  return_type: Result
+  signature: Result wabt::WastParser::ParseModule(std::unique_ptr<wabt::Module>*)
+- name: _ZNK4wabt6Opcode9IsEnabledERKNS_8FeaturesE
+  params:
+  - name: ''
+    type: wabt::Features const&
+  return_type: bool
+  signature: bool wabt::Opcode::IsEnabled(wabt::Features const&) const
+- name: _ZN4wabt6Module11AppendFieldENSt3__110unique_ptrINS_17ImportModuleFieldENS1_14default_deleteIS3_EEEE
+  params:
+  - name: ''
+    type: std::unique_ptr<wabt::ImportModuleField>
+  return_type: void
+  signature: void wabt::Module::AppendField(std::unique_ptr<wabt::ImportModuleField>)
+- name: _ZN4wabt16RenameToContentsERNSt3__16vectorIPNS_11DataSegmentENS0_9allocatorIS3_EEEERNS_11BindingHashE
+  params:
+  - name: ''
+    type: std::vector<wabt::DataSegment*>&
+  - name: ''
+    type: wabt::BindingHash&
+  return_type: void
+  signature: void wabt::RenameToContents(std::vector<wabt::DataSegment*>&, wabt::BindingHash&)
+- name: _ZN4wabt15SharedValidator10OnFuncTypeERKNS_8LocationEjPKNS_4TypeEjS6_j
+  params:
+  - name: ''
+    type: wabt::Location const&
+  - name: ''
+    type: unsigned int
+  - name: ''
+    type: wabt::Type const*
+  - name: ''
+    type: unsigned int
+  - name: ''
+    type: wabt::Type const*
+  - name: ''
+    type: unsigned int
+  return_type: Result
+  signature: Result wabt::SharedValidator::OnFuncType(wabt::Location const&, unsigned int, wabt::Type const*, unsigned int, wabt::Type const*, unsigned int)
+- name: _ZN4wabt11TypeChecker8OnSelectERKNSt3__16vectorINS_4TypeENS1_9allocatorIS3_EEEE
+  params:
+  - name: ''
+    type: std::vector<wabt::Type> const&
+  return_type: Result
+  signature: Result wabt::TypeChecker::OnSelect(std::vector<wabt::Type> const&)
+- name: _ZN4wabt12ParseUint128EPKcS1_P4v128
+  params:
+  - name: ''
+    type: char const*
+  - name: ''
+    type: char const*
+  - name: ''
+    type: v128*
+  return_type: Result
+  signature: Result wabt::ParseUint128(char const*, char const*, v128*)
+- name: _ZN4wabt15SharedValidator7OnTableERKNS_8LocationENS_4TypeERKNS_6LimitsENS_17TableImportStatusENS_19TableInitExprStatusE
+  params:
+  - name: ''
+    type: wabt::Location const&
+  - name: ''
+    type: wabt::Type
+  - name: ''
+    type: wabt::Limits const&
+  - name: ''
+    type: wabt::TableImportStatus
+  - name: ''
+    type: wabt::TableInitExprStatus
+  return_type: Result
+  signature: Result wabt::SharedValidator::OnTable(wabt::Location const&, wabt::Type, wabt::Limits const&, wabt::TableImportStatus, wabt::TableInitExprStatus)
+- name: _ZN4wabt6interp5MatchERKNS0_8FuncTypeES3_PNSt3__112basic_stringIcNS4_11char_traitsIcEENS4_9allocatorIcEEEE
+  params:
+  - name: ''
+    type: wabt::interp::FuncType const&
+  - name: ''
+    type: wabt::interp::FuncType const&
+  - name: ''
+    type: std::string*
+  return_type: Result
+  signature: Result wabt::interp::Match(wabt::interp::FuncType const&, wabt::interp::FuncType const&, std::string*)
+- name: _ZN4wabt15SharedValidator9OnRefFuncERKNS_8LocationENS_3VarE
+  params:
+  - name: ''
+    type: wabt::Location const&
+  - name: ''
+    type: wabt::Var
+  return_type: Result
+  signature: Result wabt::SharedValidator::OnRefFunc(wabt::Location const&, wabt::Var)
+- name: _ZN4wabt6interp11ElemSegmentC1ERNS0_5StoreEPKNS0_8ElemDescERNS0_6RefPtrINS0_8InstanceEEE
+  params:
+  - name: ''
+    type: wabt::interp::Store&
+  - name: ''
+    type: wabt::interp::ElemDesc const*
+  - name: ''
+    type: wabt::interp::RefPtr<wabt::interp::Instance>&
+  return_type: ''
+  signature: wabt::interp::ElemSegment::ElemSegment(wabt::interp::Store&, wabt::interp::ElemDesc const*, wabt::interp::RefPtr<wabt::interp::Instance>&)
+- name: _ZN4wabt21LexerSourceLineFinder14GetLineOffsetsEiPNS_5RangeImEE
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: wabt::Range<uint64_t>*
+  return_type: Result
+  signature: Result wabt::LexerSourceLineFinder::GetLineOffsets(int, wabt::Range<uint64_t>*)
+- name: _ZN4wabt15SharedValidator10OnLocalGetERKNS_8LocationENS_3VarE
+  params:
+  - name: ''
+    type: wabt::Location const&
+  - name: ''
+    type: wabt::Var
+  return_type: Result
+  signature: Result wabt::SharedValidator::OnLocalGet(wabt::Location const&, wabt::Var)
+- name: _ZN4wabt15SharedValidator10OnLocalSetERKNS_8LocationENS_3VarE
+  params:
+  - name: ''
+    type: wabt::Location const&
+  - name: ''
+    type: wabt::Var
+  return_type: Result
+  signature: Result wabt::SharedValidator::OnLocalSet(wabt::Location const&, wabt::Var)
+- name: _ZN4wabt15SharedValidator10OnLocalTeeERKNS_8LocationENS_3VarE
+  params:
+  - name: ''
+    type: wabt::Location const&
+  - name: ''
+    type: wabt::Var
+  return_type: Result
+  signature: Result wabt::SharedValidator::OnLocalTee(wabt::Location const&, wabt::Var)
+- name: _ZN4wabt11TypeChecker7OnCatchERKNSt3__16vectorINS_4TypeENS1_9allocatorIS3_EEEE
+  params:
+  - name: ''
+    type: std::vector<wabt::Type> const&
+  return_type: Result
+  signature: Result wabt::TypeChecker::OnCatch(std::vector<wabt::Type> const&)
+- name: _ZN4wabt11TypeChecker10OnBrOnNullEj
+  params:
+  - name: ''
+    type: unsigned int
+  return_type: Result
+  signature: Result wabt::TypeChecker::OnBrOnNull(unsigned int)
+- name: _ZN4wabt11TypeChecker5OnEndEPNS0_5LabelEPKcS4_
+  params:
+  - name: ''
+    type: wabt::TypeChecker::Label*
+  - name: ''
+    type: char const*
+  - name: ''
+    type: char const*
+  return_type: Result
+  signature: Result wabt::TypeChecker::OnEnd(wabt::TypeChecker::Label*, char const*, char const*)
+language: c++
+project: wabt
+use_project_examples: false
+target_name: wat2wasm_fuzzer
+target_path: /src/wabt/fuzzers/wat2wasm_fuzzer.cc

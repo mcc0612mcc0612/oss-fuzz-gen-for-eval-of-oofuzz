@@ -1,0 +1,206 @@
+# libraw at the commit HarnessGenerator pins. 25 targets: 25 from HarnessGenerator
+# YAMLs (libraw.yaml, libraw_all.yaml), the rest from the fuzzer binary, all strong
+# symbols of libraw_fuzzer declared in a project header, largest first, at most 6 per class.
+# Selected by script; symbol names are the libc++ ones OSS-Fuzz builds.
+functions:
+- name: _ZN6LibRaw15open_datastreamEP26LibRaw_abstract_datastream
+  params:
+  - name: ''
+    type: LibRaw_abstract_datastream*
+  return_type: int
+  signature: int LibRaw::open_datastream(LibRaw_abstract_datastream*)
+- name: _ZN6LibRaw17phase_one_correctEv
+  params: []
+  return_type: int
+  signature: int LibRaw::phase_one_correct()
+- name: _ZN6LibRaw12raw2image_exEi
+  params:
+  - name: ''
+    type: int
+  return_type: int
+  signature: int LibRaw::raw2image_ex(int)
+- name: _ZN6LibRaw16get_decoder_infoEP21libraw_decoder_info_t
+  params:
+  - name: ''
+    type: libraw_decoder_info_t*
+  return_type: int
+  signature: int LibRaw::get_decoder_info(libraw_decoder_info_t*)
+- name: _ZN24LibRaw_LjpegDecompressor16decode_ljpeg_422ERNSt3__16vectorItNS0_9allocatorItEEEEii
+  params:
+  - name: ''
+    type: std::vector<unsigned short>&
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: bool
+  signature: bool LibRaw_LjpegDecompressor::decode_ljpeg_422(std::vector<unsigned short>&, int, int)
+- name: _ZN6LibRaw14copy_mem_imageEPvii
+  params:
+  - name: ''
+    type: void*
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: int
+  signature: int LibRaw::copy_mem_image(void*, int, int)
+- name: _ZN24LibRaw_LjpegDecompressor10initializeEbb
+  params:
+  - name: ''
+    type: bool
+  - name: ''
+    type: bool
+  return_type: void
+  signature: void LibRaw_LjpegDecompressor::initialize(bool, bool)
+- name: _ZN14LibRaw_SOFInfo9parse_sofER12ByteStreamBE
+  params:
+  - name: ''
+    type: ByteStreamBE&
+  return_type: bool
+  signature: bool LibRaw_SOFInfo::parse_sof(ByteStreamBE&)
+- name: _ZN6LibRawC1Ej
+  params:
+  - name: ''
+    type: unsigned int
+  return_type: ''
+  signature: LibRaw::LibRaw(unsigned int)
+- name: _ZN9HuffTable7initvalEPjS0_b
+  params:
+  - name: ''
+    type: unsigned int*
+  - name: ''
+    type: unsigned int*
+  - name: ''
+    type: bool
+  return_type: void
+  signature: void HuffTable::initval(unsigned int*, unsigned int*, bool)
+- name: _ZN14LibRaw_SOFInfo9parse_sosER12ByteStreamBE
+  params:
+  - name: ''
+    type: ByteStreamBE&
+  return_type: uint32_t
+  signature: uint32_t LibRaw_SOFInfo::parse_sos(ByteStreamBE&)
+- name: _ZN24LibRaw_LjpegDecompressor9parse_dhtEPbPA17_jPA256_j
+  params:
+  - name: ''
+    type: bool*
+  - name: ''
+    type: unsigned int (*) [17]
+  - name: ''
+    type: unsigned int (*) [256]
+  return_type: bool
+  signature: bool LibRaw_LjpegDecompressor::parse_dht(bool*, unsigned int (*) [17], unsigned int (*) [256])
+- name: _ZN16checked_buffer_t9tiff_sgetEjPxPjS1_S0_S1_Pi
+  params:
+  - name: ''
+    type: unsigned int
+  - name: ''
+    type: long long*
+  - name: ''
+    type: unsigned int*
+  - name: ''
+    type: unsigned int*
+  - name: ''
+    type: long long*
+  - name: ''
+    type: unsigned int*
+  - name: ''
+    type: int*
+  return_type: int
+  signature: int checked_buffer_t::tiff_sget(unsigned int, long long*, unsigned int*, unsigned int*, long long*, unsigned int*, int*)
+- name: _ZN24LibRaw_LjpegDecompressor11next_markerEb
+  params:
+  - name: ''
+    type: bool
+  return_type: uint8_t
+  signature: uint8_t LibRaw_LjpegDecompressor::next_marker(bool)
+- name: _ZN25LibRaw_bigfile_datastreamC1EPKc
+  params:
+  - name: ''
+    type: char const*
+  return_type: ''
+  signature: LibRaw_bigfile_datastream::LibRaw_bigfile_datastream(char const*)
+- name: _ZN24LibRaw_buffer_datastream9scanf_oneEPKcPv
+  params:
+  - name: ''
+    type: char const*
+  - name: ''
+    type: void*
+  return_type: int
+  signature: int LibRaw_buffer_datastream::scanf_one(char const*, void*)
+- name: _ZN24LibRaw_buffer_datastream4seekExi
+  params:
+  - name: ''
+    type: long long
+  - name: ''
+    type: int
+  return_type: int
+  signature: int LibRaw_buffer_datastream::seek(long long, int)
+- name: _ZN24LibRaw_buffer_datastream4getsEPci
+  params:
+  - name: ''
+    type: char*
+  - name: ''
+    type: int
+  return_type: char *
+  signature: char * LibRaw_buffer_datastream::gets(char*, int)
+- name: _ZN12ByteStreamBE14skip_to_markerEv
+  params: []
+  return_type: bool
+  signature: bool ByteStreamBE::skip_to_marker()
+- name: _ZN16checked_buffer_t8sgetrealEii
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: double
+  signature: double checked_buffer_t::sgetreal(int, int)
+- name: _ZN16checked_buffer_t5sget2Ei
+  params:
+  - name: ''
+    type: int
+  return_type: ushort
+  signature: ushort checked_buffer_t::sget2(int)
+- name: _ZN16checked_buffer_t5sget4Ei
+  params:
+  - name: ''
+    type: int
+  return_type: unsigned
+  signature: unsigned checked_buffer_t::sget4(int)
+- name: _ZN24LibRaw_buffer_datastream4readEPvmm
+  params:
+  - name: ''
+    type: void*
+  - name: ''
+    type: uint64_t
+  - name: ''
+    type: uint64_t
+  return_type: int
+  signature: int LibRaw_buffer_datastream::read(void*, uint64_t, uint64_t)
+- name: _ZN24LibRaw_LjpegDecompressorC1EPhjbb
+  params:
+  - name: ''
+    type: unsigned char*
+  - name: ''
+    type: unsigned int
+  - name: ''
+    type: bool
+  - name: ''
+    type: bool
+  return_type: ''
+  signature: LibRaw_LjpegDecompressor::LibRaw_LjpegDecompressor(unsigned char*, unsigned int, bool, bool)
+- name: _ZN24LibRaw_LjpegDecompressorC1EPhj
+  params:
+  - name: ''
+    type: unsigned char*
+  - name: ''
+    type: unsigned int
+  return_type: ''
+  signature: LibRaw_LjpegDecompressor::LibRaw_LjpegDecompressor(unsigned char*, unsigned int)
+language: c++
+project: libraw
+use_project_examples: false
+target_name: libraw_fuzzer
+target_path: /src/libraw_fuzzer.cc

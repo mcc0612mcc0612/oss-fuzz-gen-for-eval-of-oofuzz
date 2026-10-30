@@ -1,0 +1,184 @@
+# muduo at the commit HarnessGenerator pins. 25 targets: 8 from HarnessGenerator
+# YAMLs (muduo.yaml), the rest from the fuzzer binary, all strong
+# symbols of muduo_http_fuzzer declared in a project header, largest first, at most 6 per class.
+# Selected by script; symbol names are the libc++ ones OSS-Fuzz builds.
+functions:
+- name: _ZN5muduo3net11HttpContext18processRequestLineEPKcS3_
+  params:
+  - name: ''
+    type: char const*
+  - name: ''
+    type: char const*
+  return_type: bool
+  signature: bool muduo::net::HttpContext::processRequestLine(char const*, char const*)
+- name: _ZN5muduo3net11HttpContext12parseRequestEPNS0_6BufferENS_9TimestampE
+  params:
+  - name: ''
+    type: muduo::net::Buffer*
+  - name: ''
+    type: muduo::Timestamp
+  return_type: bool
+  signature: bool muduo::net::HttpContext::parseRequest(muduo::net::Buffer*, muduo::Timestamp)
+- name: _ZNK5muduo8TimeZone11toLocalTimeElPi
+  params:
+  - name: ''
+    type: long
+  - name: ''
+    type: int*
+  return_type: struct DateTime
+  signature: struct DateTime muduo::TimeZone::toLocalTime(long, int*) const
+- name: _ZN5muduo6Logger4ImplC1ENS0_8LogLevelEiRKNS0_10SourceFileEi
+  params:
+  - name: ''
+    type: muduo::Logger::LogLevel
+  - name: ''
+    type: int
+  - name: ''
+    type: muduo::Logger::SourceFile const&
+  - name: ''
+    type: int
+  return_type: void
+  signature: muduo::Logger::Impl::Impl(muduo::Logger::LogLevel, int, muduo::Logger::SourceFile const&, int)
+- name: _ZNK5muduo8TimeZone13fromLocalTimeERKNS_8DateTimeEb
+  params:
+  - name: ''
+    type: muduo::DateTime const&
+  - name: ''
+    type: bool
+  return_type: int64_t
+  signature: int64_t muduo::TimeZone::fromLocalTime(muduo::DateTime const&, bool) const
+- name: _ZN5muduo8TimeZone11fromUtcTimeERKNS_8DateTimeE
+  params:
+  - name: ''
+    type: muduo::DateTime const&
+  return_type: int64_t
+  signature: int64_t muduo::TimeZone::fromUtcTime(muduo::DateTime const&)
+- name: _ZN5muduo8TimeZoneC1EiPKc
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: char const*
+  return_type: void
+  signature: muduo::TimeZone::TimeZone(int, char const*)
+- name: _ZN5muduo3net7sockets13shutdownWriteEi
+  params:
+  - name: ''
+    type: int
+  return_type: void
+  signature: void muduo::net::sockets::shutdownWrite(int)
+- name: _ZN5muduo6Thread5startEv
+  params: []
+  return_type: void
+  signature: void muduo::Thread::start()
+- name: _ZN5muduo6ThreadC1ENSt3__18functionIFvvEEERKNS1_12basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEE
+  params:
+  - name: ''
+    type: std::function<void ()>
+  - name: ''
+    type: std::string const&
+  return_type: void
+  signature: muduo::Thread::Thread(std::function<void ()>, std::string const&)
+- name: _ZN5muduo8formatSIEl
+  params:
+  - name: ''
+    type: long
+  return_type: string
+  signature: string muduo::formatSI(long)
+- name: _ZN5muduo9formatIECEl
+  params:
+  - name: ''
+    type: long
+  return_type: string
+  signature: string muduo::formatIEC(long)
+- name: _ZN5muduo13CurrentThread10stackTraceEb
+  params:
+  - name: ''
+    type: bool
+  return_type: string
+  signature: string muduo::CurrentThread::stackTrace(bool)
+- name: _ZN5muduo6Logger4Impl10formatTimeEv
+  params: []
+  return_type: void
+  signature: void muduo::Logger::Impl::formatTime()
+- name: _ZN5muduo3net7sockets6acceptEiP12sockaddr_in6
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: sockaddr_in6*
+  return_type: int
+  signature: int muduo::net::sockets::accept(int, sockaddr_in6*)
+- name: _ZN5muduo6LoggerC1ENS0_10SourceFileEiNS0_8LogLevelEPKc
+  params:
+  - name: ''
+    type: muduo::Logger::SourceFile
+  - name: ''
+    type: int
+  - name: ''
+    type: muduo::Logger::LogLevel
+  - name: ''
+    type: char const*
+  return_type: void
+  signature: muduo::Logger::Logger(muduo::Logger::SourceFile, int, muduo::Logger::LogLevel, char const*)
+- name: _ZN5muduo3net7sockets13isSelfConnectEi
+  params:
+  - name: ''
+    type: int
+  return_type: bool
+  signature: bool muduo::net::sockets::isSelfConnect(int)
+- name: _ZNK5muduo9Timestamp17toFormattedStringEb
+  params:
+  - name: ''
+    type: bool
+  return_type: string
+  signature: string muduo::Timestamp::toFormattedString(bool) const
+- name: _ZNK5muduo8DateTime11toIsoStringEv
+  params: []
+  return_type: string
+  signature: string muduo::DateTime::toIsoString() const
+- name: _ZNK5muduo4Date11toIsoStringEv
+  params: []
+  return_type: string
+  signature: string muduo::Date::toIsoString() const
+- name: _ZN5muduo6LoggerC1ENS0_10SourceFileEiNS0_8LogLevelE
+  params:
+  - name: ''
+    type: muduo::Logger::SourceFile
+  - name: ''
+    type: int
+  - name: ''
+    type: muduo::Logger::LogLevel
+  return_type: void
+  signature: muduo::Logger::Logger(muduo::Logger::SourceFile, int, muduo::Logger::LogLevel)
+- name: _ZN5muduo8TimeZone12loadZoneFileEPKc
+  params:
+  - name: ''
+    type: char const*
+  return_type: TimeZone
+  signature: TimeZone muduo::TimeZone::loadZoneFile(char const*)
+- name: _ZN5muduo3net6Buffer6readFdEiPi
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: int*
+  return_type: ssize_t
+  signature: ssize_t muduo::net::Buffer::readFd(int, int*)
+- name: _ZN5muduo6LoggerC1ENS0_10SourceFileEi
+  params:
+  - name: ''
+    type: muduo::Logger::SourceFile
+  - name: ''
+    type: int
+  return_type: void
+  signature: muduo::Logger::Logger(muduo::Logger::SourceFile, int)
+- name: _ZNK5muduo9Timestamp8toStringEv
+  params: []
+  return_type: string
+  signature: string muduo::Timestamp::toString() const
+language: c++
+project: muduo
+use_project_examples: false
+target_name: muduo_http_fuzzer
+target_path: /src/muduo_http_fuzzer.cpp

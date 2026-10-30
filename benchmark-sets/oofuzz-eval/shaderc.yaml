@@ -1,0 +1,268 @@
+# shaderc at the commit HarnessGenerator pins. 25 targets: 8 from HarnessGenerator
+# YAMLs (shaderc.yaml), the rest from the fuzzer binary, all strong
+# symbols of shaderc_fuzzer declared in a project header, largest first, at most 6 per class.
+# Selected by script; symbol names are the libc++ ones OSS-Fuzz builds.
+functions:
+- name: _ZN12shaderc_util18ParseGlslangOutputERKNS_12string_pieceEbbPS0_S3_S3_
+  params:
+  - name: ''
+    type: shaderc_util::string_piece const&
+  - name: ''
+    type: bool
+  - name: ''
+    type: bool
+  - name: ''
+    type: shaderc_util::string_piece*
+  - name: ''
+    type: shaderc_util::string_piece*
+  - name: ''
+    type: shaderc_util::string_piece*
+  return_type: MessageType
+  signature: MessageType shaderc_util::ParseGlslangOutput(shaderc_util::string_piece const&, bool, bool, shaderc_util::string_piece*, shaderc_util::string_piece*, shaderc_util::string_piece*)
+- name: _ZN12shaderc_util19PrintFilteredErrorsERKNS_12string_pieceEPNSt3__113basic_ostreamIcNS3_11char_traitsIcEEEEbbPKcPmSB_
+  params:
+  - name: ''
+    type: shaderc_util::string_piece const&
+  - name: ''
+    type: std::ostream*
+  - name: ''
+    type: bool
+  - name: ''
+    type: bool
+  - name: ''
+    type: char const*
+  - name: ''
+    type: uint64_t*
+  - name: ''
+    type: uint64_t*
+  return_type: bool
+  signature: bool shaderc_util::PrintFilteredErrors(shaderc_util::string_piece const&, std::ostream*, bool, bool, char const*, uint64_t*, uint64_t*)
+- name: _ZN12shaderc_util18SpirvToolsOptimizeENS_8Compiler9TargetEnvENS0_16TargetEnvVersionERKNSt3__16vectorINS_6PassIdENS3_9allocatorIS5_EEEERN8spvtools16OptimizerOptionsEPNS4_IjNS6_IjEEEEPNS3_12basic_stringIcNS3_11char_traitsIcEENS6_IcEEEE
+  params:
+  - name: ''
+    type: shaderc_util::Compiler::TargetEnv
+  - name: ''
+    type: shaderc_util::Compiler::TargetEnvVersion
+  - name: ''
+    type: std::vector<shaderc_util::PassId> const&
+  - name: ''
+    type: spvtools::OptimizerOptions&
+  - name: ''
+    type: std::vector<unsigned int>*
+  - name: ''
+    type: std::string*
+  return_type: bool
+  signature: bool shaderc_util::SpirvToolsOptimize(shaderc_util::Compiler::TargetEnv, shaderc_util::Compiler::TargetEnvVersion, std::vector<shaderc_util::PassId> const&, spvtools::OptimizerOptions&, std::vector<unsigned
+    int>*, std::string*)
+- name: _ZNK12shaderc_util10FileFinder28FindRelativeReadableFilepathERKNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEES9_
+  params:
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: std::string const&
+  return_type: std::string
+  signature: std::string shaderc_util::FileFinder::FindRelativeReadableFilepath(std::string const&, std::string const&) const
+- name: _ZN12shaderc_util15GetOutputStreamERKNS_12string_pieceEPNSt3__114basic_ofstreamIcNS3_11char_traitsIcEEEEPNS3_13basic_ostreamIcS6_EE
+  params:
+  - name: ''
+    type: shaderc_util::string_piece const&
+  - name: ''
+    type: std::basic_ofstream<char, std::char_traits<char>>*
+  - name: ''
+    type: std::ostream*
+  return_type: std::ostream*
+  signature: std::ostream* shaderc_util::GetOutputStream(shaderc_util::string_piece const&, std::basic_ofstream<char, std::char_traits<char>>*, std::ostream*)
+- name: _ZNK12shaderc_util12string_piece10get_fieldsEcb
+  params:
+  - name: ''
+    type: char
+  - name: ''
+    type: bool
+  return_type: std::vector<string_piece>
+  signature: std::vector<string_piece> shaderc_util::string_piece::get_fields(char, bool) const
+- name: _ZN12shaderc_util8Compiler28SetHlslRegisterSetAndBindingERKNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEES9_S9_
+  params:
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: std::string const&
+  return_type: void
+  signature: void shaderc_util::Compiler::SetHlslRegisterSetAndBinding(std::string const&, std::string const&, std::string const&)
+- name: _ZN12shaderc_util9WriteFileEPNSt3__113basic_ostreamIcNS0_11char_traitsIcEEEERKNS_12string_pieceE
+  params:
+  - name: ''
+    type: std::ostream*
+  - name: ''
+    type: shaderc_util::string_piece const&
+  return_type: bool
+  signature: bool shaderc_util::WriteFile(std::ostream*, shaderc_util::string_piece const&)
+- name: _ZNK12shaderc_util8Compiler7CompileERKNS_12string_pieceE11EShLanguageRKNSt3__112basic_stringIcNS5_11char_traitsIcEENS5_9allocatorIcEEEEPKcRKNS5_8functionIFS4_PNS5_13basic_ostreamIcS8_EES3_EEERNS_16CountingIncluderENS0_10OutputTypeESJ_PmSR_
+  params:
+  - name: ''
+    type: shaderc_util::string_piece const&
+  - name: ''
+    type: EShLanguage
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: char const*
+  - name: ''
+    type: std::function<EShLanguage (std::ostream*, shaderc_util::string_piece const&)> const&
+  - name: ''
+    type: shaderc_util::CountingIncluder&
+  - name: ''
+    type: shaderc_util::Compiler::OutputType
+  - name: ''
+    type: std::ostream*
+  - name: ''
+    type: uint64_t*
+  - name: ''
+    type: uint64_t*
+  return_type: std::tuple<bool, std::vector<uint32_t>, size_t>
+  signature: std::tuple<bool, std::vector<uint32_t>, size_t> shaderc_util::Compiler::Compile(shaderc_util::string_piece const&, EShLanguage, std::string const&, char const*, std::function<EShLanguage (std::ostream*,
+    shaderc_util::string_piece const&)> const&, shaderc_util::CountingIncluder&, shaderc_util::Compiler::OutputType, std::ostream*, uint64_t*, uint64_t*) const
+- name: _ZN12shaderc_util20GetGlslangClientInfoERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEENS_8Compiler9TargetEnvENS9_16TargetEnvVersionENS9_12SpirvVersionEb
+  params:
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: shaderc_util::Compiler::TargetEnv
+  - name: ''
+    type: shaderc_util::Compiler::TargetEnvVersion
+  - name: ''
+    type: shaderc_util::Compiler::SpirvVersion
+  - name: ''
+    type: bool
+  return_type: GlslangClientInfo
+  signature: GlslangClientInfo shaderc_util::GetGlslangClientInfo(std::string const&, shaderc_util::Compiler::TargetEnv, shaderc_util::Compiler::TargetEnvVersion, shaderc_util::Compiler::SpirvVersion, bool)
+- name: _ZNK12shaderc_util10FileFinder20FindReadableFilepathERKNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEE
+  params:
+  - name: ''
+    type: std::string const&
+  return_type: std::string
+  signature: std::string shaderc_util::FileFinder::FindReadableFilepath(std::string const&) const
+- name: _ZN12shaderc_util8CompilerC2ERKS0_
+  params:
+  - name: ''
+    type: shaderc_util::Compiler const&
+  return_type: ''
+  signature: shaderc_util::Compiler::Compiler(shaderc_util::Compiler const&)
+- name: shaderc_assemble_into_spv
+  params:
+  - name: ''
+    type: const shaderc_compiler_t compiler
+  - name: ''
+    type: const char* source_assembly
+  - name: ''
+    type: size_t source_assembly_size
+  - name: ''
+    type: const shaderc_compile_options_t additional_options
+  return_type: shaderc_compilation_result_t
+  signature: shaderc_compilation_result_t shaderc_assemble_into_spv(const shaderc_compiler_t compiler, const char* source_assembly, size_t source_assembly_size, const shaderc_compile_options_t additional_options)
+- name: shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage
+  params:
+  - name: ''
+    type: shaderc_compile_options_t options
+  - name: ''
+    type: shaderc_shader_kind shader_kind
+  - name: ''
+    type: const char* reg
+  - name: ''
+    type: const char* set
+  - name: ''
+    type: const char* binding
+  return_type: ''
+  signature: shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage(shaderc_compile_options_t options, shaderc_shader_kind shader_kind, const char* reg, const char* set, const char* binding)
+- name: shaderc_compile_options_set_hlsl_register_set_and_binding
+  params:
+  - name: ''
+    type: shaderc_compile_options_t options
+  - name: ''
+    type: const char* reg
+  - name: ''
+    type: const char* set
+  - name: ''
+    type: const char* binding
+  return_type: ''
+  signature: shaderc_compile_options_set_hlsl_register_set_and_binding(shaderc_compile_options_t options, const char* reg, const char* set, const char* binding)
+- name: _ZN12shaderc_util8Compiler20SetGenerateDebugInfoEv
+  params: []
+  return_type: void
+  signature: void shaderc_util::Compiler::SetGenerateDebugInfo()
+- name: _ZN12shaderc_util8Compiler18AddMacroDefinitionEPKcmS2_m
+  params:
+  - name: ''
+    type: char const*
+  - name: ''
+    type: uint64_t
+  - name: ''
+    type: char const*
+  - name: ''
+    type: uint64_t
+  return_type: void
+  signature: void shaderc_util::Compiler::AddMacroDefinition(char const*, uint64_t, char const*, uint64_t)
+- name: _ZN12shaderc_util8Compiler20SetOptimizationLevelENS0_17OptimizationLevelE
+  params:
+  - name: ''
+    type: shaderc_util::Compiler::OptimizationLevel
+  return_type: void
+  signature: void shaderc_util::Compiler::SetOptimizationLevel(shaderc_util::Compiler::OptimizationLevel)
+- name: shaderc_compile_options_clone
+  params:
+  - name: ''
+    type: const shaderc_compile_options_t options
+  return_type: ''
+  signature: shaderc_compile_options_clone(const shaderc_compile_options_t options)
+- name: shaderc_parse_version_profile
+  params:
+  - name: ''
+    type: const char* str
+  - name: ''
+    type: int* version
+  - name: ''
+    type: shaderc_profile* profile
+  return_type: bool
+  signature: bool shaderc_parse_version_profile(const char* str, int* version, shaderc_profile* profile)
+- name: shaderc_compile_options_initialize
+  params:
+  - name: ''
+    type: void
+  return_type: shaderc_compile_options_t
+  signature: shaderc_compile_options_t shaderc_compile_options_initialize(void)
+- name: shaderc_compile_options_set_binding_base
+  params:
+  - name: ''
+    type: shaderc_compile_options_t options
+  - name: ''
+    type: shaderc_uniform_kind kind
+  - name: ''
+    type: uint32_t base
+  return_type: ''
+  signature: shaderc_compile_options_set_binding_base(shaderc_compile_options_t options, shaderc_uniform_kind kind, uint32_t base)
+- name: _ZN12shaderc_util12string_pieceC2ERKNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEE
+  params:
+  - name: ''
+    type: std::string const&
+  return_type: ''
+  signature: shaderc_util::string_piece::string_piece(std::string const&)
+- name: shaderc_compile_options_set_target_env
+  params:
+  - name: ''
+    type: shaderc_compile_options_t options
+  - name: ''
+    type: shaderc_target_env target
+  - name: ''
+    type: uint32_t version
+  return_type: ''
+  signature: shaderc_compile_options_set_target_env(shaderc_compile_options_t options, shaderc_target_env target, uint32_t version)
+- name: _ZN12shaderc_util18GlslangInitializerC1Ev
+  params: []
+  return_type: ''
+  signature: shaderc_util::GlslangInitializer::GlslangInitializer()
+language: c++
+project: shaderc
+use_project_examples: false
+target_name: shaderc_fuzzer
+target_path: /src/shaderc_fuzzer.cc

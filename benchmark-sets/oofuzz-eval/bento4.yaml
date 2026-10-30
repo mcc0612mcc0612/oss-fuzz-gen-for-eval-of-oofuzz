@@ -1,0 +1,256 @@
+# bento4 at the commit HarnessGenerator pins. 25 targets: 0 from HarnessGenerator
+# YAMLs (none), the rest from the fuzzer binary, all strong
+# symbols of bento4_fuzzer declared in a project header, largest first, at most 6 per class.
+# Selected by script; symbol names are the libc++ ones OSS-Fuzz builds.
+functions:
+- name: _ZN13AP4_Processor7ProcessER14AP4_ByteStreamS1_PS0_PNS_16ProgressListenerER15AP4_AtomFactory
+  params:
+  - name: ''
+    type: AP4_ByteStream&
+  - name: ''
+    type: AP4_ByteStream&
+  - name: ''
+    type: AP4_ByteStream*
+  - name: ''
+    type: AP4_Processor::ProgressListener*
+  - name: ''
+    type: AP4_AtomFactory&
+  return_type: AP4_Result
+  signature: AP4_Result AP4_Processor::Process(AP4_ByteStream&, AP4_ByteStream&, AP4_ByteStream*, AP4_Processor::ProgressListener*, AP4_AtomFactory&)
+- name: _ZN15AP4_AtomFactory20CreateAtomFromStreamER14AP4_ByteStreamjjyRP8AP4_Atom
+  params:
+  - name: ''
+    type: AP4_ByteStream&
+  - name: ''
+    type: unsigned int
+  - name: ''
+    type: unsigned int
+  - name: ''
+    type: uint64_t long
+  - name: ''
+    type: AP4_Atom*&
+  return_type: AP4_Result
+  signature: AP4_Result AP4_AtomFactory::CreateAtomFromStream(AP4_ByteStream&, unsigned int, unsigned int, uint64_t long, AP4_Atom*&)
+- name: _ZN18AP4_AvcFrameParser16ParseSliceHeaderEPKhjjjR18AP4_AvcSliceHeader
+  params:
+  - name: ''
+    type: unsigned char const*
+  - name: ''
+    type: unsigned int
+  - name: ''
+    type: unsigned int
+  - name: ''
+    type: unsigned int
+  - name: ''
+    type: AP4_AvcSliceHeader&
+  return_type: AP4_Result
+  signature: AP4_Result AP4_AvcFrameParser::ParseSliceHeader(unsigned char const*, unsigned int, unsigned int, unsigned int, AP4_AvcSliceHeader&)
+- name: _ZN26AP4_HevcSliceSegmentHeader5ParseEPKhjjPP27AP4_HevcPictureParameterSetPP28AP4_HevcSequenceParameterSet
+  params:
+  - name: ''
+    type: unsigned char const*
+  - name: ''
+    type: unsigned int
+  - name: ''
+    type: unsigned int
+  - name: ''
+    type: AP4_HevcPictureParameterSet**
+  - name: ''
+    type: AP4_HevcSequenceParameterSet**
+  return_type: AP4_Result
+  signature: AP4_Result AP4_HevcSliceSegmentHeader::Parse(unsigned char const*, unsigned int, unsigned int, AP4_HevcPictureParameterSet**, AP4_HevcSequenceParameterSet**)
+- name: _ZN33AP4_MarlinIpmpEncryptingProcessor10InitializeER14AP4_AtomParentR14AP4_ByteStreamPN13AP4_Processor16ProgressListenerE
+  params:
+  - name: ''
+    type: AP4_AtomParent&
+  - name: ''
+    type: AP4_ByteStream&
+  - name: ''
+    type: AP4_Processor::ProgressListener*
+  return_type: AP4_Result
+  signature: AP4_Result AP4_MarlinIpmpEncryptingProcessor::Initialize(AP4_AtomParent&, AP4_ByteStream&, AP4_Processor::ProgressListener*)
+- name: _ZN12AP4_Dac4AtomC1EjPKh
+  params:
+  - name: ''
+    type: unsigned int
+  - name: ''
+    type: unsigned char const*
+  return_type: ''
+  signature: AP4_Dac4Atom::AP4_Dac4Atom(unsigned int, unsigned char const*)
+- name: _ZN27AP4_CencEncryptingProcessor18CreateTrackHandlerEP12AP4_TrakAtom
+  params:
+  - name: ''
+    type: AP4_TrakAtom*
+  return_type: AP4_Processor::TrackHandler*
+  signature: AP4_Processor::TrackHandler* AP4_CencEncryptingProcessor::CreateTrackHandler(AP4_TrakAtom*)
+- name: _ZN12AP4_Dac4Atom6Ac4Dsi14PresentationV122WritePresentationV1DsiER13AP4_BitWriter
+  params:
+  - name: ''
+    type: AP4_BitWriter&
+  return_type: AP4_Result
+  signature: AP4_Result AP4_Dac4Atom::Ac4Dsi::PresentationV1::WritePresentationV1Dsi(AP4_BitWriter&)
+- name: _ZN27AP4_CencEncryptingProcessor10InitializeER14AP4_AtomParentR14AP4_ByteStreamPN13AP4_Processor16ProgressListenerE
+  params:
+  - name: ''
+    type: AP4_AtomParent&
+  - name: ''
+    type: AP4_ByteStream&
+  - name: ''
+    type: AP4_Processor::ProgressListener*
+  return_type: AP4_Result
+  signature: AP4_Result AP4_CencEncryptingProcessor::Initialize(AP4_AtomParent&, AP4_ByteStream&, AP4_Processor::ProgressListener*)
+- name: _ZN28AP4_HevcSequenceParameterSet5ParseEPKhj
+  params:
+  - name: ''
+    type: unsigned char const*
+  - name: ''
+    type: unsigned int
+  return_type: AP4_Result
+  signature: AP4_Result AP4_HevcSequenceParameterSet::Parse(unsigned char const*, unsigned int)
+- name: _ZN18AP4_AvcFrameParser8ParseSPSEPKhjR27AP4_AvcSequenceParameterSet
+  params:
+  - name: ''
+    type: unsigned char const*
+  - name: ''
+    type: unsigned int
+  - name: ''
+    type: AP4_AvcSequenceParameterSet&
+  return_type: AP4_Result
+  signature: AP4_Result AP4_AvcFrameParser::ParseSPS(unsigned char const*, unsigned int, AP4_AvcSequenceParameterSet&)
+- name: _ZN13AP4_Ac4HeaderC1EPKhjb
+  params:
+  - name: ''
+    type: unsigned char const*
+  - name: ''
+    type: unsigned int
+  - name: ''
+    type: bool
+  return_type: ''
+  signature: AP4_Ac4Header::AP4_Ac4Header(unsigned char const*, unsigned int, bool)
+- name: _ZN20AP4_MarlinIpmpParser5ParseER14AP4_AtomParentR14AP4_ByteStreamR8AP4_ListINS_9SinfEntryEEb
+  params:
+  - name: ''
+    type: AP4_AtomParent&
+  - name: ''
+    type: AP4_ByteStream&
+  - name: ''
+    type: AP4_List<AP4_MarlinIpmpParser::SinfEntry>&
+  - name: ''
+    type: bool
+  return_type: AP4_Result
+  signature: AP4_Result AP4_MarlinIpmpParser::Parse(AP4_AtomParent&, AP4_ByteStream&, AP4_List<AP4_MarlinIpmpParser::SinfEntry>&, bool)
+- name: _ZN12AP4_Dac4Atom6Ac4Dsi14PresentationV123ParsePresentationV1InfoER13AP4_BitReaderjjjRjPPjS4_
+  params:
+  - name: ''
+    type: AP4_BitReader&
+  - name: ''
+    type: unsigned int
+  - name: ''
+    type: unsigned int
+  - name: ''
+    type: unsigned int
+  - name: ''
+    type: unsigned int&
+  - name: ''
+    type: unsigned int**
+  - name: ''
+    type: unsigned int&
+  return_type: AP4_Result
+  signature: AP4_Result AP4_Dac4Atom::Ac4Dsi::PresentationV1::ParsePresentationV1Info(AP4_BitReader&, unsigned int, unsigned int, unsigned int, unsigned int&, unsigned int**, unsigned int&)
+- name: _ZN23AP4_CencSampleInfoTable6CreateEPKhjRPS_
+  params:
+  - name: ''
+    type: unsigned char const*
+  - name: ''
+    type: unsigned int
+  - name: ''
+    type: AP4_CencSampleInfoTable*&
+  return_type: AP4_Result
+  signature: AP4_Result AP4_CencSampleInfoTable::Create(unsigned char const*, unsigned int, AP4_CencSampleInfoTable*&)
+- name: _ZN12AP4_Dac4Atom13InspectFieldsER17AP4_AtomInspector
+  params:
+  - name: ''
+    type: AP4_AtomInspector&
+  return_type: AP4_Result
+  signature: AP4_Result AP4_Dac4Atom::InspectFields(AP4_AtomInspector&)
+- name: _ZN14AP4_Eac3HeaderC1EPKh
+  params:
+  - name: ''
+    type: unsigned char const*
+  return_type: ''
+  signature: AP4_Eac3Header::AP4_Eac3Header(unsigned char const*)
+- name: _ZN27AP4_HevcPictureParameterSet5ParseEPKhj
+  params:
+  - name: ''
+    type: unsigned char const*
+  - name: ''
+    type: unsigned int
+  return_type: AP4_Result
+  signature: AP4_Result AP4_HevcPictureParameterSet::Parse(unsigned char const*, unsigned int)
+- name: _ZN15AP4_SampleTable16GenerateStblAtomERP17AP4_ContainerAtom
+  params:
+  - name: ''
+    type: AP4_ContainerAtom*&
+  return_type: AP4_Result
+  signature: AP4_Result AP4_SampleTable::GenerateStblAtom(AP4_ContainerAtom*&)
+- name: _ZN27AP4_CencCbcsSubSampleMapper15GetSubSampleMapER14AP4_DataBufferR9AP4_ArrayItERS2_IjE
+  params:
+  - name: ''
+    type: AP4_DataBuffer&
+  - name: ''
+    type: AP4_Array<unsigned short>&
+  - name: ''
+    type: AP4_Array<unsigned int>&
+  return_type: AP4_Result
+  signature: AP4_Result AP4_CencCbcsSubSampleMapper::GetSubSampleMap(AP4_DataBuffer&, AP4_Array<unsigned short>&, AP4_Array<unsigned int>&)
+- name: _ZN12AP4_TfraAtomC1EjhjR14AP4_ByteStream
+  params:
+  - name: ''
+    type: unsigned int
+  - name: ''
+    type: unsigned char
+  - name: ''
+    type: unsigned int
+  - name: ''
+    type: AP4_ByteStream&
+  return_type: ''
+  signature: AP4_TfraAtom::AP4_TfraAtom(unsigned int, unsigned char, unsigned int, AP4_ByteStream&)
+- name: _ZN16AP4_LinearReader6SeekToEjPj
+  params:
+  - name: ''
+    type: unsigned int
+  - name: ''
+    type: unsigned int*
+  return_type: AP4_Result
+  signature: AP4_Result AP4_LinearReader::SeekTo(unsigned int, unsigned int*)
+- name: _ZN13AP4_Ac4Parser9FindFrameER12AP4_Ac4Frame
+  params:
+  - name: ''
+    type: AP4_Ac4Frame&
+  return_type: AP4_Result
+  signature: AP4_Result AP4_Ac4Parser::FindFrame(AP4_Ac4Frame&)
+- name: _ZN14AP4_FileWriter5WriteER8AP4_FileR14AP4_ByteStreamNS_12InterleavingE
+  params:
+  - name: ''
+    type: AP4_File&
+  - name: ''
+    type: AP4_ByteStream&
+  - name: ''
+    type: AP4_FileWriter::Interleaving
+  return_type: AP4_Result
+  signature: AP4_Result AP4_FileWriter::Write(AP4_File&, AP4_ByteStream&, AP4_FileWriter::Interleaving)
+- name: _ZN18AP4_AvcFrameParser8ParsePPSEPKhjR26AP4_AvcPictureParameterSet
+  params:
+  - name: ''
+    type: unsigned char const*
+  - name: ''
+    type: unsigned int
+  - name: ''
+    type: AP4_AvcPictureParameterSet&
+  return_type: AP4_Result
+  signature: AP4_Result AP4_AvcFrameParser::ParsePPS(unsigned char const*, unsigned int, AP4_AvcPictureParameterSet&)
+language: c++
+project: bento4
+use_project_examples: false
+target_name: bento4_fuzzer
+target_path: /src/bento4_fuzzer.cc

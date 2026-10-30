@@ -1,0 +1,218 @@
+# flatbuffers at the commit HarnessGenerator pins. 25 targets: 12 from HarnessGenerator
+# YAMLs (flatbuffers.yaml), the rest from the fuzzer binary, all strong
+# symbols of parser_fuzzer declared in a project header, largest first, at most 6 per class.
+# Selected by script; symbol names are the libc++ ones OSS-Fuzz builds.
+functions:
+- name: _ZN11flatbuffers11GenTextFileERKNS_6ParserERKNSt3__112basic_stringIcNS3_11char_traitsIcEENS3_9allocatorIcEEEESB_
+  params:
+  - name: ''
+    type: flatbuffers::Parser const&
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: std::string const&
+  return_type: const char*
+  signature: const char* flatbuffers::GenTextFile(flatbuffers::Parser const&, std::string const&, std::string const&)
+- name: _ZNK11flatbuffers6Parser32LookupStructThruParentNamespacesERKNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEE
+  params:
+  - name: ''
+    type: std::string const&
+  return_type: StructDef*
+  signature: StructDef* flatbuffers::Parser::LookupStructThruParentNamespaces(std::string const&) const
+- name: _ZNK11flatbuffers8FieldDef9SerializeEPNS_21FlatBufferBuilderImplILb0EEEtRKNS_6ParserE
+  params:
+  - name: ''
+    type: flatbuffers::FlatBufferBuilderImpl<false>*
+  - name: ''
+    type: unsigned short
+  - name: ''
+    type: flatbuffers::Parser const&
+  return_type: Offset<reflection::Field>
+  signature: Offset<reflection::Field> flatbuffers::FieldDef::Serialize(flatbuffers::FlatBufferBuilderImpl<false>*, unsigned short, flatbuffers::Parser const&) const
+- name: _ZNK11flatbuffers9StructDef9SerializeEPNS_21FlatBufferBuilderImplILb0EEERKNS_6ParserE
+  params:
+  - name: ''
+    type: flatbuffers::FlatBufferBuilderImpl<false>*
+  - name: ''
+    type: flatbuffers::Parser const&
+  return_type: Offset<reflection::Object>
+  signature: Offset<reflection::Object> flatbuffers::StructDef::Serialize(flatbuffers::FlatBufferBuilderImpl<false>*, flatbuffers::Parser const&) const
+- name: _ZN11flatbuffers6Parser11SetRootTypeEPKc
+  params:
+  - name: ''
+    type: char const*
+  return_type: bool
+  signature: bool flatbuffers::Parser::SetRootType(char const*)
+- name: _ZN11flatbuffers6Parser5ParseEPKcPS2_S2_
+  params:
+  - name: ''
+    type: char const*
+  - name: ''
+    type: char const**
+  - name: ''
+    type: char const*
+  return_type: bool
+  signature: bool flatbuffers::Parser::Parse(char const*, char const**, char const*)
+- name: _ZNK11flatbuffers4Type9SerializeEPNS_21FlatBufferBuilderImplILb0EEE
+  params:
+  - name: ''
+    type: flatbuffers::FlatBufferBuilderImpl<false>*
+  return_type: Offset<reflection::Type>
+  signature: Offset<reflection::Type> flatbuffers::Type::Serialize(flatbuffers::FlatBufferBuilderImpl<false>*) const
+- name: _ZN11flatbuffers6Parser15ParseFlexBufferEPKcS2_PN11flexbuffers7BuilderE
+  params:
+  - name: ''
+    type: char const*
+  - name: ''
+    type: char const*
+  - name: ''
+    type: flexbuffers::Builder*
+  return_type: bool
+  signature: bool flatbuffers::Parser::ParseFlexBuffer(char const*, char const*, flexbuffers::Builder*)
+- name: _ZNK11flatbuffers7EnumVal9SerializeEPNS_21FlatBufferBuilderImplILb0EEERKNS_6ParserE
+  params:
+  - name: ''
+    type: flatbuffers::FlatBufferBuilderImpl<false>*
+  - name: ''
+    type: flatbuffers::Parser const&
+  return_type: Offset<reflection::EnumVal>
+  signature: Offset<reflection::EnumVal> flatbuffers::EnumVal::Serialize(flatbuffers::FlatBufferBuilderImpl<false>*, flatbuffers::Parser const&) const
+- name: _ZN11flatbuffers21GenerateTextFromTableERKNS_6ParserEPKvRKNSt3__112basic_stringIcNS5_11char_traitsIcEENS5_9allocatorIcEEEEPSB_
+  params:
+  - name: ''
+    type: flatbuffers::Parser const&
+  - name: ''
+    type: void const*
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: std::string*
+  return_type: bool
+  signature: bool flatbuffers::GenerateTextFromTable(flatbuffers::Parser const&, void const*, std::string const&, std::string*)
+- name: _ZN11flatbuffers16GenTextFromTableERKNS_6ParserEPKvRKNSt3__112basic_stringIcNS5_11char_traitsIcEENS5_9allocatorIcEEEEPSB_
+  params:
+  - name: ''
+    type: flatbuffers::Parser const&
+  - name: ''
+    type: void const*
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: std::string*
+  return_type: const char*
+  signature: const char* flatbuffers::GenTextFromTable(flatbuffers::Parser const&, void const*, std::string const&, std::string*)
+- name: _ZNK11flatbuffers6Parser12LookupStructERKNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEE
+  params:
+  - name: ''
+    type: std::string const&
+  return_type: StructDef*
+  signature: StructDef* flatbuffers::Parser::LookupStruct(std::string const&) const
+- name: _ZN11flatbuffers6Parser11DeserializeEPKN10reflection6SchemaE
+  params:
+  - name: ''
+    type: reflection::Schema const*
+  return_type: bool
+  signature: bool flatbuffers::Parser::Deserialize(reflection::Schema const*)
+- name: _ZN11flatbuffers11ConvertCaseERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEENS_4CaseES9_
+  params:
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: flatbuffers::Case
+  - name: ''
+    type: flatbuffers::Case
+  return_type: std::string
+  signature: std::string flatbuffers::ConvertCase(std::string const&, flatbuffers::Case, flatbuffers::Case)
+- name: _ZN11flatbuffers9StructDef11DeserializeERNS_6ParserEPKN10reflection6ObjectE
+  params:
+  - name: ''
+    type: flatbuffers::Parser&
+  - name: ''
+    type: reflection::Object const*
+  return_type: bool
+  signature: bool flatbuffers::StructDef::Deserialize(flatbuffers::Parser&, reflection::Object const*)
+- name: _ZN11flatbuffers8FieldDef11DeserializeERNS_6ParserEPKN10reflection5FieldE
+  params:
+  - name: ''
+    type: flatbuffers::Parser&
+  - name: ''
+    type: reflection::Field const*
+  return_type: bool
+  signature: bool flatbuffers::FieldDef::Deserialize(flatbuffers::Parser&, reflection::Field const*)
+- name: _ZN11flatbuffers18RelativeToRootPathERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEES8_
+  params:
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: std::string const&
+  return_type: std::string
+  signature: std::string flatbuffers::RelativeToRootPath(std::string const&, std::string const&)
+- name: _ZN11flatbuffers7RPCCall11DeserializeERNS_6ParserEPKN10reflection7RPCCallE
+  params:
+  - name: ''
+    type: flatbuffers::Parser&
+  - name: ''
+    type: reflection::RPCCall const*
+  return_type: bool
+  signature: bool flatbuffers::RPCCall::Deserialize(flatbuffers::Parser&, reflection::RPCCall const*)
+- name: _ZN11flatbuffers10ServiceDef11DeserializeERNS_6ParserEPKN10reflection7ServiceE
+  params:
+  - name: ''
+    type: flatbuffers::Parser&
+  - name: ''
+    type: reflection::Service const*
+  return_type: bool
+  signature: bool flatbuffers::ServiceDef::Deserialize(flatbuffers::Parser&, reflection::Service const*)
+- name: _ZN11flatbuffers7EnumDef11DeserializeERNS_6ParserEPKN10reflection4EnumE
+  params:
+  - name: ''
+    type: flatbuffers::Parser&
+  - name: ''
+    type: reflection::Enum const*
+  return_type: bool
+  signature: bool flatbuffers::EnumDef::Deserialize(flatbuffers::Parser&, reflection::Enum const*)
+- name: _ZNK11flatbuffers10ServiceDef9SerializeEPNS_21FlatBufferBuilderImplILb0EEERKNS_6ParserE
+  params:
+  - name: ''
+    type: flatbuffers::FlatBufferBuilderImpl<false>*
+  - name: ''
+    type: flatbuffers::Parser const&
+  return_type: Offset<reflection::Service>
+  signature: Offset<reflection::Service> flatbuffers::ServiceDef::Serialize(flatbuffers::FlatBufferBuilderImpl<false>*, flatbuffers::Parser const&) const
+- name: _ZN11flatbuffers4Type11DeserializeERKNS_6ParserEPKN10reflection4TypeE
+  params:
+  - name: ''
+    type: flatbuffers::Parser const&
+  - name: ''
+    type: reflection::Type const*
+  return_type: bool
+  signature: bool flatbuffers::Type::Deserialize(flatbuffers::Parser const&, reflection::Type const*)
+- name: _ZNK11flatbuffers7EnumDef9SerializeEPNS_21FlatBufferBuilderImplILb0EEERKNS_6ParserE
+  params:
+  - name: ''
+    type: flatbuffers::FlatBufferBuilderImpl<false>*
+  - name: ''
+    type: flatbuffers::Parser const&
+  return_type: Offset<reflection::Enum>
+  signature: Offset<reflection::Enum> flatbuffers::EnumDef::Serialize(flatbuffers::FlatBufferBuilderImpl<false>*, flatbuffers::Parser const&) const
+- name: _ZNK11flatbuffers9Namespace21GetFullyQualifiedNameERKNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEEm
+  params:
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: uint64_t
+  return_type: std::string
+  signature: std::string flatbuffers::Namespace::GetFullyQualifiedName(std::string const&, uint64_t) const
+- name: _ZN11flatbuffers7EnumVal11DeserializeERNS_6ParserEPKN10reflection7EnumValE
+  params:
+  - name: ''
+    type: flatbuffers::Parser&
+  - name: ''
+    type: reflection::EnumVal const*
+  return_type: bool
+  signature: bool flatbuffers::EnumVal::Deserialize(flatbuffers::Parser&, reflection::EnumVal const*)
+language: c++
+project: flatbuffers
+use_project_examples: false
+target_name: parser_fuzzer
+target_path: /src/flatbuffers/tests/fuzzer/flatbuffers_parser_fuzzer.cc
