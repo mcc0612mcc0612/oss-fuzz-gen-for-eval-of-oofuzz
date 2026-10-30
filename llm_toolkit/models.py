@@ -15,6 +15,7 @@
 LLM models and their functions.
 """
 
+import fcntl
 import logging
 import math
 import os
@@ -632,11 +633,36 @@ class AnthropicClaude(Claude):
   The API takes no sampling parameters, so |temperature| is unused; depth is
   set by |_effort|. Refused requests are not retried on a fallback model, so
   every sample comes from |name|.
+
+  Spend is summed in the file OFG_SPEND_LEDGER, shared by every experiment
+  process; once it reaches OFG_BUDGET_USD, further requests raise. Requests
+  already in flight still complete, so the total can overshoot by up to one
+  response per concurrent trial.
   """
 
   _max_output_tokens = 64000
   _effort = 'high'
   context_window = 1000000
+  # List prices in USD per token.
+  _usd_per_input_token = 0.0
+  _usd_per_output_token = 0.0
+
+  def _add_spend(self, usage: Any = None) -> float:
+    """Adds the cost of |usage| to the ledger and returns the total spent."""
+    ledger = os.getenv('OFG_SPEND_LEDGER')
+    if not ledger:
+      return 0.0
+    open(ledger, 'a').close()
+    with open(ledger, 'r+') as f:
+      fcntl.flock(f, fcntl.LOCK_EX)
+      total = float(f.read() or 0)
+      if usage:
+        total += (usage.input_tokens * self._usd_per_input_token +
+                  usage.output_tokens * self._usd_per_output_token)
+        f.seek(0)
+        f.truncate()
+        f.write(f'{total:.4f}')
+    return total
 
   # ================================ Prompt ================================ #
   def estimate_token_num(self, text) -> int:
@@ -673,9 +699,14 @@ class AnthropicClaude(Claude):
       ) as stream:
         return stream.get_final_message()
 
+    budget = float(os.getenv('OFG_BUDGET_USD', 'inf'))
+    if self._add_spend() >= budget:
+      raise RuntimeError(f'{self.name} budget of ${budget} is spent')
     response = self.with_retry_on_error(
         _stream, [anthropic.RateLimitError, anthropic.InternalServerError,
                   anthropic.APIConnectionError])
+    logger.info('%s spend so far: $%.2f', self.name,
+                self._add_spend(response.usage))
     if response.stop_reason == 'refusal':
       logger.warning('%s refused the request: %s', self.name,
                      response.stop_details)
@@ -697,6 +728,8 @@ class ClaudeOpusV5D5(AnthropicClaude):
   """Claude Opus 5.5."""
 
   name = 'claude-opus-5-5'
+  _usd_per_input_token = 4 / 1e6
+  _usd_per_output_token = 20 / 1e6
 
 
 class GoogleModel(LLM):

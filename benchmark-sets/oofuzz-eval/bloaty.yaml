@@ -1,0 +1,105 @@
+# Pruned from HarnessGenerator data/benchmark-set/bloaty.yaml (92 -> 10) for
+# bloaty badb2d2: header-declared, non-inline functions that exist at that
+# commit; signatures and params re-read from its headers.
+functions:
+- name: _ZN6bloaty21ReadDWARFCompileUnitsERKNS_5dwarf4FileERKNS_7DualMapEPKNS0_2CUEPNS_9RangeSinkE
+  params:
+  - name: file
+    type: const bloaty::dwarf::File &
+  - name: map
+    type: const bloaty::DualMap &
+  - name: skeleton
+    type: const bloaty::dwarf::CU *
+  - name: sink
+    type: bloaty::RangeSink *
+  return_type: void
+  signature: void bloaty::ReadDWARFCompileUnits(const bloaty::dwarf::File& file, const bloaty::DualMap& map, const bloaty::dwarf::CU* skeleton, bloaty::RangeSink* sink)
+- name: _ZN6bloaty16ReadDWARFInlinesERKNS_5dwarf4FileEPNS_9RangeSinkEb
+  params:
+  - name: file
+    type: const bloaty::dwarf::File &
+  - name: sink
+    type: bloaty::RangeSink *
+  - name: include_line
+    type: bool
+  return_type: void
+  signature: void bloaty::ReadDWARFInlines(const bloaty::dwarf::File& file, bloaty::RangeSink* sink, bool include_line)
+- name: _ZN6bloaty5dwarf2CU10ReadHeaderESt17basic_string_viewIcSt11char_traitsIcEES5_NS0_10InfoReader7SectionERS6_
+  params:
+  - name: entire_unit
+    type: std::string_view
+  - name: data
+    type: std::string_view
+  - name: section
+    type: bloaty::dwarf::InfoReader::Section
+  - name: reader
+    type: bloaty::dwarf::InfoReader &
+  return_type: void
+  signature: void bloaty::dwarf::CU::ReadHeader(std::string_view entire_unit, std::string_view data, bloaty::dwarf::InfoReader::Section section, bloaty::dwarf::InfoReader& reader)
+- name: _ZN6bloaty5dwarf6CUIter6NextCUERNS0_10InfoReaderEPNS0_2CUE
+  params:
+  - name: reader
+    type: bloaty::dwarf::InfoReader &
+  - name: cu
+    type: bloaty::dwarf::CU *
+  return_type: bool
+  signature: bool bloaty::dwarf::CUIter::NextCU(bloaty::dwarf::InfoReader& reader, bloaty::dwarf::CU* cu)
+- name: _ZN6bloaty5dwarf9DIEReader8ReadCodeERKNS0_2CUE
+  params:
+  - name: cu
+    type: const bloaty::dwarf::CU &
+  return_type: const bloaty::dwarf::AbbrevTable::Abbrev *
+  signature: const bloaty::dwarf::AbbrevTable::Abbrev* bloaty::dwarf::DIEReader::ReadCode(const bloaty::dwarf::CU& cu)
+- name: _ZN6bloaty5dwarf14LineInfoReader12SeekToOffsetEmh
+  params:
+  - name: offset
+    type: uint64_t
+  - name: address_size
+    type: uint8_t
+  return_type: void
+  signature: void bloaty::dwarf::LineInfoReader::SeekToOffset(uint64_t offset, uint8_t address_size)
+- name: _ZN6bloaty5dwarf14LineInfoReader12ReadLineInfoEv
+  params: []
+  return_type: bool
+  signature: bool bloaty::dwarf::LineInfoReader::ReadLineInfo()
+- name: _ZN6bloaty9RangeSink14ZlibDecompressESt17basic_string_viewIcSt11char_traitsIcEEm
+  params:
+  - name: contents
+    type: std::string_view
+  - name: uncompressed_size
+    type: uint64_t
+  return_type: std::string_view
+  signature: std::string_view bloaty::RangeSink::ZlibDecompress(std::string_view contents, uint64_t uncompressed_size)
+- name: _ZN6bloaty8RangeMap23AddRangeWithTranslationEmmRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKS0_bPS0_
+  params:
+  - name: addr
+    type: uint64_t
+  - name: size
+    type: uint64_t
+  - name: val
+    type: const std::string &
+  - name: translator
+    type: const bloaty::RangeMap &
+  - name: verbose
+    type: bool
+  - name: other
+    type: bloaty::RangeMap *
+  return_type: bool
+  signature: bool bloaty::RangeMap::AddRangeWithTranslation(uint64_t addr, uint64_t size, const std::string& val, const bloaty::RangeMap& translator, bool verbose, bloaty::RangeMap* other)
+- name: _ZN6bloaty9RangeSink19AddVMRangeForVMAddrEPKcmmm
+  params:
+  - name: analyzer
+    type: const char *
+  - name: label_from_vmaddr
+    type: uint64_t
+  - name: addr
+    type: uint64_t
+  - name: size
+    type: uint64_t
+  return_type: void
+  signature: void bloaty::RangeSink::AddVMRangeForVMAddr(const char* analyzer, uint64_t label_from_vmaddr, uint64_t addr, uint64_t size)
+language: c++
+project: bloaty
+use_project_examples: false
+target_name: fuzz_target
+target_path: /src/bloaty/tests/fuzz_target.cc
