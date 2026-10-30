@@ -1,36 +1,8 @@
-# bento4 at the commit HarnessGenerator pins. 25 targets: 0 from HarnessGenerator
-# YAMLs (none), the rest from the fuzzer binary, all strong
-# symbols of bento4_fuzzer declared in a project header, largest first, at most 6 per class.
+# bento4 at the commit HarnessGenerator pins. 25 targets, all from HarnessGenerator
+# (bento4.yaml): the largest ones OSS-Fuzz-gen can call (public, declared
+# in a project header, in bento4_fuzzer or an archive it links), at most 6 per class.
 # Selected by script; symbol names are the libc++ ones OSS-Fuzz builds.
 functions:
-- name: _ZN13AP4_Processor7ProcessER14AP4_ByteStreamS1_PS0_PNS_16ProgressListenerER15AP4_AtomFactory
-  params:
-  - name: ''
-    type: AP4_ByteStream&
-  - name: ''
-    type: AP4_ByteStream&
-  - name: ''
-    type: AP4_ByteStream*
-  - name: ''
-    type: AP4_Processor::ProgressListener*
-  - name: ''
-    type: AP4_AtomFactory&
-  return_type: AP4_Result
-  signature: AP4_Result AP4_Processor::Process(AP4_ByteStream&, AP4_ByteStream&, AP4_ByteStream*, AP4_Processor::ProgressListener*, AP4_AtomFactory&)
-- name: _ZN15AP4_AtomFactory20CreateAtomFromStreamER14AP4_ByteStreamjjyRP8AP4_Atom
-  params:
-  - name: ''
-    type: AP4_ByteStream&
-  - name: ''
-    type: unsigned int
-  - name: ''
-    type: unsigned int
-  - name: ''
-    type: uint64_t long
-  - name: ''
-    type: AP4_Atom*&
-  return_type: AP4_Result
-  signature: AP4_Result AP4_AtomFactory::CreateAtomFromStream(AP4_ByteStream&, unsigned int, unsigned int, uint64_t long, AP4_Atom*&)
 - name: _ZN18AP4_AvcFrameParser16ParseSliceHeaderEPKhjjjR18AP4_AvcSliceHeader
   params:
   - name: ''
@@ -59,46 +31,6 @@ functions:
     type: AP4_HevcSequenceParameterSet**
   return_type: AP4_Result
   signature: AP4_Result AP4_HevcSliceSegmentHeader::Parse(unsigned char const*, unsigned int, unsigned int, AP4_HevcPictureParameterSet**, AP4_HevcSequenceParameterSet**)
-- name: _ZN33AP4_MarlinIpmpEncryptingProcessor10InitializeER14AP4_AtomParentR14AP4_ByteStreamPN13AP4_Processor16ProgressListenerE
-  params:
-  - name: ''
-    type: AP4_AtomParent&
-  - name: ''
-    type: AP4_ByteStream&
-  - name: ''
-    type: AP4_Processor::ProgressListener*
-  return_type: AP4_Result
-  signature: AP4_Result AP4_MarlinIpmpEncryptingProcessor::Initialize(AP4_AtomParent&, AP4_ByteStream&, AP4_Processor::ProgressListener*)
-- name: _ZN12AP4_Dac4AtomC1EjPKh
-  params:
-  - name: ''
-    type: unsigned int
-  - name: ''
-    type: unsigned char const*
-  return_type: ''
-  signature: AP4_Dac4Atom::AP4_Dac4Atom(unsigned int, unsigned char const*)
-- name: _ZN27AP4_CencEncryptingProcessor18CreateTrackHandlerEP12AP4_TrakAtom
-  params:
-  - name: ''
-    type: AP4_TrakAtom*
-  return_type: AP4_Processor::TrackHandler*
-  signature: AP4_Processor::TrackHandler* AP4_CencEncryptingProcessor::CreateTrackHandler(AP4_TrakAtom*)
-- name: _ZN12AP4_Dac4Atom6Ac4Dsi14PresentationV122WritePresentationV1DsiER13AP4_BitWriter
-  params:
-  - name: ''
-    type: AP4_BitWriter&
-  return_type: AP4_Result
-  signature: AP4_Result AP4_Dac4Atom::Ac4Dsi::PresentationV1::WritePresentationV1Dsi(AP4_BitWriter&)
-- name: _ZN27AP4_CencEncryptingProcessor10InitializeER14AP4_AtomParentR14AP4_ByteStreamPN13AP4_Processor16ProgressListenerE
-  params:
-  - name: ''
-    type: AP4_AtomParent&
-  - name: ''
-    type: AP4_ByteStream&
-  - name: ''
-    type: AP4_Processor::ProgressListener*
-  return_type: AP4_Result
-  signature: AP4_Result AP4_CencEncryptingProcessor::Initialize(AP4_AtomParent&, AP4_ByteStream&, AP4_Processor::ProgressListener*)
 - name: _ZN28AP4_HevcSequenceParameterSet5ParseEPKhj
   params:
   - name: ''
@@ -127,52 +59,6 @@ functions:
     type: bool
   return_type: ''
   signature: AP4_Ac4Header::AP4_Ac4Header(unsigned char const*, unsigned int, bool)
-- name: _ZN20AP4_MarlinIpmpParser5ParseER14AP4_AtomParentR14AP4_ByteStreamR8AP4_ListINS_9SinfEntryEEb
-  params:
-  - name: ''
-    type: AP4_AtomParent&
-  - name: ''
-    type: AP4_ByteStream&
-  - name: ''
-    type: AP4_List<AP4_MarlinIpmpParser::SinfEntry>&
-  - name: ''
-    type: bool
-  return_type: AP4_Result
-  signature: AP4_Result AP4_MarlinIpmpParser::Parse(AP4_AtomParent&, AP4_ByteStream&, AP4_List<AP4_MarlinIpmpParser::SinfEntry>&, bool)
-- name: _ZN12AP4_Dac4Atom6Ac4Dsi14PresentationV123ParsePresentationV1InfoER13AP4_BitReaderjjjRjPPjS4_
-  params:
-  - name: ''
-    type: AP4_BitReader&
-  - name: ''
-    type: unsigned int
-  - name: ''
-    type: unsigned int
-  - name: ''
-    type: unsigned int
-  - name: ''
-    type: unsigned int&
-  - name: ''
-    type: unsigned int**
-  - name: ''
-    type: unsigned int&
-  return_type: AP4_Result
-  signature: AP4_Result AP4_Dac4Atom::Ac4Dsi::PresentationV1::ParsePresentationV1Info(AP4_BitReader&, unsigned int, unsigned int, unsigned int, unsigned int&, unsigned int**, unsigned int&)
-- name: _ZN23AP4_CencSampleInfoTable6CreateEPKhjRPS_
-  params:
-  - name: ''
-    type: unsigned char const*
-  - name: ''
-    type: unsigned int
-  - name: ''
-    type: AP4_CencSampleInfoTable*&
-  return_type: AP4_Result
-  signature: AP4_Result AP4_CencSampleInfoTable::Create(unsigned char const*, unsigned int, AP4_CencSampleInfoTable*&)
-- name: _ZN12AP4_Dac4Atom13InspectFieldsER17AP4_AtomInspector
-  params:
-  - name: ''
-    type: AP4_AtomInspector&
-  return_type: AP4_Result
-  signature: AP4_Result AP4_Dac4Atom::InspectFields(AP4_AtomInspector&)
 - name: _ZN14AP4_Eac3HeaderC1EPKh
   params:
   - name: ''
@@ -187,58 +73,6 @@ functions:
     type: unsigned int
   return_type: AP4_Result
   signature: AP4_Result AP4_HevcPictureParameterSet::Parse(unsigned char const*, unsigned int)
-- name: _ZN15AP4_SampleTable16GenerateStblAtomERP17AP4_ContainerAtom
-  params:
-  - name: ''
-    type: AP4_ContainerAtom*&
-  return_type: AP4_Result
-  signature: AP4_Result AP4_SampleTable::GenerateStblAtom(AP4_ContainerAtom*&)
-- name: _ZN27AP4_CencCbcsSubSampleMapper15GetSubSampleMapER14AP4_DataBufferR9AP4_ArrayItERS2_IjE
-  params:
-  - name: ''
-    type: AP4_DataBuffer&
-  - name: ''
-    type: AP4_Array<unsigned short>&
-  - name: ''
-    type: AP4_Array<unsigned int>&
-  return_type: AP4_Result
-  signature: AP4_Result AP4_CencCbcsSubSampleMapper::GetSubSampleMap(AP4_DataBuffer&, AP4_Array<unsigned short>&, AP4_Array<unsigned int>&)
-- name: _ZN12AP4_TfraAtomC1EjhjR14AP4_ByteStream
-  params:
-  - name: ''
-    type: unsigned int
-  - name: ''
-    type: unsigned char
-  - name: ''
-    type: unsigned int
-  - name: ''
-    type: AP4_ByteStream&
-  return_type: ''
-  signature: AP4_TfraAtom::AP4_TfraAtom(unsigned int, unsigned char, unsigned int, AP4_ByteStream&)
-- name: _ZN16AP4_LinearReader6SeekToEjPj
-  params:
-  - name: ''
-    type: unsigned int
-  - name: ''
-    type: unsigned int*
-  return_type: AP4_Result
-  signature: AP4_Result AP4_LinearReader::SeekTo(unsigned int, unsigned int*)
-- name: _ZN13AP4_Ac4Parser9FindFrameER12AP4_Ac4Frame
-  params:
-  - name: ''
-    type: AP4_Ac4Frame&
-  return_type: AP4_Result
-  signature: AP4_Result AP4_Ac4Parser::FindFrame(AP4_Ac4Frame&)
-- name: _ZN14AP4_FileWriter5WriteER8AP4_FileR14AP4_ByteStreamNS_12InterleavingE
-  params:
-  - name: ''
-    type: AP4_File&
-  - name: ''
-    type: AP4_ByteStream&
-  - name: ''
-    type: AP4_FileWriter::Interleaving
-  return_type: AP4_Result
-  signature: AP4_Result AP4_FileWriter::Write(AP4_File&, AP4_ByteStream&, AP4_FileWriter::Interleaving)
 - name: _ZN18AP4_AvcFrameParser8ParsePPSEPKhjR26AP4_AvcPictureParameterSet
   params:
   - name: ''
@@ -249,6 +83,170 @@ functions:
     type: AP4_AvcPictureParameterSet&
   return_type: AP4_Result
   signature: AP4_Result AP4_AvcFrameParser::ParsePPS(unsigned char const*, unsigned int, AP4_AvcPictureParameterSet&)
+- name: _ZNK12AP4_MetaData5Entry6ToAtomERP8AP4_Atom
+  params:
+  - name: ''
+    type: AP4_Atom*&
+  return_type: AP4_Atom*
+  signature: AP4_Atom* AP4_MetaData::Entry::ToAtom(AP4_Atom*&) const
+- name: _ZN19AP4_HevcFrameParser4FeedEPKhjRNS_14AccessUnitInfoEb
+  params:
+  - name: ''
+    type: unsigned char const*
+  - name: ''
+    type: unsigned int
+  - name: ''
+    type: AP4_HevcFrameParser::AccessUnitInfo&
+  - name: ''
+    type: bool
+  return_type: AP4_Result
+  signature: AP4_Result AP4_HevcFrameParser::Feed(unsigned char const*, unsigned int, AP4_HevcFrameParser::AccessUnitInfo&, bool)
+- name: _ZN25AP4_HevcVideoParameterSet5ParseEPKhj
+  params:
+  - name: ''
+    type: unsigned char const*
+  - name: ''
+    type: unsigned int
+  return_type: AP4_Result
+  signature: AP4_Result AP4_HevcVideoParameterSet::Parse(unsigned char const*, unsigned int)
+- name: _ZN18AP4_AesBlockCipher6CreateEPKhN15AP4_BlockCipher15CipherDirectionENS2_10CipherModeEPKvRPS_
+  params:
+  - name: ''
+    type: unsigned char const*
+  - name: ''
+    type: AP4_BlockCipher::CipherDirection
+  - name: ''
+    type: AP4_BlockCipher::CipherMode
+  - name: ''
+    type: void const*
+  - name: ''
+    type: AP4_AesBlockCipher*&
+  return_type: AP4_Result
+  signature: AP4_Result AP4_AesBlockCipher::Create(unsigned char const*, AP4_BlockCipher::CipherDirection, AP4_BlockCipher::CipherMode, void const*, AP4_AesBlockCipher*&)
+- name: _ZN13AP4_Ac3HeaderC1EPKh
+  params:
+  - name: ''
+    type: unsigned char const*
+  return_type: ''
+  signature: AP4_Ac3Header::AP4_Ac3Header(unsigned char const*)
+- name: _ZN18AP4_AvcFrameParser4FeedEPKhjRNS_14AccessUnitInfoEb
+  params:
+  - name: ''
+    type: unsigned char const*
+  - name: ''
+    type: unsigned int
+  - name: ''
+    type: AP4_AvcFrameParser::AccessUnitInfo&
+  - name: ''
+    type: bool
+  return_type: AP4_Result
+  signature: AP4_Result AP4_AvcFrameParser::Feed(unsigned char const*, unsigned int, AP4_AvcFrameParser::AccessUnitInfo&, bool)
+- name: _ZN12AP4_MetaData14AddIlstEntriesEP17AP4_ContainerAtomPKc
+  params:
+  - name: ''
+    type: AP4_ContainerAtom*
+  - name: ''
+    type: char const*
+  return_type: AP4_Result
+  signature: AP4_Result AP4_MetaData::AddIlstEntries(AP4_ContainerAtom*, char const*)
+- name: _ZN12AP4_DataAtomC1ERKN12AP4_MetaData5ValueE
+  params:
+  - name: ''
+    type: AP4_MetaData::Value const&
+  return_type: ''
+  signature: AP4_DataAtom::AP4_DataAtom(AP4_MetaData::Value const&)
+- name: _ZN12AP4_MetaData5Entry13AddToFileIlstER8AP4_Filej
+  params:
+  - name: ''
+    type: AP4_File&
+  - name: ''
+    type: unsigned int
+  return_type: AP4_Result
+  signature: AP4_Result AP4_MetaData::Entry::AddToFileIlst(AP4_File&, unsigned int)
+- name: _ZN25AP4_OmaDcfSampleDecrypter6CreateEP30AP4_ProtectedSampleDescriptionPKhjP22AP4_BlockCipherFactoryRPS_
+  params:
+  - name: ''
+    type: AP4_ProtectedSampleDescription*
+  - name: ''
+    type: unsigned char const*
+  - name: ''
+    type: unsigned int
+  - name: ''
+    type: AP4_BlockCipherFactory*
+  - name: ''
+    type: AP4_OmaDcfSampleDecrypter*&
+  return_type: AP4_Result
+  signature: AP4_Result AP4_OmaDcfSampleDecrypter::Create(AP4_ProtectedSampleDescription*, unsigned char const*, unsigned int, AP4_BlockCipherFactory*, AP4_OmaDcfSampleDecrypter*&)
+- name: _ZN14AP4_IsmaCipher21CreateSampleDecrypterEP30AP4_ProtectedSampleDescriptionPKhjP22AP4_BlockCipherFactoryRPS_
+  params:
+  - name: ''
+    type: AP4_ProtectedSampleDescription*
+  - name: ''
+    type: unsigned char const*
+  - name: ''
+    type: unsigned int
+  - name: ''
+    type: AP4_BlockCipherFactory*
+  - name: ''
+    type: AP4_IsmaCipher*&
+  return_type: AP4_Result
+  signature: AP4_Result AP4_IsmaCipher::CreateSampleDecrypter(AP4_ProtectedSampleDescription*, unsigned char const*, unsigned int, AP4_BlockCipherFactory*, AP4_IsmaCipher*&)
+- name: _ZN12AP4_MetaData12Add3GppEntryEP27AP4_3GppLocalizedStringAtomPKc
+  params:
+  - name: ''
+    type: AP4_3GppLocalizedStringAtom*
+  - name: ''
+    type: char const*
+  return_type: AP4_Result
+  signature: AP4_Result AP4_MetaData::Add3GppEntry(AP4_3GppLocalizedStringAtom*, char const*)
+- name: _ZN24AP4_HevcProfileTierLevel5ParseER13AP4_BitReaderj
+  params:
+  - name: ''
+    type: AP4_BitReader&
+  - name: ''
+    type: unsigned int
+  return_type: AP4_Result
+  signature: AP4_Result AP4_HevcProfileTierLevel::Parse(AP4_BitReader&, unsigned int)
+- name: _ZN12AP4_MetaData17AddDcfStringEntryEP17AP4_DcfStringAtomPKc
+  params:
+  - name: ''
+    type: AP4_DcfStringAtom*
+  - name: ''
+    type: char const*
+  return_type: AP4_Result
+  signature: AP4_Result AP4_MetaData::AddDcfStringEntry(AP4_DcfStringAtom*, char const*)
+- name: _ZN12AP4_MetaData12AddDcfdEntryEP12AP4_DcfdAtomPKc
+  params:
+  - name: ''
+    type: AP4_DcfdAtom*
+  - name: ''
+    type: char const*
+  return_type: AP4_Result
+  signature: AP4_Result AP4_MetaData::AddDcfdEntry(AP4_DcfdAtom*, char const*)
+- name: _ZN27AP4_DecoderConfigDescriptorC1EhhjjjP33AP4_DecoderSpecificInfoDescriptor
+  params:
+  - name: ''
+    type: unsigned char
+  - name: ''
+    type: unsigned char
+  - name: ''
+    type: unsigned int
+  - name: ''
+    type: unsigned int
+  - name: ''
+    type: unsigned int
+  - name: ''
+    type: AP4_DecoderSpecificInfoDescriptor*
+  return_type: ''
+  signature: AP4_DecoderConfigDescriptor::AP4_DecoderConfigDescriptor(unsigned char, unsigned char, unsigned int, unsigned int, unsigned int, AP4_DecoderSpecificInfoDescriptor*)
+- name: _ZN21AP4_HevcVuiParameters5ParseER13AP4_BitReaderRj
+  params:
+  - name: ''
+    type: AP4_BitReader&
+  - name: ''
+    type: unsigned int&
+  return_type: AP4_Result
+  signature: AP4_Result AP4_HevcVuiParameters::Parse(AP4_BitReader&, unsigned int&)
 language: c++
 project: bento4
 use_project_examples: false

@@ -1,20 +1,40 @@
-# draco at the commit HarnessGenerator pins. 25 targets: 23 from HarnessGenerator
-# YAMLs (draco.yaml), the rest from the fuzzer binary, all strong
-# symbols of draco_pc_decoder_fuzzer declared in a project header, largest first, at most 6 per class.
+# draco at the commit HarnessGenerator pins. 25 targets, all from HarnessGenerator
+# (draco.yaml): the largest ones OSS-Fuzz-gen can call (public, declared
+# in a project header, in draco_pc_decoder_fuzzer or an archive it links), at most 6 per class.
 # Selected by script; symbol names are the libc++ ones OSS-Fuzz builds.
 functions:
-- name: _ZN5draco23KdTreeAttributesDecoder36DecodeDataNeededByPortableTransformsEPNS_13DecoderBufferE
+- name: _ZN5draco16ReadMeshFromFileERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS_7OptionsEPNS0_6vectorIS6_NS4_IS6_EEEE
+  params:
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: draco::Options const&
+  - name: ''
+    type: std::vector<std::string>*
+  return_type: StatusOr<std::unique_ptr<Mesh>>
+  signature: StatusOr<std::unique_ptr<Mesh>> draco::ReadMeshFromFile(std::string const&, draco::Options const&, std::vector<std::string>*)
+- name: _ZN5draco17PointCloudEncoder6EncodeERKNS_18EncoderOptionsBaseIiEEPNS_13EncoderBufferE
+  params:
+  - name: ''
+    type: draco::EncoderOptionsBase<int> const&
+  - name: ''
+    type: draco::EncoderBuffer*
+  return_type: Status
+  signature: Status draco::PointCloudEncoder::Encode(draco::EncoderOptionsBase<int> const&, draco::EncoderBuffer*)
+- name: _ZN5draco6parser10ParseFloatEPNS_13DecoderBufferEPf
   params:
   - name: ''
     type: draco::DecoderBuffer*
+  - name: ''
+    type: float*
   return_type: bool
-  signature: bool draco::KdTreeAttributesDecoder::DecodeDataNeededByPortableTransforms(draco::DecoderBuffer*)
-- name: _ZN5draco23KdTreeAttributesDecoder24DecodePortableAttributesEPNS_13DecoderBufferE
+  signature: bool draco::parser::ParseFloat(draco::DecoderBuffer*, float*)
+- name: _ZN5draco9PlyReader4ReadEPNS_13DecoderBufferE
   params:
   - name: ''
     type: draco::DecoderBuffer*
-  return_type: bool
-  signature: bool draco::KdTreeAttributesDecoder::DecodePortableAttributes(draco::DecoderBuffer*)
+  return_type: Status
+  signature: Status draco::PlyReader::Read(draco::DecoderBuffer*)
 - name: _ZN5draco17AttributesDecoder27DecodeAttributesDecoderDataEPNS_13DecoderBufferE
   params:
   - name: ''
@@ -29,14 +49,6 @@ functions:
     type: draco::PointAttribute*
   return_type: bool
   signature: bool draco::AttributeQuantizationTransform::InverseTransformAttribute(draco::PointAttribute const&, draco::PointAttribute*)
-- name: _ZN5draco22FloatPointsTreeDecoder30DecodePointCloudKdTreeInternalEPNS_13DecoderBufferEPNSt3__16vectorINS_7VectorDIjLi3EEENS3_9allocatorIS6_EEEE
-  params:
-  - name: ''
-    type: draco::DecoderBuffer*
-  - name: ''
-    type: std::vector<draco::VectorD<unsigned int, 3>>*
-  return_type: bool
-  signature: bool draco::FloatPointsTreeDecoder::DecodePointCloudKdTreeInternal(draco::DecoderBuffer*, std::vector<draco::VectorD<unsigned int, 3>>*)
 - name: _ZN5draco17PointCloudDecoder6DecodeERKNS_12DracoOptionsINS_17GeometryAttribute4TypeEEEPNS_13DecoderBufferEPNS_10PointCloudE
   params:
   - name: ''
@@ -47,19 +59,6 @@ functions:
     type: draco::PointCloud*
   return_type: Status
   signature: Status draco::PointCloudDecoder::Decode(draco::DracoOptions<draco::GeometryAttribute::Type> const&, draco::DecoderBuffer*, draco::PointCloud*)
-- name: _ZNK5draco30AttributeQuantizationTransform25GeneratePortableAttributeERKNS_14PointAttributeERKNSt3__16vectorINS_9IndexTypeIjNS_20PointIndex_tag_type_EEENS4_9allocatorIS8_EEEEiPS1_
-  params:
-  - name: ''
-    type: draco::PointAttribute const&
-  - name: ''
-    type: std::vector<draco::IndexType<unsigned int, draco::PointIndex_tag_type_>> const&
-  - name: ''
-    type: int
-  - name: ''
-    type: draco::PointAttribute*
-  return_type: void
-  signature: void draco::AttributeQuantizationTransform::GeneratePortableAttribute(draco::PointAttribute const&, std::vector<draco::IndexType<unsigned int, draco::PointIndex_tag_type_>> const&, int, draco::PointAttribute*)
-    const
 - name: _ZN5draco7Decoder26DecodePointCloudFromBufferEPNS_13DecoderBufferE
   params:
   - name: ''
@@ -72,14 +71,16 @@ functions:
     type: draco::Metadata*
   return_type: bool
   signature: bool draco::MetadataDecoder::DecodeMetadata(draco::Metadata*)
-- name: _ZN5draco33SequentialIntegerAttributeDecoder19DecodeIntegerValuesERKNSt3__16vectorINS_9IndexTypeIjNS_20PointIndex_tag_type_EEENS1_9allocatorIS5_EEEEPNS_13DecoderBufferE
+- name: _ZN5draco22SelectPredictionMethodEiRKNS_18EncoderOptionsBaseIiEEPKNS_17PointCloudEncoderE
   params:
   - name: ''
-    type: std::vector<draco::IndexType<unsigned int, draco::PointIndex_tag_type_>> const&
+    type: int
   - name: ''
-    type: draco::DecoderBuffer*
-  return_type: bool
-  signature: bool draco::SequentialIntegerAttributeDecoder::DecodeIntegerValues(std::vector<draco::IndexType<unsigned int, draco::PointIndex_tag_type_>> const&, draco::DecoderBuffer*)
+    type: draco::EncoderOptionsBase<int> const&
+  - name: ''
+    type: draco::PointCloudEncoder const*
+  return_type: ''
+  signature: draco::SelectPredictionMethod(int, draco::EncoderOptionsBase<int> const&, draco::PointCloudEncoder const*)
 - name: _ZN5draco11CornerTable4InitERKNS_15IndexTypeVectorINS_9IndexTypeIjNS_19FaceIndex_tag_type_EEENSt3__15arrayINS2_IjNS_21VertexIndex_tag_type_EEELm3EEEEE
   params:
   - name: ''
@@ -101,6 +102,14 @@ functions:
     type: draco::IndexType<unsigned int, draco::AttributeValueIndex_tag_type_>
   return_type: AttributeValueIndex::ValueType
   signature: AttributeValueIndex::ValueType draco::PointAttribute::DeduplicateValues(draco::GeometryAttribute const&, draco::IndexType<unsigned int, draco::AttributeValueIndex_tag_type_>)
+- name: _ZN5draco10ObjEncoder12EncodeToFileERKNS_10PointCloudERKNSt3__112basic_stringIcNS4_11char_traitsIcEENS4_9allocatorIcEEEE
+  params:
+  - name: ''
+    type: draco::PointCloud const&
+  - name: ''
+    type: std::string const&
+  return_type: bool
+  signature: bool draco::ObjEncoder::EncodeToFile(draco::PointCloud const&, std::string const&)
 - name: _ZN5draco7Decoder22DecodeBufferToGeometryEPNS_13DecoderBufferEPNS_10PointCloudE
   params:
   - name: ''
@@ -109,27 +118,40 @@ functions:
     type: draco::PointCloud*
   return_type: Status
   signature: Status draco::Decoder::DecodeBufferToGeometry(draco::DecoderBuffer*, draco::PointCloud*)
+- name: _ZN5draco17KeyframeAnimation13SetTimestampsERKNSt3__16vectorIfNS1_9allocatorIfEEEE
+  params:
+  - name: ''
+    type: std::vector<float> const&
+  return_type: bool
+  signature: bool draco::KeyframeAnimation::SetTimestamps(std::vector<float> const&)
 - name: _ZN5draco7Decoder22GetEncodedGeometryTypeEPNS_13DecoderBufferE
   params:
   - name: ''
     type: draco::DecoderBuffer*
   return_type: StatusOr<EncodedGeometryType>
   signature: StatusOr<EncodedGeometryType> draco::Decoder::GetEncodedGeometryType(draco::DecoderBuffer*)
-- name: _ZN5draco4Mesh25ApplyPointIdDeduplicationERKNS_15IndexTypeVectorINS_9IndexTypeIjNS_20PointIndex_tag_type_EEES4_EERKNSt3__16vectorIS4_NS8_9allocatorIS4_EEEE
+- name: _ZN5draco7Encoder18EncodeMeshToBufferERKNS_4MeshEPNS_13EncoderBufferE
   params:
   - name: ''
-    type: draco::IndexTypeVector<draco::IndexType<unsigned int, draco::PointIndex_tag_type_>, draco::IndexType<unsigned int, draco::PointIndex_tag_type_>> const&
+    type: draco::Mesh const&
   - name: ''
-    type: std::vector<draco::IndexType<unsigned int, draco::PointIndex_tag_type_>> const&
-  return_type: void
-  signature: void draco::Mesh::ApplyPointIdDeduplication(draco::IndexTypeVector<draco::IndexType<unsigned int, draco::PointIndex_tag_type_>, draco::IndexType<unsigned int, draco::PointIndex_tag_type_>>
-    const&, std::vector<draco::IndexType<unsigned int, draco::PointIndex_tag_type_>> const&)
+    type: draco::EncoderBuffer*
+  return_type: Status
+  signature: Status draco::Encoder::EncodeMeshToBuffer(draco::Mesh const&, draco::EncoderBuffer*)
 - name: _ZNK5draco30AttributeQuantizationTransform28CopyToAttributeTransformDataEPNS_22AttributeTransformDataE
   params:
   - name: ''
     type: draco::AttributeTransformData*
   return_type: void
   signature: void draco::AttributeQuantizationTransform::CopyToAttributeTransformData(draco::AttributeTransformData*) const
+- name: _ZN5draco33SequentialIntegerAttributeEncoder4InitEPNS_17PointCloudEncoderEi
+  params:
+  - name: ''
+    type: draco::PointCloudEncoder*
+  - name: ''
+    type: int
+  return_type: bool
+  signature: bool draco::SequentialIntegerAttributeEncoder::Init(draco::PointCloudEncoder*, int)
 - name: _ZN5draco18AttributeTransform24InitTransformedAttributeERKNS_14PointAttributeEi
   params:
   - name: ''
@@ -138,12 +160,22 @@ functions:
     type: int
   return_type: std::unique_ptr<PointAttribute>
   signature: std::unique_ptr<PointAttribute> draco::AttributeTransform::InitTransformedAttribute(draco::PointAttribute const&, int)
-- name: _ZN5draco26SequentialAttributeDecoder20InitPredictionSchemeEPNS_25PredictionSchemeInterfaceE
+- name: _ZN5draco10PlyEncoder12EncodeToFileERKNS_10PointCloudERKNSt3__112basic_stringIcNS4_11char_traitsIcEENS4_9allocatorIcEEEE
   params:
   - name: ''
-    type: draco::PredictionSchemeInterface*
+    type: draco::PointCloud const&
+  - name: ''
+    type: std::string const&
   return_type: bool
-  signature: bool draco::SequentialAttributeDecoder::InitPredictionScheme(draco::PredictionSchemeInterface*)
+  signature: bool draco::PlyEncoder::EncodeToFile(draco::PointCloud const&, std::string const&)
+- name: _ZN5draco10ObjEncoder14EncodeToBufferERKNS_4MeshEPNS_13EncoderBufferE
+  params:
+  - name: ''
+    type: draco::Mesh const&
+  - name: ''
+    type: draco::EncoderBuffer*
+  return_type: bool
+  signature: bool draco::ObjEncoder::EncodeToBuffer(draco::Mesh const&, draco::EncoderBuffer*)
 - name: _ZN5draco10PointCloud12AddAttributeERKNS_17GeometryAttributeEbj
   params:
   - name: ''
@@ -154,41 +186,14 @@ functions:
     type: unsigned int
   return_type: int
   signature: int draco::PointCloud::AddAttribute(draco::GeometryAttribute const&, bool, unsigned int)
-- name: _ZN5draco11CornerTable6CreateERKNS_15IndexTypeVectorINS_9IndexTypeIjNS_19FaceIndex_tag_type_EEENSt3__15arrayINS2_IjNS_21VertexIndex_tag_type_EEELm3EEEEE
+- name: _ZN5draco10PlyDecoder14DecodeFromFileERKNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEEPNS_10PointCloudE
   params:
   - name: ''
-    type: draco::IndexTypeVector<draco::IndexType<unsigned int, draco::FaceIndex_tag_type_>, std::array<draco::IndexType<unsigned int, draco::VertexIndex_tag_type_>, 3ul>> const&
-  return_type: std::unique_ptr<CornerTable>
-  signature: std::unique_ptr<CornerTable> draco::CornerTable::Create(draco::IndexTypeVector<draco::IndexType<unsigned int, draco::FaceIndex_tag_type_>, std::array<draco::IndexType<unsigned int, draco::VertexIndex_tag_type_>,
-    3ul>> const&)
-- name: _ZN5draco32SequentialNormalAttributeDecoder4InitEPNS_17PointCloudDecoderEi
-  params:
+    type: std::string const&
   - name: ''
-    type: draco::PointCloudDecoder*
-  - name: ''
-    type: int
-  return_type: bool
-  signature: bool draco::SequentialNormalAttributeDecoder::Init(draco::PointCloudDecoder*, int)
-- name: _ZN5draco32SequentialNormalAttributeDecoder19DecodeIntegerValuesERKNSt3__16vectorINS_9IndexTypeIjNS_20PointIndex_tag_type_EEENS1_9allocatorIS5_EEEEPNS_13DecoderBufferE
-  params:
-  - name: ''
-    type: std::vector<draco::IndexType<unsigned int, draco::PointIndex_tag_type_>> const&
-  - name: ''
-    type: draco::DecoderBuffer*
-  return_type: bool
-  signature: bool draco::SequentialNormalAttributeDecoder::DecodeIntegerValues(std::vector<draco::IndexType<unsigned int, draco::PointIndex_tag_type_>> const&, draco::DecoderBuffer*)
-- name: _ZN5draco33SequentialIntegerAttributeDecoder11StoreValuesEj
-  params:
-  - name: ''
-    type: unsigned int
-  return_type: bool
-  signature: bool draco::SequentialIntegerAttributeDecoder::StoreValues(unsigned int)
-- name: _ZN5draco10PointCloud15DeleteAttributeEi
-  params:
-  - name: ''
-    type: int
-  return_type: void
-  signature: void draco::PointCloud::DeleteAttribute(int)
+    type: draco::PointCloud*
+  return_type: Status
+  signature: Status draco::PlyDecoder::DecodeFromFile(std::string const&, draco::PointCloud*)
 language: c++
 project: draco
 use_project_examples: false

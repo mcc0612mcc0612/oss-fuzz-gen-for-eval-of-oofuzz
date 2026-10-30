@@ -5,8 +5,8 @@ Picks the fuzz target OSS-Fuzz-gen rewrites (HarnessGenerator's, when that
 binary was built and its source exists; otherwise the built fuzzer linking the
 most candidate functions), ranks candidates with candidates.py over that
 fuzzer and the static archives it links, and keeps up
-to 25: HarnessGenerator's functions first, then others, largest first, at most
-6 per class. Prints one status line: READY, or DECIDE with the reason.
+to 25 of HarnessGenerator's functions, largest first, at most 6 per class; no
+other function tops the list up. Prints one status line: READY, or DECIDE with the reason.
 
 Usage: prepare.py PROJECT
 """
@@ -117,6 +117,12 @@ def main(project):
   hg_main = os.path.join(HG_SETS, f'{hg_name}.yaml')
   hg_yamls = [y for y in (hg_main, os.path.join(HG_SETS, f'{hg_name}_all.yaml'))
               if os.path.isfile(y)]
+  if not hg_yamls:
+    # No benchmark YAML: the targets of HarnessGenerator's own runs.
+    derived = os.path.join(SCRATCH, 'hg_derived', f'{hg_name}.yaml')
+    hg_yamls = [derived] if os.path.isfile(derived) else []
+  if not hg_yamls:
+    return f'DECIDE {project}: no HarnessGenerator target list'
   built = fuzzers(project)
   if not built:
     return f'DECIDE {project}: build produced no fuzzer'
@@ -156,7 +162,8 @@ def main(project):
   per_class, chosen = collections.Counter(), []
   ranked = sorted(rows, key=lambda r: (-int(r[1]), -int(r[0])))
   for size, in_hg, mangled, dem, header, decl in ranked:
-    if int(size) < MIN_SIZE or len(chosen) >= MAX_TARGETS:
+    # HarnessGenerator's targets only: no other function tops the list up.
+    if in_hg != '1' or int(size) < MIN_SIZE or len(chosen) >= MAX_TARGETS:
       continue
     qual = dem.split('(')[0]
     owner = '::'.join(qual.split('::')[:-1]) or qual
@@ -164,17 +171,18 @@ def main(project):
       continue
     per_class[owner] += 1
     chosen.append((mangled, in_hg))
-  if len(chosen) < 5:
-    return f'DECIDE {project}: only {len(chosen)} usable targets in {target_name}'
+  if not chosen:
+    return (f'DECIDE {project}: none of HarnessGenerator\'s targets is callable '
+            f'from {target_name}')
 
   n_hg = sum(int(h) for _, h in chosen)
   comment = (
-      f'{project} at the commit HarnessGenerator pins. {len(chosen)} targets: '
-      f'{n_hg} from HarnessGenerator\n'
-      f'YAMLs ({", ".join(os.path.basename(y) for y in hg_yamls) or "none"}), '
-      f'the rest from the fuzzer binary, all strong\n'
-      f'symbols of {target_name} declared in a project header, largest first, '
-      f'at most {MAX_PER_CLASS} per class.\n'
+      f'{project} at the commit HarnessGenerator pins. {len(chosen)} targets, '
+      f'all from HarnessGenerator\n'
+      f'({", ".join(os.path.basename(y) for y in hg_yamls)}): the largest ones '
+      f'OSS-Fuzz-gen can call (public, declared\n'
+      f'in a project header, in {target_name} or an archive it links), at most '
+      f'{MAX_PER_CLASS} per class.\n'
       f'Selected by script; symbol names are the libc++ ones OSS-Fuzz builds.')
   out = os.path.join(OFG, 'benchmark-sets/oofuzz-eval', f'{project}.yaml')
   subprocess.run([PY, '-I', os.path.join(TOOLS, 'gen_yaml.py'), tsv, project,

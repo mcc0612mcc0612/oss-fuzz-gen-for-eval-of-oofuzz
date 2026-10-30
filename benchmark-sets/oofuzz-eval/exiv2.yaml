@@ -1,48 +1,8 @@
-# exiv2 at the commit HarnessGenerator pins. 25 targets: 0 from HarnessGenerator
-# YAMLs (none), the rest from the fuzzer binary, all strong
-# symbols of fuzz-preview declared in a project header, largest first, at most 6 per class.
+# exiv2 at the commit HarnessGenerator pins. 25 targets, all from HarnessGenerator
+# (exiv2.yaml): the largest ones OSS-Fuzz-gen can call (public, declared
+# in a project header, in fuzz-preview or an archive it links), at most 6 per class.
 # Selected by script; symbol names are the libc++ ones OSS-Fuzz builds.
 functions:
-- name: _ZN5Exiv28RafImage14printStructureERNSt3__113basic_ostreamIcNS1_11char_traitsIcEEEENS_20PrintStructureOptionEm
-  params:
-  - name: ''
-    type: std::ostream&
-  - name: ''
-    type: Exiv2::PrintStructureOption
-  - name: ''
-    type: uint64_t
-  return_type: void
-  signature: void Exiv2::RafImage::printStructure(std::ostream&, Exiv2::PrintStructureOption, uint64_t)
-- name: _ZN7XMPMeta15ParseFromBufferEPKcjj
-  params:
-  - name: ''
-    type: char const*
-  - name: ''
-    type: unsigned int
-  - name: ''
-    type: unsigned int
-  return_type: void
-  signature: void XMPMeta::ParseFromBuffer(char const*, unsigned int, unsigned int)
-- name: _ZN5Exiv24httpERNSt3__13mapINS0_12basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEES7_NS0_4lessIS7_EENS5_INS0_4pairIKS7_S7_EEEEEESF_RS7_
-  params:
-  - name: ''
-    type: std::map<std::string, std::string, std::less<std::string>>&
-  - name: ''
-    type: std::map<std::string, std::string, std::less<std::string>>&
-  - name: ''
-    type: std::string&
-  return_type: int
-  signature: int Exiv2::http(std::map<std::string, std::string, std::less<std::string>>&, std::map<std::string, std::string, std::less<std::string>>&, std::string&)
-- name: _ZN5Exiv28PngImage14printStructureERNSt3__113basic_ostreamIcNS1_11char_traitsIcEEEENS_20PrintStructureOptionEm
-  params:
-  - name: ''
-    type: std::ostream&
-  - name: ''
-    type: Exiv2::PrintStructureOption
-  - name: ''
-    type: uint64_t
-  return_type: void
-  signature: void Exiv2::PngImage::printStructure(std::ostream&, Exiv2::PrintStructureOption, uint64_t)
 - name: _ZN5Exiv29XmpParser6decodeERNS_7XmpDataERKNSt3__112basic_stringIcNS3_11char_traitsIcEENS3_9allocatorIcEEEE
   params:
   - name: ''
@@ -51,34 +11,6 @@ functions:
     type: std::string const&
   return_type: int
   signature: int Exiv2::XmpParser::decode(Exiv2::XmpData&, std::string const&)
-- name: _ZN5Exiv25Image17printIFDStructureERNS_7BasicIoERNSt3__113basic_ostreamIcNS3_11char_traitsIcEEEENS_20PrintStructureOptionEmbcm
-  params:
-  - name: ''
-    type: Exiv2::BasicIo&
-  - name: ''
-    type: std::ostream&
-  - name: ''
-    type: Exiv2::PrintStructureOption
-  - name: ''
-    type: uint64_t
-  - name: ''
-    type: bool
-  - name: ''
-    type: char
-  - name: ''
-    type: uint64_t
-  return_type: void
-  signature: void Exiv2::Image::printIFDStructure(Exiv2::BasicIo&, std::ostream&, Exiv2::PrintStructureOption, uint64_t, bool, char, uint64_t)
-- name: _ZN5Exiv28JpegBase14printStructureERNSt3__113basic_ostreamIcNS1_11char_traitsIcEEEENS_20PrintStructureOptionEm
-  params:
-  - name: ''
-    type: std::ostream&
-  - name: ''
-    type: Exiv2::PrintStructureOption
-  - name: ''
-    type: uint64_t
-  return_type: void
-  signature: void Exiv2::JpegBase::printStructure(std::ostream&, Exiv2::PrintStructureOption, uint64_t)
 - name: _ZN5Exiv29XmpParser6encodeERNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEERKNS_7XmpDataEtj
   params:
   - name: ''
@@ -91,70 +23,6 @@ functions:
     type: unsigned int
   return_type: int
   signature: int Exiv2::XmpParser::encode(std::string&, Exiv2::XmpData const&, unsigned short, unsigned int)
-- name: _ZN5Exiv28Jp2Image12readMetadataEv
-  params: []
-  return_type: void
-  signature: void Exiv2::Jp2Image::readMetadata()
-- name: _ZNK7XMPMeta17SerializeToBufferEPPKcPjjjS1_S1_i
-  params:
-  - name: ''
-    type: char const**
-  - name: ''
-    type: unsigned int*
-  - name: ''
-    type: unsigned int
-  - name: ''
-    type: unsigned int
-  - name: ''
-    type: char const*
-  - name: ''
-    type: char const*
-  - name: ''
-    type: int
-  return_type: void
-  signature: void XMPMeta::SerializeToBuffer(char const**, unsigned int*, unsigned int, unsigned int, char const*, char const*, int) const
-- name: _ZN8XMPUtils14PackageForJPEGERK7XMPMetaPPKcPjS5_S6_S5_S6_
-  params:
-  - name: ''
-    type: XMPMeta const&
-  - name: ''
-    type: char const**
-  - name: ''
-    type: unsigned int*
-  - name: ''
-    type: char const**
-  - name: ''
-    type: unsigned int*
-  - name: ''
-    type: char const**
-  - name: ''
-    type: unsigned int*
-  return_type: void
-  signature: void XMPUtils::PackageForJPEG(XMPMeta const&, char const**, unsigned int*, char const**, unsigned int*, char const**, unsigned int*)
-- name: _ZN8XMPUtils18SeparateArrayItemsEP7XMPMetaPKcS3_jS3_
-  params:
-  - name: ''
-    type: XMPMeta*
-  - name: ''
-    type: char const*
-  - name: ''
-    type: char const*
-  - name: ''
-    type: unsigned int
-  - name: ''
-    type: char const*
-  return_type: void
-  signature: void XMPUtils::SeparateArrayItems(XMPMeta*, char const*, char const*, unsigned int, char const*)
-- name: _ZN5Exiv28Jp2Image14printStructureERNSt3__113basic_ostreamIcNS1_11char_traitsIcEEEENS_20PrintStructureOptionEm
-  params:
-  - name: ''
-    type: std::ostream&
-  - name: ''
-    type: Exiv2::PrintStructureOption
-  - name: ''
-    type: uint64_t
-  return_type: void
-  signature: void Exiv2::Jp2Image::printStructure(std::ostream&, Exiv2::PrintStructureOption, uint64_t)
 - name: _Z11ExpandXPathPKcS0_PNSt3__16vectorI13XPathStepInfoNS1_9allocatorIS3_EEEE
   params:
   - name: ''
@@ -165,20 +33,6 @@ functions:
     type: std::vector<XPathStepInfo>*
   return_type: void
   signature: void ExpandXPath(char const*, char const*, std::vector<XPathStepInfo>*)
-- name: _ZN5Exiv28Internal10TiffReader13readTiffEntryEPNS0_13TiffEntryBaseE
-  params:
-  - name: ''
-    type: Exiv2::Internal::TiffEntryBase*
-  return_type: void
-  signature: void Exiv2::Internal::TiffReader::readTiffEntry(Exiv2::Internal::TiffEntryBase*)
-- name: _ZN8XMPUtils13ConvertToDateEPKcP12XMP_DateTime
-  params:
-  - name: ''
-    type: char const*
-  - name: ''
-    type: XMP_DateTime*
-  return_type: void
-  signature: void XMPUtils::ConvertToDate(char const*, XMP_DateTime*)
 - name: _ZN5Exiv210ExifParser6encodeERNSt3__16vectorIhNS1_9allocatorIhEEEEPKhmNS_9ByteOrderERNS_8ExifDataE
   params:
   - name: ''
@@ -193,76 +47,210 @@ functions:
     type: Exiv2::ExifData&
   return_type: WriteMethod
   signature: WriteMethod Exiv2::ExifParser::encode(std::vector<unsigned char>&, unsigned char const*, uint64_t, Exiv2::ByteOrder, Exiv2::ExifData&)
-- name: _ZN5Exiv26FileIo8transferERNS_7BasicIoE
+- name: _ZN7XMPMeta16SetLocalizedTextEPKcS1_S1_S1_S1_j
+  params:
+  - name: ''
+    type: char const*
+  - name: ''
+    type: char const*
+  - name: ''
+    type: char const*
+  - name: ''
+    type: char const*
+  - name: ''
+    type: char const*
+  - name: ''
+    type: unsigned int
+  return_type: void
+  signature: void XMPMeta::SetLocalizedText(char const*, char const*, char const*, char const*, char const*, unsigned int)
+- name: _ZN5Exiv210IptcParser6decodeERNS_8IptcDataEPKhm
+  params:
+  - name: ''
+    type: Exiv2::IptcData&
+  - name: ''
+    type: unsigned char const*
+  - name: ''
+    type: uint64_t
+  return_type: int
+  signature: int Exiv2::IptcParser::decode(Exiv2::IptcData&, unsigned char const*, uint64_t)
+- name: _ZN7XMPMeta17RegisterNamespaceEPKcS1_
+  params:
+  - name: ''
+    type: char const*
+  - name: ''
+    type: char const*
+  return_type: void
+  signature: void XMPMeta::RegisterNamespace(char const*, char const*)
+- name: _ZN5Exiv28Internal16TiffParserWorker6encodeERNS_7BasicIoEPKhmRNS_8ExifDataERNS_8IptcDataERNS_7XmpDataEjPFMNS0_11TiffEncoderEFvPNS0_13TiffEntryBaseEPKNS_9ExifdatumEERKNSt3__112basic_stringIcNSK_11char_traitsIcEENSK_9allocatorIcEEEEjNS_5IfdIdEEPNS0_14TiffHeaderBaseEPNS0_12OffsetWriterE
   params:
   - name: ''
     type: Exiv2::BasicIo&
-  return_type: void
-  signature: void Exiv2::FileIo::transfer(Exiv2::BasicIo&)
-- name: _ZN5Exiv29BmffImage7toAsciiEj
-  params:
+  - name: ''
+    type: unsigned char const*
+  - name: ''
+    type: uint64_t
+  - name: ''
+    type: Exiv2::ExifData&
+  - name: ''
+    type: Exiv2::IptcData&
+  - name: ''
+    type: Exiv2::XmpData&
   - name: ''
     type: unsigned int
-  return_type: std::string
-  signature: std::string Exiv2::BmffImage::toAscii(unsigned int)
-- name: _ZN5Exiv215dumpLibraryInfoERNSt3__113basic_ostreamIcNS0_11char_traitsIcEEEERKNS0_6vectorINS0_11basic_regexIcNS0_12regex_traitsIcEEEENS0_9allocatorISA_EEEE
+  - name: ''
+    type: void (Exiv2::Internal::TiffEncoder::*(*)(std::string const&, unsigned int, Exiv2::IfdId))(Exiv2::Internal::TiffEntryBase*, Exiv2::Exifdatum const*)
+  - name: ''
+    type: Exiv2::Internal::TiffHeaderBase*
+  - name: ''
+    type: Exiv2::Internal::OffsetWriter*
+  return_type: WriteMethod
+  signature: WriteMethod Exiv2::Internal::TiffParserWorker::encode(Exiv2::BasicIo&, unsigned char const*, uint64_t, Exiv2::ExifData&, Exiv2::IptcData&, Exiv2::XmpData&, unsigned int, void (Exiv2::Internal::TiffEncoder::*(*)(std::string
+    const&, unsigned int, Exiv2::IfdId))(Exiv2::Internal::TiffEntryBase*, Exiv2::Exifdatum const*), Exiv2::Internal::TiffHeaderBase*, Exiv2::Internal::OffsetWriter*)
+- name: _ZN5Exiv29XmpParser10initializeEPFvPvbES1_
   params:
   - name: ''
-    type: std::ostream&
+    type: void (*)(void*, bool)
   - name: ''
-    type: std::vector<std::basic_regex<char, std::regex_traits<char>>, std::allocator<std::basic_regex<char, std::regex_traits<char>>>> const&
-  return_type: void
-  signature: void Exiv2::dumpLibraryInfo(std::ostream&, std::vector<std::basic_regex<char, std::regex_traits<char>>, std::allocator<std::basic_regex<char, std::regex_traits<char>>>> const&)
-- name: _ZN5Exiv28RafImage12readMetadataEv
-  params: []
-  return_type: void
-  signature: void Exiv2::RafImage::readMetadata()
-- name: _ZN5Exiv28JpegBase12readMetadataEv
-  params: []
-  return_type: void
-  signature: void Exiv2::JpegBase::readMetadata()
-- name: _ZN8XMPUtils16DuplicateSubtreeERK7XMPMetaPS0_PKcS5_S5_S5_j
+    type: void*
+  return_type: A function of this type can be passed to
+  signature: A function of this type can be passed to Exiv2::XmpParser::initialize(void (*)(void*, bool), void*)
+- name: _ZN5Exiv213XmpProperties12propertyInfoERKNS_6XmpKeyE
   params:
   - name: ''
-    type: XMPMeta const&
-  - name: ''
-    type: XMPMeta*
-  - name: ''
-    type: char const*
-  - name: ''
-    type: char const*
-  - name: ''
-    type: char const*
-  - name: ''
-    type: char const*
-  - name: ''
-    type: unsigned int
-  return_type: void
-  signature: void XMPUtils::DuplicateSubtree(XMPMeta const&, XMPMeta*, char const*, char const*, char const*, char const*, unsigned int)
-- name: _ZN5Exiv28Internal15Nikon3MakerNote11printLensIdERNSt3__113basic_ostreamIcNS2_11char_traitsIcEEEERKNS_5ValueEPKNS_8ExifDataERKNS2_12basic_stringIcS5_NS2_9allocatorIcEEEE
+    type: Exiv2::XmpKey const&
+  return_type: const XmpPropertyInfo*
+  signature: const XmpPropertyInfo* Exiv2::XmpProperties::propertyInfo(Exiv2::XmpKey const&)
+- name: _ZN5Exiv213XmpProperties10registerNsERKNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEES9_
   params:
-  - name: ''
-    type: std::ostream&
-  - name: ''
-    type: Exiv2::Value const&
-  - name: ''
-    type: Exiv2::ExifData const*
   - name: ''
     type: std::string const&
-  return_type: std::ostream&
-  signature: std::ostream& Exiv2::Internal::Nikon3MakerNote::printLensId(std::ostream&, Exiv2::Value const&, Exiv2::ExifData const*, std::string const&)
-- name: _ZN11XMPIteratorC1ERK7XMPMetaPKcS4_j
+  - name: ''
+    type: std::string const&
+  return_type: void
+  signature: void Exiv2::XmpProperties::registerNs(std::string const&, std::string const&)
+- name: _ZN5Exiv28Internal11TiffEncoder19encodeTiffComponentEPNS0_13TiffEntryBaseEPKNS_9ExifdatumE
   params:
   - name: ''
-    type: XMPMeta const&
+    type: Exiv2::Internal::TiffEntryBase*
+  - name: ''
+    type: Exiv2::Exifdatum const*
+  return_type: void
+  signature: void Exiv2::Internal::TiffEncoder::encodeTiffComponent(Exiv2::Internal::TiffEntryBase*, Exiv2::Exifdatum const*)
+- name: _ZNK5Exiv28IptcData13detectCharsetEv
+  params: []
+  return_type: '[[nodiscard]] const char*'
+  signature: '[[nodiscard]] const char* Exiv2::IptcData::detectCharset() const'
+- name: _ZN5Exiv25Value6createENS_6TypeIdE
+  params:
+  - name: ''
+    type: Exiv2::TypeId
+  return_type: UniquePtr
+  signature: UniquePtr Exiv2::Value::create(Exiv2::TypeId)
+- name: _ZN5Exiv220convertStringCharsetERNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEPKcS9_
+  params:
+  - name: ''
+    type: std::string&
   - name: ''
     type: char const*
   - name: ''
     type: char const*
+  return_type: bool
+  signature: bool Exiv2::convertStringCharset(std::string&, char const*, char const*)
+- name: _ZN8XMPUtils15ConvertFromDateERK12XMP_DateTimePPKcPj
+  params:
+  - name: ''
+    type: XMP_DateTime const&
+  - name: ''
+    type: char const**
+  - name: ''
+    type: unsigned int*
+  return_type: void
+  signature: void XMPUtils::ConvertFromDate(XMP_DateTime const&, char const**, unsigned int*)
+- name: _ZN5Exiv28Internal11TiffEncoderC1ERNS_8ExifDataERNS_8IptcDataERNS_7XmpDataEPNS0_13TiffComponentEbPKNSt3__16vectorINS_5IfdIdENSA_9allocatorISC_EEEEPKNS0_14TiffHeaderBaseEPFMS1_FvPNS0_13TiffEntryBaseEPKNS_9ExifdatumEERKNSA_12basic_stringIcNSA_11char_traitsIcEENSD_IcEEEEjSC_E
+  params:
+  - name: ''
+    type: Exiv2::ExifData&
+  - name: ''
+    type: Exiv2::IptcData&
+  - name: ''
+    type: Exiv2::XmpData&
+  - name: ''
+    type: Exiv2::Internal::TiffComponent*
+  - name: ''
+    type: bool
+  - name: ''
+    type: std::vector<Exiv2::IfdId> const*
+  - name: ''
+    type: Exiv2::Internal::TiffHeaderBase const*
+  - name: ''
+    type: void (Exiv2::Internal::TiffEncoder::*(*)(std::string const&, unsigned int, Exiv2::IfdId))(Exiv2::Internal::TiffEntryBase*, Exiv2::Exifdatum const*)
+  return_type: ''
+  signature: Exiv2::Internal::TiffEncoder::TiffEncoder(Exiv2::ExifData&, Exiv2::IptcData&, Exiv2::XmpData&, Exiv2::Internal::TiffComponent*, bool, std::vector<Exiv2::IfdId> const*, Exiv2::Internal::TiffHeaderBase
+    const*, void (Exiv2::Internal::TiffEncoder::*(*)(std::string const&, unsigned int, Exiv2::IfdId))(Exiv2::Internal::TiffEntryBase*, Exiv2::Exifdatum const*))
+- name: _ZN5Exiv28Internal11TiffEncoder3addEPNS0_13TiffComponentES3_j
+  params:
+  - name: ''
+    type: Exiv2::Internal::TiffComponent*
+  - name: ''
+    type: Exiv2::Internal::TiffComponent*
   - name: ''
     type: unsigned int
-  return_type: ''
-  signature: XMPIterator::XMPIterator(XMPMeta const&, char const*, char const*, unsigned int)
+  return_type: encoder as well as the
+  signature: encoder as well as the Exiv2::Internal::TiffEncoder::add(Exiv2::Internal::TiffComponent*, Exiv2::Internal::TiffComponent*, unsigned int)
+- name: _ZN5Exiv212ImageFactory4openENSt3__110unique_ptrINS_7BasicIoENS1_14default_deleteIS3_EEEE
+  params:
+  - name: ''
+    type: std::unique_ptr<Exiv2::BasicIo>
+  return_type: Image::UniquePtr
+  signature: Image::UniquePtr Exiv2::ImageFactory::open(std::unique_ptr<Exiv2::BasicIo>)
+- name: _ZNK5Exiv212CommentValue13detectCharsetERNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEE
+  params:
+  - name: ''
+    type: std::string&
+  return_type: const char*
+  signature: const char* Exiv2::CommentValue::detectCharset(std::string&) const
+- name: _ZN5Exiv28readFileERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEE
+  params:
+  - name: ''
+    type: std::string const&
+  return_type: DataBuf
+  signature: DataBuf Exiv2::readFile(std::string const&)
+- name: _ZN5Exiv212fileProtocolERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEE
+  params:
+  - name: ''
+    type: std::string const&
+  return_type: Protocol
+  signature: Protocol Exiv2::fileProtocol(std::string const&)
+- name: _ZN5Exiv29ExifThumb16setJpegThumbnailEPKhm
+  params:
+  - name: ''
+    type: unsigned char const*
+  - name: ''
+    type: uint64_t
+  return_type: void
+  signature: void Exiv2::ExifThumb::setJpegThumbnail(unsigned char const*, uint64_t)
+- name: _ZN5Exiv212ImageFactory8createIoERKNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEEb
+  params:
+  - name: ''
+    type: std::string const&
+  - name: ''
+    type: bool
+  return_type: BasicIo::UniquePtr
+  signature: BasicIo::UniquePtr Exiv2::ImageFactory::createIo(std::string const&, bool)
+- name: _ZN5Exiv29ExifThumb16setJpegThumbnailEPKhmNSt3__14pairIjjEES5_t
+  params:
+  - name: ''
+    type: unsigned char const*
+  - name: ''
+    type: uint64_t
+  - name: ''
+    type: std::pair<unsigned int, unsigned int>
+  - name: ''
+    type: std::pair<unsigned int, unsigned int>
+  - name: ''
+    type: unsigned short
+  return_type: void
+  signature: void Exiv2::ExifThumb::setJpegThumbnail(unsigned char const*, uint64_t, std::pair<unsigned int, unsigned int>, std::pair<unsigned int, unsigned int>, unsigned short)
 language: c++
 project: exiv2
 use_project_examples: false

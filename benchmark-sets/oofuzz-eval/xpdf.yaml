@@ -1,22 +1,8 @@
-# xpdf at the commit HarnessGenerator pins. 25 targets: 0 from HarnessGenerator
-# YAMLs (none), the rest from the fuzzer binary, all strong
-# symbols of fuzz_JBIG2 declared in a project header, largest first, at most 6 per class.
+# xpdf at the commit HarnessGenerator pins. 25 targets, all from HarnessGenerator
+# (xpdf.yaml): the largest ones OSS-Fuzz-gen can call (public, declared
+# in a project header, in fuzz_JBIG2 or an archive it links), at most 6 per class.
 # Selected by script; symbol names are the libc++ ones OSS-Fuzz builds.
 functions:
-- name: _ZN10FoFiType1C14convertToType0EPcPiiPFvPvPKciES2_
-  params:
-  - name: ''
-    type: char*
-  - name: ''
-    type: int*
-  - name: ''
-    type: int
-  - name: ''
-    type: void (*)(void*, char const*, int)
-  - name: ''
-    type: void*
-  return_type: void
-  signature: void FoFiType1C::convertToType0(char*, int*, int, void (*)(void*, char const*, int), void*)
 - name: _ZN12FoFiTrueType8writeTTFEPFvPvPKciES0_PcPiPhi
   params:
   - name: ''
@@ -33,20 +19,6 @@ functions:
     type: int
   return_type: GBool
   signature: GBool FoFiTrueType::writeTTF(void (*)(void*, char const*, int), void*, char*, int*, unsigned char*, int)
-- name: _ZN10FoFiType1C14convertToType1EPcPPKciPFvPvS2_iES4_
-  params:
-  - name: ''
-    type: char*
-  - name: ''
-    type: char const**
-  - name: ''
-    type: int
-  - name: ''
-    type: void (*)(void*, char const*, int)
-  - name: ''
-    type: void*
-  return_type: void
-  signature: void FoFiType1C::convertToType1(char*, char const**, int, void (*)(void*, char const*, int), void*)
 - name: _ZN19GfxPatchMeshShading5parseEiP4DictP6Stream
   params:
   - name: ''
@@ -57,66 +29,12 @@ functions:
     type: Stream*
   return_type: GfxPatchMeshShading *
   signature: GfxPatchMeshShading * GfxPatchMeshShading::parse(int, Dict*, Stream*)
-- name: _ZN7GString8appendfvEPKcP13__va_list_tag
-  params:
-  - name: ''
-    type: char const*
-  - name: ''
-    type: __va_list_tag*
-  return_type: GString *
-  signature: GString * GString::appendfv(char const*, __va_list_tag*)
 - name: _ZN5Lexer6getObjEP6Object
   params:
   - name: ''
     type: Object*
   return_type: Object *
   signature: Object * Lexer::getObj(Object*)
-- name: _ZN7TileMap11getTileListEv
-  params: []
-  return_type: GList *
-  signature: GList * TileMap::getTileList()
-- name: _ZN6Splash9compositeEP12SplashBitmapP17SplashAlphaBitmapiiiiiiii
-  params:
-  - name: ''
-    type: SplashBitmap*
-  - name: ''
-    type: SplashAlphaBitmap*
-  - name: ''
-    type: int
-  - name: ''
-    type: int
-  - name: ''
-    type: int
-  - name: ''
-    type: int
-  - name: ''
-    type: int
-  - name: ''
-    type: int
-  - name: ''
-    type: int
-  - name: ''
-    type: int
-  return_type: SplashError
-  signature: SplashError Splash::composite(SplashBitmap*, SplashAlphaBitmap*, int, int, int, int, int, int, int, int)
-- name: _ZN11Gfx8BitFontC1EP4XRefPKc3RefP7GString11GfxFontTypeS4_P4Dict
-  params:
-  - name: ''
-    type: XRef*
-  - name: ''
-    type: char const*
-  - name: ''
-    type: Ref
-  - name: ''
-    type: GString*
-  - name: ''
-    type: GfxFontType
-  - name: ''
-    type: Ref
-  - name: ''
-    type: Dict*
-  return_type: ''
-  signature: Gfx8BitFont::Gfx8BitFont(XRef*, char const*, Ref, GString*, GfxFontType, Ref, Dict*)
 - name: _Z17drawPDF417BarcodeddddiP7GStringS0_
   params:
   - name: ''
@@ -135,20 +53,6 @@ functions:
     type: GString*
   return_type: GBool
   signature: GBool drawPDF417Barcode(double, double, double, double, int, GString*, GString*)
-- name: _ZN10FoFiType1C17convertToCIDType0EPcPiiPFvPvPKciES2_
-  params:
-  - name: ''
-    type: char*
-  - name: ''
-    type: int*
-  - name: ''
-    type: int
-  - name: ''
-    type: void (*)(void*, char const*, int)
-  - name: ''
-    type: void*
-  return_type: void
-  signature: void FoFiType1C::convertToCIDType0(char*, int*, int, void (*)(void*, char const*, int), void*)
 - name: _ZN6Splash9drawImageEP7GStringPFiPvPhS3_ES2_15SplashColorModeiiiPdi
   params:
   - name: ''
@@ -193,98 +97,6 @@ functions:
     type: int
   return_type: SplashError
   signature: SplashError Splash::fillImageMask(GString*, int (*)(void*, unsigned char*), void*, int, int, double*, int, int, int)
-- name: _ZN6Splash14makeStrokePathEP10SplashPathdiii
-  params:
-  - name: ''
-    type: SplashPath*
-  - name: ''
-    type: double
-  - name: ''
-    type: int
-  - name: ''
-    type: int
-  - name: ''
-    type: int
-  return_type: SplashPath *
-  signature: SplashPath * Splash::makeStrokePath(SplashPath*, double, int, int, int)
-- name: _ZN10GfxCIDFontC1EP4XRefPKc3RefP7GString11GfxFontTypeS4_P4Dict
-  params:
-  - name: ''
-    type: XRef*
-  - name: ''
-    type: char const*
-  - name: ''
-    type: Ref
-  - name: ''
-    type: GString*
-  - name: ''
-    type: GfxFontType
-  - name: ''
-    type: Ref
-  - name: ''
-    type: Dict*
-  return_type: ''
-  signature: GfxCIDFont::GfxCIDFont(XRef*, char const*, Ref, GString*, GfxFontType, Ref, Dict*)
-- name: _ZN11PSOutputDev9startPageEiP8GfxState
-  params:
-  - name: ''
-    type: int
-  - name: ''
-    type: GfxState*
-  return_type: void
-  signature: void PSOutputDev::startPage(int, GfxState*)
-- name: _ZN15SplashOutputDev17tilingPatternFillEP8GfxStateP3GfxP6ObjectiiP4DictPdS8_iiiidd
-  params:
-  - name: ''
-    type: GfxState*
-  - name: ''
-    type: Gfx*
-  - name: ''
-    type: Object*
-  - name: ''
-    type: int
-  - name: ''
-    type: int
-  - name: ''
-    type: Dict*
-  - name: ''
-    type: double*
-  - name: ''
-    type: double*
-  - name: ''
-    type: int
-  - name: ''
-    type: int
-  - name: ''
-    type: int
-  - name: ''
-    type: int
-  - name: ''
-    type: double
-  - name: ''
-    type: double
-  return_type: void
-  signature: void SplashOutputDev::tilingPatternFill(GfxState*, Gfx*, Object*, int, int, Dict*, double*, double*, int, int, int, int, double, double)
-- name: _ZN6Parser6getObjEP6ObjectiPh14CryptAlgorithmiiii
-  params:
-  - name: ''
-    type: Object*
-  - name: ''
-    type: int
-  - name: ''
-    type: unsigned char*
-  - name: ''
-    type: CryptAlgorithm
-  - name: ''
-    type: int
-  - name: ''
-    type: int
-  - name: ''
-    type: int
-  - name: ''
-    type: int
-  return_type: Object *
-  signature: Object * Parser::getObj(Object*, int, unsigned char*, CryptAlgorithm, int, int, int, int)
 - name: _ZN25GfxGouraudTriangleShading5parseEiP4DictP6Stream
   params:
   - name: ''
@@ -295,56 +107,6 @@ functions:
     type: Stream*
   return_type: GfxGouraudTriangleShading *
   signature: GfxGouraudTriangleShading * GfxGouraudTriangleShading::parse(int, Dict*, Stream*)
-- name: _ZN11PSOutputDev14checkPageSliceEP4PageddiiiiiiiiPFiPvES2_
-  params:
-  - name: ''
-    type: Page*
-  - name: ''
-    type: double
-  - name: ''
-    type: double
-  - name: ''
-    type: int
-  - name: ''
-    type: int
-  - name: ''
-    type: int
-  - name: ''
-    type: int
-  - name: ''
-    type: int
-  - name: ''
-    type: int
-  - name: ''
-    type: int
-  - name: ''
-    type: int
-  - name: ''
-    type: int (*)(void*)
-  - name: ''
-    type: void*
-  return_type: GBool
-  signature: GBool PSOutputDev::checkPageSlice(Page*, double, double, int, int, int, int, int, int, int, int, int (*)(void*), void*)
-- name: _ZN7TileMap14cvtWindowToDevEiiPiS0_S0_
-  params:
-  - name: ''
-    type: int
-  - name: ''
-    type: int
-  - name: ''
-    type: int*
-  - name: ''
-    type: int*
-  - name: ''
-    type: int*
-  return_type: GBool
-  signature: GBool TileMap::cvtWindowToDev(int, int, int*, int*, int*)
-- name: _ZN12GlobalParamsC1EPKc
-  params:
-  - name: ''
-    type: char const*
-  return_type: ''
-  signature: GlobalParams::GlobalParams(char const*)
 - name: _ZN12GlobalParams9parseLineEPcP7GStringi
   params:
   - name: ''
@@ -355,52 +117,180 @@ functions:
     type: int
   return_type: void
   signature: void GlobalParams::parseLine(char*, GString*, int)
-- name: _ZN3Gfx8drawFormEP6ObjectP4DictPdS4_iiiiiP8FunctionS1_
+- name: _ZN5AnnotC1EP6PDFDocP4DictP3Ref
+  params:
+  - name: ''
+    type: PDFDoc*
+  - name: ''
+    type: Dict*
+  - name: ''
+    type: Ref*
+  return_type: ''
+  signature: Annot::Annot(PDFDoc*, Dict*, Ref*)
+- name: _ZN15SampledFunctionC1EP6ObjectP4Dict
+  params:
+  - name: ''
+    type: Object*
+  - name: ''
+    type: Dict*
+  return_type: ''
+  signature: SampledFunction::SampledFunction(Object*, Dict*)
+- name: _ZN10TextString6insertEiP7GString
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: GString*
+  return_type: TextString *
+  signature: TextString * TextString::insert(int, GString*)
+- name: _ZN6Splash5clearEPhh
+  params:
+  - name: ''
+    type: unsigned char*
+  - name: ''
+    type: unsigned char
+  return_type: void
+  signature: void Splash::clear(unsigned char*, unsigned char)
+- name: _ZN3Gfx9drawAnnotEP6ObjectP16AnnotBorderStyledddd
+  params:
+  - name: ''
+    type: Object*
+  - name: ''
+    type: AnnotBorderStyle*
+  - name: ''
+    type: double
+  - name: ''
+    type: double
+  - name: ''
+    type: double
+  - name: ''
+    type: double
+  return_type: void
+  signature: void Gfx::drawAnnot(Object*, AnnotBorderStyle*, double, double, double, double)
+- name: _ZN11SplashXPathC1EP10SplashPathPddii22SplashStrokeAdjustModeP10SplashClip
+  params:
+  - name: ''
+    type: SplashPath*
+  - name: ''
+    type: double*
+  - name: ''
+    type: double
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: SplashStrokeAdjustMode
+  - name: ''
+    type: SplashClip*
+  return_type: ''
+  signature: SplashXPath::SplashXPath(SplashPath*, double*, double, int, int, SplashStrokeAdjustMode, SplashClip*)
+- name: _Z15aesEncryptBlockP15DecryptAESStatePh
+  params:
+  - name: ''
+    type: DecryptAESState*
+  - name: ''
+    type: unsigned char*
+  return_type: void
+  signature: void aesEncryptBlock(DecryptAESState*, unsigned char*)
+- name: _ZN18GfxFunctionShading5parseEP4Dict
+  params:
+  - name: ''
+    type: Dict*
+  return_type: GfxFunctionShading *
+  signature: GfxFunctionShading * GfxFunctionShading::parse(Dict*)
+- name: _ZN16GfxRadialShading5parseEP4Dict
+  params:
+  - name: ''
+    type: Dict*
+  return_type: GfxRadialShading *
+  signature: GfxRadialShading * GfxRadialShading::parse(Dict*)
+- name: _ZN15OptionalContent12evalOCObjectEP6ObjectPi
+  params:
+  - name: ''
+    type: Object*
+  - name: ''
+    type: int*
+  return_type: GBool
+  signature: GBool OptionalContent::evalOCObject(Object*, int*)
+- name: _ZN17StitchingFunctionC1EP6ObjectP4Dictiii
   params:
   - name: ''
     type: Object*
   - name: ''
     type: Dict*
   - name: ''
-    type: double*
-  - name: ''
-    type: double*
-  - name: ''
     type: int
   - name: ''
     type: int
   - name: ''
     type: int
-  - name: ''
-    type: int
-  - name: ''
-    type: int
-  - name: ''
-    type: Function*
-  - name: ''
-    type: Object*
-  return_type: void
-  signature: void Gfx::drawForm(Object*, Dict*, double*, double*, int, int, int, int, int, Function*, Object*)
-- name: _ZN15SplashOutputDev14beginType3CharEP8GfxStateddddjPji
+  return_type: ''
+  signature: StitchingFunction::StitchingFunction(Object*, Dict*, int, int, int)
+- name: _ZN15GfxAxialShading5parseEP4Dict
   params:
   - name: ''
-    type: GfxState*
+    type: Dict*
+  return_type: GfxAxialShading *
+  signature: GfxAxialShading * GfxAxialShading::parse(Dict*)
+- name: _ZN8GfxStateC1EP11LocalParamsddP12PDFRectangleii
+  params:
+  - name: ''
+    type: LocalParams*
   - name: ''
     type: double
   - name: ''
     type: double
   - name: ''
-    type: double
-  - name: ''
-    type: double
-  - name: ''
-    type: unsigned int
-  - name: ''
-    type: unsigned int*
+    type: PDFRectangle*
   - name: ''
     type: int
+  - name: ''
+    type: int
+  return_type: ''
+  signature: GfxState::GfxState(LocalParams*, double, double, PDFRectangle*, int, int)
+- name: _ZN13AcroFormField4loadEP8AcroFormP6Object
+  params:
+  - name: ''
+    type: AcroForm*
+  - name: ''
+    type: Object*
+  return_type: AcroFormField *
+  signature: AcroFormField * AcroFormField::load(AcroForm*, Object*)
+- name: _ZN18JArithmeticDecoder9decodeIntEPiP23JArithmeticDecoderStats
+  params:
+  - name: ''
+    type: int*
+  - name: ''
+    type: JArithmeticDecoderStats*
   return_type: GBool
-  signature: GBool SplashOutputDev::beginType3Char(GfxState*, double, double, double, double, unsigned int, unsigned int*, int)
+  signature: GBool JArithmeticDecoder::decodeInt(int*, JArithmeticDecoderStats*)
+- name: _ZN10SplashClip10clipToPathEP10SplashPathPddii22SplashStrokeAdjustMode
+  params:
+  - name: ''
+    type: SplashPath*
+  - name: ''
+    type: double*
+  - name: ''
+    type: double
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: SplashStrokeAdjustMode
+  return_type: SplashError
+  signature: SplashError SplashClip::clipToPath(SplashPath*, double*, double, int, int, SplashStrokeAdjustMode)
+- name: _ZN11PSTokenizer8getTokenEPciPi
+  params:
+  - name: ''
+    type: char*
+  - name: ''
+    type: int
+  - name: ''
+    type: int*
+  return_type: GBool
+  signature: GBool PSTokenizer::getToken(char*, int, int*)
 language: c++
 project: xpdf
 use_project_examples: false

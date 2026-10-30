@@ -1,6 +1,6 @@
-# ogre at the commit HarnessGenerator pins. 25 targets: 25 from HarnessGenerator
-# YAMLs (ogre.yaml, ogre_all.yaml), the rest from the fuzzer binary, all strong
-# symbols of image_fuzz declared in a project header, largest first, at most 6 per class.
+# ogre at the commit HarnessGenerator pins. 25 targets, all from HarnessGenerator
+# (ogre.yaml, ogre_all.yaml): the largest ones OSS-Fuzz-gen can call (public, declared
+# in a project header, in image_fuzz or an archive it links), at most 6 per class.
 # Selected by script; symbol names are the libc++ ones OSS-Fuzz builds.
 functions:
 - name: _ZN4Ogre20GpuProgramParameters17_updateAutoParamsEPKNS_19AutoParamDataSourceEt

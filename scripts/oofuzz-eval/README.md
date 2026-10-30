@@ -11,11 +11,14 @@ HarnessGenerator uses, and write benchmarks to `benchmark-sets/oofuzz-eval/`.
   the fuzzer or the static archives it links, public, declared in a project
   header outside tests and third_party, not inline and not in an anonymous
   namespace.
-- `prepare.py` picks the fuzz target to rewrite and up to 25 targets
-  (HarnessGenerator's functions first, then the rest, largest first, at most
+- `prepare.py` picks the fuzz target to rewrite and up to 25 targets,
+  HarnessGenerator's functions only (no filler), largest first, at most
   6 per class) and writes the benchmark YAML with `gen_yaml.py`.
 - `run_queue.sh` runs OSS-Fuzz-gen per project with Claude Opus 5.5, OFG
   defaults plus `-mr 5 -to 1800`, sized by memory, and cleans up after each.
 - `janitor.sh` removes the stopped containers the runs leave behind.
 
 Paths in the scripts point at the session scratchpad they ran from.
+- `hg-derived/` lists HarnessGenerator's targets for projects without a
+  benchmark YAML (exiv2, xpdf, bento4): `site.target` of each harness
+  manifest of its runs.
