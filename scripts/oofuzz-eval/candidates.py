@@ -198,6 +198,14 @@ for (m, size), d in zip(syms, dem):
                        re.escape(parts[-2]) + r'\b[^;{()]*\{|namespace\s+' +
                        re.escape(parts[-2]) + r'\s*\{)')
     decls = [d for d in decls if owner.search(headers[d[0]])]
+    # Of the headers that qualify, the one that also defines the most outer
+    # scopes (`Outer` for Outer::Builder::Build) holds the right declaration.
+    def scopes_defined(decl):
+      text = headers[decl[0]]
+      return sum(bool(re.search(r'\b(class|struct|namespace)\s+(\w+\s+)?' +
+                                re.escape(scope) + r'\b', text))
+                 for scope in parts[:-2])
+    decls.sort(key=scopes_defined, reverse=True)
   if not decls:
     continue
   if len(parts) > 1:

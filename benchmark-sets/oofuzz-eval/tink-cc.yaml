@@ -1,74 +1,242 @@
-# tink-cc at the commit HarnessGenerator pins. 9 targets: 0 from HarnessGenerator
-# YAMLs (tink-cc.yaml), the rest from the fuzzer binary, all strong
-# symbols of tink_encrypt_fuzzer declared in a project header, largest first, at most 6 per class.
+# tink-cc at the commit HarnessGenerator pins. 25 targets, all from HarnessGenerator
+# (tink-cc.yaml): the largest ones OSS-Fuzz-gen can call (public, declared
+# in a project header, in tink_encrypt_fuzzer or an archive it links), at most 6 per class.
 # Selected by script; symbol names are the libc++ ones OSS-Fuzz builds.
 functions:
-- name: _ZNK6crypto4tink6subtle15AesSivBoringSsl24DecryptDeterministicallyENSt3__117basic_string_viewIcNS3_11char_traitsIcEEEES7_
+- name: _ZN6crypto4tink22JwtRsaSsaPssPrivateKey7Builder5BuildENS0_21PartialKeyAccessTokenE
   params:
   - name: ''
-    type: std::string_view
-  - name: ''
-    type: std::string_view
-  return_type: absl::StatusOr<std::string>
-  signature: absl::StatusOr<std::string> crypto::tink::subtle::AesSivBoringSsl::DecryptDeterministically(std::string_view, std::string_view) const
-- name: _ZN6crypto4tink8internal24ParseBigIntToFixedLengthENSt3__117basic_string_viewIcNS2_11char_traitsIcEEEEi
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<JwtRsaSsaPssPrivateKey>
+  signature: absl::StatusOr<JwtRsaSsaPssPrivateKey> crypto::tink::JwtRsaSsaPssPrivateKey::Builder::Build(crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink24JwtRsaSsaPkcs1PrivateKey7Builder5BuildENS0_21PartialKeyAccessTokenE
   params:
   - name: ''
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<JwtRsaSsaPkcs1PrivateKey>
+  signature: absl::StatusOr<JwtRsaSsaPkcs1PrivateKey> crypto::tink::JwtRsaSsaPkcs1PrivateKey::Builder::Build(crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink8internal32NewMlDsaSignWithContextBoringSslENS0_15MlDsaPrivateKeyENSt3__117basic_string_viewIcNS3_11char_traitsIcEEEE
+  params:
+  - name: ''
+    type: crypto::tink::MlDsaPrivateKey
+  - name: ''
     type: std::string_view
+  return_type: absl::StatusOr<std::unique_ptr<PublicKeySign>>
+  signature: absl::StatusOr<std::unique_ptr<PublicKeySign>> crypto::tink::internal::NewMlDsaSignWithContextBoringSsl(crypto::tink::MlDsaPrivateKey, std::string_view)
+- name: _ZN6crypto4tink6subtle29StreamingAeadDecryptingStream4NextEPPKv
+  params:
+  - name: ''
+    type: void const**
+  return_type: absl::StatusOr<int>
+  signature: absl::StatusOr<int> crypto::tink::subtle::StreamingAeadDecryptingStream::Next(void const**)
+- name: _ZN6crypto4tink15EciesPrivateKey18CreateForNistCurveERKNS0_14EciesPublicKeyERKNS0_14RestrictedDataENS0_21PartialKeyAccessTokenE
+  params:
+  - name: ''
+    type: crypto::tink::EciesPublicKey const&
+  - name: ''
+    type: crypto::tink::RestrictedData const&
+  - name: ''
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<EciesPrivateKey>
+  signature: absl::StatusOr<EciesPrivateKey> crypto::tink::EciesPrivateKey::CreateForNistCurve(crypto::tink::EciesPublicKey const&, crypto::tink::RestrictedData const&, crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink18JwtEcdsaPrivateKey6CreateERKNS0_17JwtEcdsaPublicKeyERKNS0_14RestrictedDataENS0_21PartialKeyAccessTokenE
+  params:
+  - name: ''
+    type: crypto::tink::JwtEcdsaPublicKey const&
+  - name: ''
+    type: crypto::tink::RestrictedData const&
+  - name: ''
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<JwtEcdsaPrivateKey>
+  signature: absl::StatusOr<JwtEcdsaPrivateKey> crypto::tink::JwtEcdsaPrivateKey::Create(crypto::tink::JwtEcdsaPublicKey const&, crypto::tink::RestrictedData const&, crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink13HpkePublicKey6CreateERKNS0_14HpkeParametersENSt3__117basic_string_viewIcNS5_11char_traitsIcEEEENS5_8optionalIiEENS0_21PartialKeyAccessTokenE
+  params:
+  - name: ''
+    type: crypto::tink::HpkeParameters const&
+  - name: ''
+    type: std::string_view
+  - name: ''
+    type: std::optional<int>
+  - name: ''
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<HpkePublicKey>
+  signature: absl::StatusOr<HpkePublicKey> crypto::tink::HpkePublicKey::Create(crypto::tink::HpkeParameters const&, std::string_view, std::optional<int>, crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink8internal13NewRsaKeyPairEiPK9bignum_stPNS1_13RsaPrivateKeyEPNS1_12RsaPublicKeyE
+  params:
   - name: ''
     type: int
-  return_type: absl::StatusOr<SecretData>
-  signature: absl::StatusOr<SecretData> crypto::tink::internal::ParseBigIntToFixedLength(std::string_view, int)
-- name: _ZN6crypto4tink8internal14AesCtr128CryptENSt3__117basic_string_viewIcNS2_11char_traitsIcEEEEPhPK10aes_key_stN4absl12lts_202601074SpanIcEE
-  params:
   - name: ''
-    type: std::string_view
+    type: bignum_st const*
   - name: ''
-    type: unsigned char*
+    type: crypto::tink::internal::RsaPrivateKey*
   - name: ''
-    type: aes_key_st const*
-  - name: ''
-    type: absl::lts_20260107::Span<char>
+    type: crypto::tink::internal::RsaPublicKey*
   return_type: absl::Status
-  signature: absl::Status crypto::tink::internal::AesCtr128Crypt(std::string_view, unsigned char*, aes_key_st const*, absl::lts_20260107::Span<char>)
-- name: _ZNK6crypto4tink6subtle15AesSivBoringSsl24EncryptDeterministicallyENSt3__117basic_string_viewIcNS3_11char_traitsIcEEEES7_
+  signature: absl::Status crypto::tink::internal::NewRsaKeyPair(int, bignum_st const*, crypto::tink::internal::RsaPrivateKey*, crypto::tink::internal::RsaPublicKey*)
+- name: _ZN6crypto4tink17JwtEcdsaPublicKey7Builder5BuildENS0_21PartialKeyAccessTokenE
   params:
   - name: ''
-    type: std::string_view
-  - name: ''
-    type: std::string_view
-  return_type: absl::StatusOr<std::string>
-  signature: absl::StatusOr<std::string> crypto::tink::subtle::AesSivBoringSsl::EncryptDeterministically(std::string_view, std::string_view) const
-- name: _ZN6crypto4tink8internal25GetAesCbcCipherForKeySizeEj
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<JwtEcdsaPublicKey>
+  signature: absl::StatusOr<JwtEcdsaPublicKey> crypto::tink::JwtEcdsaPublicKey::Builder::Build(crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink8internal20CreateRsaSsaPkcs1KeyERKNS0_21RsaSsaPkcs1ParametersENSt3__18optionalIiEE
   params:
   - name: ''
-    type: unsigned int
-  return_type: absl::StatusOr<const *>
-  signature: absl::StatusOr<const *> crypto::tink::internal::GetAesCbcCipherForKeySize(unsigned int)
-- name: _ZN6crypto4tink8internal25GetAesCtrCipherForKeySizeEj
+    type: crypto::tink::RsaSsaPkcs1Parameters const&
+  - name: ''
+    type: std::optional<int>
+  return_type: absl::StatusOr<std::unique_ptr<RsaSsaPkcs1PrivateKey>>
+  signature: absl::StatusOr<std::unique_ptr<RsaSsaPkcs1PrivateKey>> crypto::tink::internal::CreateRsaSsaPkcs1Key(crypto::tink::RsaSsaPkcs1Parameters const&, std::optional<int>)
+- name: _ZN6crypto4tink14EciesPublicKey18CreateForNistCurveERKNS0_15EciesParametersERKNS0_7EcPointENSt3__18optionalIiEENS0_21PartialKeyAccessTokenE
   params:
   - name: ''
-    type: unsigned int
-  return_type: absl::StatusOr<const *>
-  signature: absl::StatusOr<const *> crypto::tink::internal::GetAesCtrCipherForKeySize(unsigned int)
-- name: _ZN6crypto4tink6subtle11BigEndian32Ej
+    type: crypto::tink::EciesParameters const&
+  - name: ''
+    type: crypto::tink::EcPoint const&
+  - name: ''
+    type: std::optional<int>
+  - name: ''
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<EciesPublicKey>
+  signature: absl::StatusOr<EciesPublicKey> crypto::tink::EciesPublicKey::CreateForNistCurve(crypto::tink::EciesParameters const&, crypto::tink::EcPoint const&, std::optional<int>, crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink19ChaCha20Poly1305Key6CreateENS0_26ChaCha20Poly1305Parameters7VariantERKNS0_14RestrictedDataENSt3__18optionalIiEENS0_21PartialKeyAccessTokenE
   params:
   - name: ''
-    type: unsigned int
-  return_type: std::string
-  signature: std::string crypto::tink::subtle::BigEndian32(unsigned int)
-- name: _ZN6crypto4tink8internal19WithoutLeadingZerosENSt3__117basic_string_viewIcNS2_11char_traitsIcEEEE
+    type: crypto::tink::ChaCha20Poly1305Parameters::Variant
+  - name: ''
+    type: crypto::tink::RestrictedData const&
+  - name: ''
+    type: std::optional<int>
+  - name: ''
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<ChaCha20Poly1305Key>
+  signature: absl::StatusOr<ChaCha20Poly1305Key> crypto::tink::ChaCha20Poly1305Key::Create(crypto::tink::ChaCha20Poly1305Parameters::Variant, crypto::tink::RestrictedData const&, std::optional<int>, crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink20XChaCha20Poly1305Key6CreateENS0_27XChaCha20Poly1305Parameters7VariantERKNS0_14RestrictedDataENSt3__18optionalIiEENS0_21PartialKeyAccessTokenE
   params:
   - name: ''
-    type: std::string_view
-  return_type: absl::string_view
-  signature: absl::string_view crypto::tink::internal::WithoutLeadingZeros(std::string_view)
-- name: _ZN6crypto4tink8internal16IsPrintableAsciiENSt3__117basic_string_viewIcNS2_11char_traitsIcEEEE
+    type: crypto::tink::XChaCha20Poly1305Parameters::Variant
+  - name: ''
+    type: crypto::tink::RestrictedData const&
+  - name: ''
+    type: std::optional<int>
+  - name: ''
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<XChaCha20Poly1305Key>
+  signature: absl::StatusOr<XChaCha20Poly1305Key> crypto::tink::XChaCha20Poly1305Key::Create(crypto::tink::XChaCha20Poly1305Parameters::Variant, crypto::tink::RestrictedData const&, std::optional<int>,
+    crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink22JwtRsaSsaPssPrivateKey7Builder25BuildAllowNonConstantTimeENS0_21PartialKeyAccessTokenE
   params:
   - name: ''
-    type: std::string_view
-  return_type: bool
-  signature: bool crypto::tink::internal::IsPrintableAscii(std::string_view)
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<JwtRsaSsaPssPrivateKey>
+  signature: absl::StatusOr<JwtRsaSsaPssPrivateKey> crypto::tink::JwtRsaSsaPssPrivateKey::Builder::BuildAllowNonConstantTime(crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink24JwtRsaSsaPkcs1PrivateKey7Builder25BuildAllowNonConstantTimeENS0_21PartialKeyAccessTokenE
+  params:
+  - name: ''
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<JwtRsaSsaPkcs1PrivateKey>
+  signature: absl::StatusOr<JwtRsaSsaPkcs1PrivateKey> crypto::tink::JwtRsaSsaPkcs1PrivateKey::Builder::BuildAllowNonConstantTime(crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink12AesGcmSivKey6CreateERKNS0_19AesGcmSivParametersERKNS0_14RestrictedDataENSt3__18optionalIiEENS0_21PartialKeyAccessTokenE
+  params:
+  - name: ''
+    type: crypto::tink::AesGcmSivParameters const&
+  - name: ''
+    type: crypto::tink::RestrictedData const&
+  - name: ''
+    type: std::optional<int>
+  - name: ''
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<AesGcmSivKey>
+  signature: absl::StatusOr<AesGcmSivKey> crypto::tink::AesGcmSivKey::Create(crypto::tink::AesGcmSivParameters const&, crypto::tink::RestrictedData const&, std::optional<int>, crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink9AesSivKey6CreateERKNS0_16AesSivParametersERKNS0_14RestrictedDataENSt3__18optionalIiEENS0_21PartialKeyAccessTokenE
+  params:
+  - name: ''
+    type: crypto::tink::AesSivParameters const&
+  - name: ''
+    type: crypto::tink::RestrictedData const&
+  - name: ''
+    type: std::optional<int>
+  - name: ''
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<AesSivKey>
+  signature: absl::StatusOr<AesSivKey> crypto::tink::AesSivKey::Create(crypto::tink::AesSivParameters const&, crypto::tink::RestrictedData const&, std::optional<int>, crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink8internal18CreateRsaSsaPssKeyERKNS0_19RsaSsaPssParametersENSt3__18optionalIiEE
+  params:
+  - name: ''
+    type: crypto::tink::RsaSsaPssParameters const&
+  - name: ''
+    type: std::optional<int>
+  return_type: absl::StatusOr<std::unique_ptr<RsaSsaPssPrivateKey>>
+  signature: absl::StatusOr<std::unique_ptr<RsaSsaPssPrivateKey>> crypto::tink::internal::CreateRsaSsaPssKey(crypto::tink::RsaSsaPssParameters const&, std::optional<int>)
+- name: _ZN6crypto4tink9AesEaxKey6CreateERKNS0_16AesEaxParametersERKNS0_14RestrictedDataENSt3__18optionalIiEENS0_21PartialKeyAccessTokenE
+  params:
+  - name: ''
+    type: crypto::tink::AesEaxParameters const&
+  - name: ''
+    type: crypto::tink::RestrictedData const&
+  - name: ''
+    type: std::optional<int>
+  - name: ''
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<AesEaxKey>
+  signature: absl::StatusOr<AesEaxKey> crypto::tink::AesEaxKey::Create(crypto::tink::AesEaxParameters const&, crypto::tink::RestrictedData const&, std::optional<int>, crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink9AesGcmKey6CreateERKNS0_16AesGcmParametersERKNS0_14RestrictedDataENSt3__18optionalIiEENS0_21PartialKeyAccessTokenE
+  params:
+  - name: ''
+    type: crypto::tink::AesGcmParameters const&
+  - name: ''
+    type: crypto::tink::RestrictedData const&
+  - name: ''
+    type: std::optional<int>
+  - name: ''
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<AesGcmKey>
+  signature: absl::StatusOr<AesGcmKey> crypto::tink::AesGcmKey::Create(crypto::tink::AesGcmParameters const&, crypto::tink::RestrictedData const&, std::optional<int>, crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink21JwtRsaSsaPssPublicKey7Builder5BuildENS0_21PartialKeyAccessTokenE
+  params:
+  - name: ''
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<JwtRsaSsaPssPublicKey>
+  signature: absl::StatusOr<JwtRsaSsaPssPublicKey> crypto::tink::JwtRsaSsaPssPublicKey::Builder::Build(crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink23JwtRsaSsaPkcs1PublicKey7Builder5BuildENS0_21PartialKeyAccessTokenE
+  params:
+  - name: ''
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<JwtRsaSsaPkcs1PublicKey>
+  signature: absl::StatusOr<JwtRsaSsaPkcs1PublicKey> crypto::tink::JwtRsaSsaPkcs1PublicKey::Builder::Build(crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink24LegacyKmsEnvelopeAeadKey6CreateERKNS0_31LegacyKmsEnvelopeAeadParametersENSt3__18optionalIiEE
+  params:
+  - name: ''
+    type: crypto::tink::LegacyKmsEnvelopeAeadParameters const&
+  - name: ''
+    type: std::optional<int>
+  return_type: absl::StatusOr<LegacyKmsEnvelopeAeadKey>
+  signature: absl::StatusOr<LegacyKmsEnvelopeAeadKey> crypto::tink::LegacyKmsEnvelopeAeadKey::Create(crypto::tink::LegacyKmsEnvelopeAeadParameters const&, std::optional<int>)
+- name: _ZN6crypto4tink24PrfBasedKeyDerivationKey6CreateERKNS0_31PrfBasedKeyDerivationParametersERKNS0_6PrfKeyENSt3__18optionalIiEENS0_21PartialKeyAccessTokenE
+  params:
+  - name: ''
+    type: crypto::tink::PrfBasedKeyDerivationParameters const&
+  - name: ''
+    type: crypto::tink::PrfKey const&
+  - name: ''
+    type: std::optional<int>
+  - name: ''
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<PrfBasedKeyDerivationKey>
+  signature: absl::StatusOr<PrfBasedKeyDerivationKey> crypto::tink::PrfBasedKeyDerivationKey::Create(crypto::tink::PrfBasedKeyDerivationParameters const&, crypto::tink::PrfKey const&, std::optional<int>,
+    crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink10XAesGcmKey6CreateENS0_17XAesGcmParametersERKNS0_14RestrictedDataENSt3__18optionalIiEENS0_21PartialKeyAccessTokenE
+  params:
+  - name: ''
+    type: crypto::tink::XAesGcmParameters
+  - name: ''
+    type: crypto::tink::RestrictedData const&
+  - name: ''
+    type: std::optional<int>
+  - name: ''
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<XAesGcmKey>
+  signature: absl::StatusOr<XAesGcmKey> crypto::tink::XAesGcmKey::Create(crypto::tink::XAesGcmParameters, crypto::tink::RestrictedData const&, std::optional<int>, crypto::tink::PartialKeyAccessToken)
 language: c++
 project: tink-cc
 use_project_examples: false

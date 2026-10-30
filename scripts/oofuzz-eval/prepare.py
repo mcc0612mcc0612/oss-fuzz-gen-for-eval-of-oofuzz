@@ -75,7 +75,7 @@ def candidates(binary, src, hg_yamls, tsv, libs=()):
   with open(listing, 'w') as f:
     f.write('\n'.join(libs))
   env = dict(os.environ, CANDIDATE_ARCHIVES_FILE=listing)
-  if os.path.basename(binary) in STUB_TARGETS:
+  if os.path.basename(binary) in STUB_TARGETS | UMBRELLA_TARGETS:
     env['CANDIDATE_STUB_FUZZER'] = '1'
   with open(tsv, 'w') as f:
     subprocess.run([PY, '-I', os.path.join(TOOLS, 'candidates.py'), binary, src,
@@ -102,6 +102,11 @@ STUB_FUZZERS = {'bento4'}
 # Benchmarks chosen by hand; prepare.py keeps them as they are.
 HAND_PICKED = {'bloaty'}
 STUB_TARGETS = {'bento4_fuzzer'}
+# Fuzz targets whose build links a library umbrella: every project archive
+# counts as linked, though the fuzzer itself references few of them.
+# tink-cc: fuzzing_CMake links tink::static, an alias of tink_core_cc, whose
+# dependencies (tink_config and the primitive configs) pull in tink's archives.
+UMBRELLA_TARGETS = {'tink_encrypt_fuzzer'}
 
 
 def main(project):
