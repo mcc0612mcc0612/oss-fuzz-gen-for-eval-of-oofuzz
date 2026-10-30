@@ -1,4 +1,4 @@
-anthropic==0.31.2
+anthropic==2.3.0
 chardet==5.2.0
 cxxfilt==0.3.0
 GitPython==3.1.43

@@ -626,6 +626,79 @@ class ClaudeSonnetV3D5(Claude):
   _vertex_ai_model = 'claude-3-5-sonnet@20240620'
 
 
+class AnthropicClaude(Claude):
+  """Claude on the Anthropic API, authenticated by ANTHROPIC_API_KEY.
+
+  The API takes no sampling parameters, so |temperature| is unused; depth is
+  set by |_effort|. Refused requests are not retried on a fallback model, so
+  every sample comes from |name|.
+  """
+
+  _max_output_tokens = 64000
+  _effort = 'high'
+  context_window = 1000000
+
+  # ================================ Prompt ================================ #
+  def estimate_token_num(self, text) -> int:
+    """Estimates the number of tokens in |text|, about 3 chars per token."""
+    if isinstance(text, list):
+      text = ''.join(message.get('content', '') for message in text)
+    return len(text or '') // 3
+
+  def get_model(self) -> str:
+    return self.name
+
+  def _create(self, messages: list[dict[str, str]]) -> str:
+    """Sends OpenAI-style |messages| and returns the response text."""
+    # Leading system pieces are the priming; a prompt holding only priming
+    # still needs a user turn.
+    system = []
+    while messages and messages[0]['role'] == 'system':
+      system.append(messages[0]['content'])
+      messages = messages[1:]
+    if not messages:
+      messages, system = [{'role': 'user', 'content': '\n'.join(system)}], []
+    messages = [{
+        'role': 'user' if m['role'] == 'system' else m['role'],
+        'content': m['content']
+    } for m in messages]
+
+    def _stream():
+      with anthropic.Anthropic().messages.stream(
+          model=self.name,
+          max_tokens=self._max_output_tokens,
+          system='\n'.join(system) or anthropic.omit,
+          messages=messages,
+          output_config={'effort': self._effort},
+      ) as stream:
+        return stream.get_final_message()
+
+    response = self.with_retry_on_error(
+        _stream, [anthropic.RateLimitError, anthropic.InternalServerError,
+                  anthropic.APIConnectionError])
+    if response.stop_reason == 'refusal':
+      logger.warning('%s refused the request: %s', self.name,
+                     response.stop_details)
+    return ''.join(
+        block.text for block in response.content if block.type == 'text')
+
+  # ============================== Generation ============================== #
+  def query_llm(self, prompt: prompts.Prompt, response_dir: str) -> None:
+    """Queries Claude |num_samples| times and stores each response."""
+    for index in range(self.num_samples):
+      self._save_output(index, self._create(prompt.get()), response_dir)
+
+  def ask_llm(self, prompt: prompts.Prompt) -> str:
+    """Queries Claude a single prompt and returns its response."""
+    return self._create(prompt.get())
+
+
+class ClaudeOpusV5D5(AnthropicClaude):
+  """Claude Opus 5.5."""
+
+  name = 'claude-opus-5-5'
+
+
 class GoogleModel(LLM):
   """Generic Google model."""
 

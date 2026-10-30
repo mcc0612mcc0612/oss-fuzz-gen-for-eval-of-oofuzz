@@ -6,7 +6,7 @@
 #
 annotated-types==0.7.0
     # via pydantic
-anthropic==0.31.2
+anthropic==2.3.0
     # via -r requirements.in
 anyio==4.9.0
     # via
@@ -170,6 +170,8 @@ h11==0.16.0
     #   uvicorn
 httpcore==1.0.9
     # via httpx
+httpcore2==2.16.0
+    # via httpx2
 httplib2==0.22.0
     # via
     #   google-api-python-client
@@ -182,6 +184,8 @@ httpx==0.28.1
     #   openai
 httpx-sse==0.4.0
     # via mcp
+httpx2==2.16.0
+    # via anthropic
 huggingface-hub==0.31.4
     # via tokenizers
 idna==3.10
@@ -363,6 +367,10 @@ tqdm==4.67.1
     # via
     #   huggingface-hub
     #   openai
+truststore==0.10.5
+    # via
+    #   httpcore2
+    #   httpx2
 typing-extensions==4.13.2
     # via
     #   anthropic
