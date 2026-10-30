@@ -659,7 +659,7 @@ class AnthropicClaude(Claude):
           usage.output_tokens * self._usd_per_output_token)
       f.seek(0)
       f.truncate()
-      f.write(f'{total:.4f}')
+      f.write(f'{total:.4f}\n')
     return total
 
   # ================================ Prompt ================================ #
