@@ -34,6 +34,9 @@ TARGET_OVERRIDES = {
                 '/src/tink-cc/fuzzing/tink_encrypt_decrypt_fuzzer.cc'),
     # HarnessGenerator's shaderc.yaml names the target 'shaderc_fuzzer.cc'.
     'shaderc': ('shaderc_fuzzer', '/src/shaderc_fuzzer.cc'),
+    # build.sh compiles $SRC/*_fuzzer.cc (maxdepth 1), which the Dockerfile
+    # copies in; HarnessGenerator's /src/wabt/fuzzers/ copy is never built.
+    'wabt': ('wat2wasm_fuzzer', '/src/wat2wasm_fuzzer.cc'),
 }
 
 # OSS-Fuzz project -> (HarnessGenerator name, source dir under /src).

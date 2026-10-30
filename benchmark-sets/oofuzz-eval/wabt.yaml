@@ -1,6 +1,6 @@
-# wabt at the commit HarnessGenerator pins. 25 targets: 25 from HarnessGenerator
-# YAMLs (wabt.yaml), the rest from the fuzzer binary, all strong
-# symbols of wat2wasm_fuzzer declared in a project header, largest first, at most 6 per class.
+# wabt at the commit HarnessGenerator pins. 25 targets, all from HarnessGenerator
+# (wabt.yaml): the largest ones OSS-Fuzz-gen can call (public, declared
+# in a project header, in wat2wasm_fuzzer or an archive it links), at most 6 per class.
 # Selected by script; symbol names are the libc++ ones OSS-Fuzz builds.
 functions:
 - name: _ZN4wabt6interp8Instance11InstantiateERNS0_5StoreENS0_3RefERKNSt3__16vectorIS4_NS5_9allocatorIS4_EEEEPNS0_6RefPtrINS0_4TrapEEE
@@ -223,4 +223,4 @@ language: c++
 project: wabt
 use_project_examples: false
 target_name: wat2wasm_fuzzer
-target_path: /src/wabt/fuzzers/wat2wasm_fuzzer.cc
+target_path: /src/wat2wasm_fuzzer.cc
