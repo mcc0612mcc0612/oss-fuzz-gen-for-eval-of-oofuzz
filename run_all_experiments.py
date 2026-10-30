@@ -257,6 +257,11 @@ def parse_args() -> argparse.Namespace:
                       type=int,
                       default=100,
                       help='Max trial round for agents.')
+  parser.add_argument('-mc',
+                      '--max-cycle',
+                      type=int,
+                      default=5,
+                      help='Max write-run-analyze cycles per trial.')
 
   args = parser.parse_args()
   if args.num_samples:

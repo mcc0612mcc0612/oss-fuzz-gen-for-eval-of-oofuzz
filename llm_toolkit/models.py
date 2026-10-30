@@ -635,9 +635,7 @@ class AnthropicClaude(Claude):
   every sample comes from |name|.
 
   Spend is summed in the file OFG_SPEND_LEDGER, shared by every experiment
-  process; once it reaches OFG_BUDGET_USD, further requests raise. Requests
-  already in flight still complete, so the total can overshoot by up to one
-  response per concurrent trial.
+  process. It is a record only and never stops a request.
   """
 
   _max_output_tokens = 64000
@@ -647,7 +645,7 @@ class AnthropicClaude(Claude):
   _usd_per_input_token = 0.0
   _usd_per_output_token = 0.0
 
-  def _add_spend(self, usage: Any = None) -> float:
+  def _add_spend(self, usage: Any) -> float:
     """Adds the cost of |usage| to the ledger and returns the total spent."""
     ledger = os.getenv('OFG_SPEND_LEDGER')
     if not ledger:
@@ -655,13 +653,12 @@ class AnthropicClaude(Claude):
     open(ledger, 'a').close()
     with open(ledger, 'r+') as f:
       fcntl.flock(f, fcntl.LOCK_EX)
-      total = float(f.read() or 0)
-      if usage:
-        total += (usage.input_tokens * self._usd_per_input_token +
-                  usage.output_tokens * self._usd_per_output_token)
-        f.seek(0)
-        f.truncate()
-        f.write(f'{total:.4f}')
+      total = float(f.read() or 0) + (
+          usage.input_tokens * self._usd_per_input_token +
+          usage.output_tokens * self._usd_per_output_token)
+      f.seek(0)
+      f.truncate()
+      f.write(f'{total:.4f}')
     return total
 
   # ================================ Prompt ================================ #
@@ -699,9 +696,6 @@ class AnthropicClaude(Claude):
       ) as stream:
         return stream.get_final_message()
 
-    budget = float(os.getenv('OFG_BUDGET_USD', 'inf'))
-    if self._add_spend() >= budget:
-      raise RuntimeError(f'{self.name} budget of ${budget} is spent')
     response = self.with_retry_on_error(
         _stream, [anthropic.RateLimitError, anthropic.InternalServerError,
                   anthropic.APIConnectionError])
