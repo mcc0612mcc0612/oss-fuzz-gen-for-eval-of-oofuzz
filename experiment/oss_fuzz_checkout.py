@@ -37,7 +37,9 @@ ENABLE_CACHING = bool(int(os.getenv('OFG_USE_CACHING', '0')))
 # This will change if temp_dir is used.
 OSS_FUZZ_DIR: str = os.path.join(
     os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'oss-fuzz')
-CLEAN_UP_OSS_FUZZ = bool(int(os.getenv('OFG_CLEAN_UP_OSS_FUZZ', '1')))
+# Off by default here: `git clean` on a checkout shared by concurrent runs
+# deletes the generated projects of the runs still in progress.
+CLEAN_UP_OSS_FUZZ = bool(int(os.getenv('OFG_CLEAN_UP_OSS_FUZZ', '0')))
 
 VENV_DIR: str = 'venv'
 
