@@ -1,6 +1,7 @@
 # Pruned from HarnessGenerator data/benchmark-set/bloaty.yaml (92 -> 10) for
 # bloaty badb2d2: header-declared, non-inline functions that exist at that
-# commit; signatures and params re-read from its headers.
+# commit; signatures and params re-read from its headers, and symbol names
+# taken from the libc++ build OSS-Fuzz makes (OFG checks them in the binary).
 functions:
 - name: _ZN6bloaty21ReadDWARFCompileUnitsERKNS_5dwarf4FileERKNS_7DualMapEPKNS0_2CUEPNS_9RangeSinkE
   params:
@@ -24,7 +25,7 @@ functions:
     type: bool
   return_type: void
   signature: void bloaty::ReadDWARFInlines(const bloaty::dwarf::File& file, bloaty::RangeSink* sink, bool include_line)
-- name: _ZN6bloaty5dwarf2CU10ReadHeaderESt17basic_string_viewIcSt11char_traitsIcEES5_NS0_10InfoReader7SectionERS6_
+- name: _ZN6bloaty5dwarf2CU10ReadHeaderENSt3__117basic_string_viewIcNS2_11char_traitsIcEEEES6_NS0_10InfoReader7SectionERS7_
   params:
   - name: entire_unit
     type: std::string_view
@@ -62,7 +63,7 @@ functions:
   params: []
   return_type: bool
   signature: bool bloaty::dwarf::LineInfoReader::ReadLineInfo()
-- name: _ZN6bloaty9RangeSink14ZlibDecompressESt17basic_string_viewIcSt11char_traitsIcEEm
+- name: _ZN6bloaty9RangeSink14ZlibDecompressENSt3__117basic_string_viewIcNS1_11char_traitsIcEEEEm
   params:
   - name: contents
     type: std::string_view
@@ -70,7 +71,7 @@ functions:
     type: uint64_t
   return_type: std::string_view
   signature: std::string_view bloaty::RangeSink::ZlibDecompress(std::string_view contents, uint64_t uncompressed_size)
-- name: _ZN6bloaty8RangeMap23AddRangeWithTranslationEmmRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKS0_bPS0_
+- name: _ZN6bloaty8RangeMap23AddRangeWithTranslationEmmRKNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEERKS0_bPS0_
   params:
   - name: addr
     type: uint64_t
