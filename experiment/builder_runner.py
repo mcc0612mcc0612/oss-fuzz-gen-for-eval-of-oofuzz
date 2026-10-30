@@ -65,6 +65,24 @@ ParseResult = namedtuple('ParseResult', [
     'semantic_check_result'
 ])
 
+# Bytes kept from each end of a fuzzing log. libFuzzer reports the loaded
+# modules at the start and the final stats and crashes at the end; a target
+# printing on every input can otherwise make the log many gigabytes.
+LOG_KEEP_BYTES = 25_000_000
+
+
+def read_log_bounded(log_handle) -> bytes:
+  """Reads a binary log handle, keeping only its first and last
+  LOG_KEEP_BYTES when it is longer than twice that."""
+  size = os.fstat(log_handle.fileno()).st_size
+  if size <= 2 * LOG_KEEP_BYTES:
+    return log_handle.read()
+  head = log_handle.read(LOG_KEEP_BYTES)
+  log_handle.seek(size - LOG_KEEP_BYTES)
+  tail = log_handle.read()
+  return (head + f'\n...({size} bytes of fuzzing log truncated)...\n'.encode() +
+          tail)
+
 
 @dataclasses.dataclass
 class BuildResult:
@@ -347,7 +365,7 @@ class BuilderRunner:
     """Parses libFuzzer logs."""
     lines = None
     try:
-      fuzzlog = log_handle.read(-1)
+      fuzzlog = read_log_bounded(log_handle)
       # Some crashes can mess up the libfuzzer output and raise decode error.
       fuzzlog = fuzzlog.decode('utf-8', errors='ignore')
       lines = fuzzlog.split('\n')

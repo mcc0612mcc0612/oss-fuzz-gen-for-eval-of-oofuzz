@@ -163,10 +163,12 @@ class ExecutionStage(BaseStage):
 
       if run_result.log_path and os.path.isfile(run_result.log_path):
         with open(run_result.log_path, 'rb') as f:
-          raw_run_log_lines = f.readlines()
+          raw_run_log_lines = builder_runner_lib.read_log_bounded(
+              f).splitlines(keepends=True)
           run_log_lines = []
           for line in raw_run_log_lines:
-            decoded_line = line.decode('utf-8', errors='ignore')
+            # A target that prints without newlines can make one line huge.
+            decoded_line = line[:4000].decode('utf-8', errors='ignore')
             if decoded_line:
               run_log_lines.append(decoded_line)
           if len(run_log_lines) > 30:
