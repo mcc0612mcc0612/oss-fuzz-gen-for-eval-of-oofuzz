@@ -638,7 +638,8 @@ class AnthropicClaude(Claude):
   process. It is a record only and never stops a request.
   """
 
-  _max_output_tokens = 64000
+  # Caps one call's cost: output, thinking included, bills at the output rate.
+  _max_output_tokens = 32000
   _effort = 'high'
   context_window = 1000000
   # List prices in USD per token.
@@ -704,6 +705,9 @@ class AnthropicClaude(Claude):
     if response.stop_reason == 'refusal':
       logger.warning('%s refused the request: %s', self.name,
                      response.stop_details)
+    elif response.stop_reason == 'max_tokens':
+      logger.warning('%s hit the %d-token output cap', self.name,
+                     self._max_output_tokens)
     return ''.join(
         block.text for block in response.content if block.type == 'text')
 
