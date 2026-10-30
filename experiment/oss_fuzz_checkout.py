@@ -396,9 +396,10 @@ def _build_image(project_name: str) -> str:
   adjusted_env = os.environ | {
       'FUZZING_LANGUAGE': get_project_language(project_name)
   }
-  command = [
-      'python3', 'infra/helper.py', 'build_image', '--pull', project_name
-  ]
+  # Base images are pulled once beforehand; pulling them for every benchmark
+  # fails it whenever the registry times out.
+  pull = '--pull' if os.getenv('OFG_PULL_BASE_IMAGES', '0') == '1' else '--no-pull'
+  command = ['python3', 'infra/helper.py', 'build_image', pull, project_name]
   try:
     sp.run(command,
            cwd=OSS_FUZZ_DIR,
