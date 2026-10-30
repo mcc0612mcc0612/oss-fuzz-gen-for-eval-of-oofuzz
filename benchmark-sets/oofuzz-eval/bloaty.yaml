@@ -1,7 +1,8 @@
-# Pruned from HarnessGenerator data/benchmark-set/bloaty.yaml (92 -> 10) for
-# bloaty badb2d2: header-declared, non-inline functions that exist at that
-# commit; signatures and params re-read from its headers, and symbol names
-# taken from the libc++ build OSS-Fuzz makes (OFG checks them in the binary).
+# Pruned from HarnessGenerator data/benchmark-set/bloaty.yaml (92 -> 10), plus 15
+# from bloaty_all.yaml chosen by function size and reach, for bloaty badb2d2:
+# header-declared, non-inline functions that exist at that commit; signatures
+# and params re-read from its headers, and symbol names taken from the libc++
+# build OSS-Fuzz makes (OFG checks them in the binary).
 functions:
 - name: _ZN6bloaty21ReadDWARFCompileUnitsERKNS_5dwarf4FileERKNS_7DualMapEPKNS0_2CUEPNS_9RangeSinkE
   params:
@@ -99,6 +100,134 @@ functions:
     type: uint64_t
   return_type: void
   signature: void bloaty::RangeSink::AddVMRangeForVMAddr(const char* analyzer, uint64_t label_from_vmaddr, uint64_t addr, uint64_t size)
+- name: _ZN6bloaty5dwarf9AttrValue9ParseAttrERKNS0_2CUEtPNSt3__117basic_string_viewIcNS5_11char_traitsIcEEEE
+  params:
+  - name: cu
+    type: const bloaty::dwarf::CU &
+  - name: form
+    type: uint16_t
+  - name: data
+    type: std::string_view *
+  return_type: bloaty::dwarf::AttrValue
+  signature: bloaty::dwarf::AttrValue bloaty::dwarf::AttrValue::ParseAttr(const bloaty::dwarf::CU& cu, uint16_t form, std::string_view* data)
+- name: _ZN6bloaty5dwarf11AbbrevTable11ReadAbbrevsENSt3__117basic_string_viewIcNS2_11char_traitsIcEEEE
+  params:
+  - name: data
+    type: std::string_view
+  return_type: void
+  signature: void bloaty::dwarf::AbbrevTable::ReadAbbrevs(std::string_view data)
+- name: _ZN6bloaty5dwarf2CU15ReadTopLevelDIEERNS0_10InfoReaderE
+  params:
+  - name: reader
+    type: bloaty::dwarf::InfoReader &
+  return_type: void
+  signature: void bloaty::dwarf::CU::ReadTopLevelDIE(bloaty::dwarf::InfoReader& reader)
+- name: _ZN6bloaty5dwarf18ReadLEB128InternalEbPNSt3__117basic_string_viewIcNS1_11char_traitsIcEEEE
+  params:
+  - name: is_signed
+    type: bool
+  - name: data
+    type: std::string_view *
+  return_type: uint64_t
+  signature: uint64_t bloaty::dwarf::ReadLEB128Internal(bool is_signed, std::string_view* data)
+- name: _ZN6bloaty5dwarf14LineInfoReader19GetExpandedFilenameEm
+  params:
+  - name: index
+    type: size_t
+  return_type: const std::string &
+  signature: const std::string& bloaty::dwarf::LineInfoReader::GetExpandedFilename(size_t index)
+- name: _ZN6bloaty19DisassembleFunctionERKNS_15DisassemblyInfoE
+  params:
+  - name: info
+    type: const bloaty::DisassemblyInfo &
+  return_type: std::string
+  signature: std::string bloaty::DisassembleFunction(const bloaty::DisassemblyInfo& info)
+- name: _ZN6bloaty8RangeMap12AddDualRangeEmmmRKNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEE
+  params:
+  - name: addr
+    type: uint64_t
+  - name: size
+    type: uint64_t
+  - name: otheraddr
+    type: uint64_t
+  - name: val
+    type: const std::string &
+  return_type: void
+  signature: void bloaty::RangeMap::AddDualRange(uint64_t addr, uint64_t size, uint64_t otheraddr, const std::string& val)
+- name: _ZN6bloaty9RangeSink8AddRangeEPKcNSt3__117basic_string_viewIcNS3_11char_traitsIcEEEEmmmm
+  params:
+  - name: analyzer
+    type: const char *
+  - name: name
+    type: std::string_view
+  - name: vmaddr
+    type: uint64_t
+  - name: vmsize
+    type: uint64_t
+  - name: fileoff
+    type: uint64_t
+  - name: filesize
+    type: uint64_t
+  return_type: void
+  signature: void bloaty::RangeSink::AddRange(const char* analyzer, std::string_view name, uint64_t vmaddr, uint64_t vmsize, uint64_t fileoff, uint64_t filesize)
+- name: _ZN6bloaty9RangeSink24AddFileRangeForFileRangeEPKcNSt3__117basic_string_viewIcNS3_11char_traitsIcEEEES7_
+  params:
+  - name: analyzer
+    type: const char *
+  - name: from_file_range
+    type: std::string_view
+  - name: file_range
+    type: std::string_view
+  return_type: void
+  signature: void bloaty::RangeSink::AddFileRangeForFileRange(const char* analyzer, std::string_view from_file_range, std::string_view file_range)
+- name: _ZN6bloaty14TryOpenELFFileERNSt3__110unique_ptrINS_9InputFileENS0_14default_deleteIS2_EEEE
+  params:
+  - name: file
+    type: std::unique_ptr<bloaty::InputFile> &
+  return_type: std::unique_ptr<bloaty::ObjectFile>
+  signature: std::unique_ptr<bloaty::ObjectFile> bloaty::TryOpenELFFile(std::unique_ptr<bloaty::InputFile>& file)
+- name: _ZN6bloaty16TryOpenMachOFileERNSt3__110unique_ptrINS_9InputFileENS0_14default_deleteIS2_EEEE
+  params:
+  - name: file
+    type: std::unique_ptr<bloaty::InputFile> &
+  return_type: std::unique_ptr<bloaty::ObjectFile>
+  signature: std::unique_ptr<bloaty::ObjectFile> bloaty::TryOpenMachOFile(std::unique_ptr<bloaty::InputFile>& file)
+- name: _ZN6bloaty13TryOpenPEFileERNSt3__110unique_ptrINS_9InputFileENS0_14default_deleteIS2_EEEE
+  params:
+  - name: file
+    type: std::unique_ptr<bloaty::InputFile> &
+  return_type: std::unique_ptr<bloaty::ObjectFile>
+  signature: std::unique_ptr<bloaty::ObjectFile> bloaty::TryOpenPEFile(std::unique_ptr<bloaty::InputFile>& file)
+- name: _ZN6bloaty22TryOpenWebAssemblyFileERNSt3__110unique_ptrINS_9InputFileENS0_14default_deleteIS2_EEEE
+  params:
+  - name: file
+    type: std::unique_ptr<bloaty::InputFile> &
+  return_type: std::unique_ptr<bloaty::ObjectFile>
+  signature: std::unique_ptr<bloaty::ObjectFile> bloaty::TryOpenWebAssemblyFile(std::unique_ptr<bloaty::InputFile>& file)
+- name: _ZN6bloaty20TryOpenSourceMapFileERNSt3__110unique_ptrINS_9InputFileENS0_14default_deleteIS2_EEEENS0_12basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEE
+  params:
+  - name: file
+    type: std::unique_ptr<bloaty::InputFile> &
+  - name: build_id
+    type: std::string
+  return_type: std::unique_ptr<bloaty::ObjectFile>
+  signature: std::unique_ptr<bloaty::ObjectFile> bloaty::TryOpenSourceMapFile(std::unique_ptr<bloaty::InputFile>& file, std::string build_id)
+- name: _ZN6bloaty12ParseOptionsEbPiPPPcPNS_7OptionsEPNS_13OutputOptionsEPNSt3__112basic_stringIcNS8_11char_traitsIcEENS8_9allocatorIcEEEE
+  params:
+  - name: skip_unknown
+    type: bool
+  - name: argc
+    type: int *
+  - name: argv
+    type: char ***
+  - name: options
+    type: bloaty::Options *
+  - name: output_options
+    type: bloaty::OutputOptions *
+  - name: error
+    type: std::string *
+  return_type: bool
+  signature: bool bloaty::ParseOptions(bool skip_unknown, int* argc, char** argv[], bloaty::Options* options, bloaty::OutputOptions* output_options, std::string* error)
 language: c++
 project: bloaty
 use_project_examples: false
