@@ -687,19 +687,21 @@ class AnthropicClaude(Claude):
         'content': m['content']
     } for m in messages]
 
-    def _stream():
-      with anthropic.Anthropic().messages.stream(
-          model=self.name,
-          max_tokens=self._max_output_tokens,
-          system='\n'.join(system) or anthropic.omit,
-          messages=messages,
-          output_config={'effort': self._effort},
-      ) as stream:
-        return stream.get_final_message()
-
+    # Not streamed: anthropic 2.3.0's stream accumulator fails on a
+    # message_start event without content, which a share of responses send.
+    # The explicit timeout lifts the SDK's refusal of long non-streamed calls.
     response = self.with_retry_on_error(
-        _stream, [anthropic.RateLimitError, anthropic.InternalServerError,
-                  anthropic.APIConnectionError])
+        lambda: anthropic.Anthropic().messages.create(
+            model=self.name,
+            max_tokens=self._max_output_tokens,
+            system='\n'.join(system) or anthropic.omit,
+            messages=messages,
+            output_config={'effort': self._effort},
+            timeout=1800,
+        ), [
+            anthropic.RateLimitError, anthropic.InternalServerError,
+            anthropic.APIConnectionError
+        ])
     logger.info('%s spend so far: $%.2f', self.name,
                 self._add_spend(response.usage))
     if response.stop_reason == 'refusal':
